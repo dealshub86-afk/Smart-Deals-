@@ -61,9 +61,6 @@
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Product details"><div class="dialog"><button class="close" id="closeModal" aria-label="Close">×</button><div id="modalContent"></div></div></div>
 
 <script>
-// ==========================================================
-// 🔗 உங்களது அப்லியேட் லிங்க் (Affiliate Link) இங்கே இணைக்கப்பட்டுள்ளது
-// ==========================================================
 const UNIVERSAL_AFFILIATE_URL = "https://fktr.in/P3Z7Jq9"; 
 
 const products = [
@@ -293,7 +290,9 @@ const en={
   footerText:"Compare thoughtfully. Buy confidently."
 };
 
-$("#langBtn").onclick=(),language==="en"?ta:en;
+$("#langBtn").onclick=()=>{
+  language=language==="en"?"ta":"en";
+  const d=language==="ta"?ta:en;
   Object.keys(d).forEach(k=>{let el=$("#"+k);if(el)el.textContent=d[k];});
   $("#langBtn").textContent=language==="en"?"தமிழ்":"English";
   document.documentElement.lang=language==="ta"?"ta":"en";
