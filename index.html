@@ -61,14 +61,11 @@
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Product details"><div class="dialog"><button class="close" id="closeModal" aria-label="Close">×</button><div id="modalContent"></div></div></div>
 
 <script>
-// ==========================================================
-// 🔗 அனைத்து ஆன்லைன் கடைகளுக்கான உங்களது அப்லியேட் இணைப்புகள்
-// ==========================================================
 const AFFILIATE_LINKS = {
   amazon: "https://www.amazon.in?tag=dealshub0b6f-21",
   flipkart: "https://fktr.in/P3Z7Jq9",
-  croma: "https://www.croma.com", // தேவைக்கேற்ப உங்களது Croma அப்லியேட் லிங்கை இங்கு மாற்றிக் கொள்ளலாம்
-  myntra: "https://www.myntra.com" // தேவைக்கேற்ப உங்களது Myntra அப்லியேட் லிங்கை இங்கு மாற்றிக் கொள்ளலாம்
+  croma: "https://www.croma.com",
+  myntra: "https://www.myntra.com"
 };
 
 const products = [
@@ -290,7 +287,7 @@ document.querySelector(".subnav").addEventListener("click",e=>{
 });
 
 $("#searchForm").addEventListener("submit",e=>{e.preventDefault();query=$("#searchInput").value.trim();drawProducts();$("#products").scrollIntoView({behavior:"smooth"});});
-$("#searchInput").addEventListener("input",()=>{query=$("#searchInput.value".trim());drawProducts();});
+$("#searchInput").addEventListener("input",()=>{query=$("#searchInput").value.trim();drawProducts();});
 $("#sortSelect").addEventListener("change",drawProducts);
 
 $("#productGrid").addEventListener("click",e=>{
