@@ -38,11 +38,11 @@
 <body>
   <header class="top">
     <div class="brand">Smart<span>Deals</span></div>
-    <form class="search" id="searchForm"><input id="searchInput" type="search" placeholder="Search products across Amazon, Flipkart, Croma..." aria-label="Search products"><button type="submit">Search</button></form>
+    <form class="search" id="searchForm" onsubmit="return false;"><input id="searchInput" type="search" placeholder="Search products across Amazon, Flipkart, Croma..." aria-label="Search products"><button type="submit" id="searchBtn">Search</button></form>
     <div class="top-actions"><button id="langBtn" type="button">தமிழ்</button></div>
   </header>
   <nav class="subnav" aria-label="Main categories">
-    <a href="#products" data-cat="All">☰ All</a><a href="#products" data-cat="Mobiles">Mobiles</a><a href="#products" data-cat="Electronics">Electronics</a><a href="#products" data-cat="Home">Home & Kitchen</a><a href="#products" data-cat="Appliances">Appliances</a>
+    <a data-cat="All">☰ All</a><a data-cat="Mobiles">Mobiles</a><a data-cat="Electronics">Electronics</a><a data-cat="Home">Home & Kitchen</a><a data-cat="Appliances">Appliances</a>
   </nav>
   <main class="wrap">
     <section class="hero">
@@ -205,20 +205,26 @@ const money=n=>"₹"+Number(n).toLocaleString("en-IN");
 const categories=[["All","All products"],["Mobiles","Mobiles"],["Electronics","Electronics"],["Home","Home & Kitchen"],["Appliances","Appliances"]];
 
 function drawChips(){ 
-  $("#chips").innerHTML=categories.map(([id,label])=>`<button class="chip ${activeCategory===id?"active":""}" data-chip="${id}">${label}</button>`).join("");
+  const chipContainer = document.getElementById("chips");
+  if(chipContainer) {
+    chipContainer.innerHTML = categories.map(([id,label])=>`<button class="chip ${activeCategory===id?"active":""}" data-chip="${id}">${label}</button>`).join("");
+  }
 }
 
 function getFiltered(){
-  let list=products.filter(p=>(activeCategory==="All"||p.category===activeCategory)&&(`${p.name} ${p.category} ${p.description}`).toLowerCase().includes(query.toLowerCase()));
-  let sort=$("#sortSelect").value;
-  if(sort==="price")list.sort((a,b)=>a.price-b.price);
-  if(sort==="rating")list.sort((a,b)=>(b.rating||0)-(a.rating||0));
+  let list = products.filter(p => (activeCategory === "All" || p.category === activeCategory) && (`${p.name} ${p.category} ${p.description}`).toLowerCase().includes(query.toLowerCase()));
+  let sortSelect = document.getElementById("sortSelect");
+  let sort = sortSelect ? sortSelect.value : "featured";
+  if(sort === "price") list.sort((a,b) => a.price - b.price);
+  if(sort === "rating") list.sort((a,b) => (b.rating || 0) - (a.rating || 0));
   return list;
 }
 
 function drawProducts(){
-  const list=getFiltered();
-  $("#productGrid").innerHTML=list.length?list.map(p=>{
+  const list = getFiltered();
+  const grid = document.getElementById("productGrid");
+  if(!grid) return;
+  grid.innerHTML = list.length ? list.map(p => {
     let lowest = p.storePrices.reduce((min, s) => s.price < min.price ? s : min, p.storePrices[0]);
     return `
       <article class="card">
@@ -233,16 +239,18 @@ function drawProducts(){
           <div class="price">${money(lowest.price)} <small style="font-size:11px;color:var(--green)">on ${lowest.store}</small></div>
           <div class="small">Multi-store price comparison</div>
           <div class="card-actions">
-            <button data-details="${p.id}">Compare Stores</button>
+            <button onclick="openDetail('${p.id}')">Compare Stores</button>
             <button class="primary" onclick="window.open('${AFFILIATE_LINKS[lowest.key]}', '_blank')">Buy Now 🚀</button>
           </div>
         </div>
       </article>
     `;
-  }).join(""):`<div class="empty">No products found.</div>`;
+  }).join("") : `<div class="empty">No products found.</div>`;
 }
 
-function detail(p){
+function openDetail(id){
+  let p = products.find(x => x.id === id);
+  if(!p) return;
   let storesHtml = p.storePrices.map(s => `
     <div class="offer">
       <div>
@@ -256,7 +264,7 @@ function detail(p){
     </div>
   `).join("");
 
-  $("#modalContent").innerHTML=`
+  document.getElementById("modalContent").innerHTML = `
     <div class="detail">
       <div class="detail-img"><img src="${p.image}" alt="${p.name}"></div>
       <div>
@@ -273,66 +281,61 @@ function detail(p){
       ${storesHtml}
     </div>
   `;
-  $("#modal").classList.add("open");
+  document.getElementById("modal").classList.add("open");
 }
 
-$("#chips").addEventListener("click",e=>{
-  let b=e.target.closest("[data-chip]");
-  if(b){activeCategory=b.dataset.chip;drawChips();drawProducts();}
-});
-
-document.querySelector(".subnav").addEventListener("click",e=>{
-  let a=e.target.closest("[data-cat]");
-  if(a){e.preventDefault();activeCategory=a.dataset.cat;drawChips();drawProducts();$("#products").scrollIntoView({behavior:"smooth"});}
-});
-
-$("#searchForm").addEventListener("submit",e=>{e.preventDefault();query=$("#searchInput").value.trim();drawProducts();$("#products").scrollIntoView({behavior:"smooth"});});
-$("#searchInput").addEventListener("input",()=>{query=$("#searchInput").value.trim();drawProducts();});
-$("#sortSelect").addEventListener("change",drawProducts);
-
-$("#productGrid").addEventListener("click",e=>{
-  let btn=e.target.closest("[data-details]");
-  if(btn){
-    let p=products.find(x=>x.id===btn.dataset.details);
-    if(p)detail(p);
+document.getElementById("chips").addEventListener("click", e => {
+  let b = e.target.closest("[data-chip]");
+  if(b){
+    activeCategory = b.dataset.chip;
+    drawChips();
+    drawProducts();
   }
 });
 
-$("#closeModal").onclick=()=>$("#modal").classList.remove("open");
-$("#modal").addEventListener("click",e=>{if(e.target.id==="modal")$("#modal").classList.remove("open");});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#modal").classList.remove("open");});
+document.querySelector(".subnav").addEventListener("click", e => {
+  let a = e.target.closest("[data-cat]");
+  if(a){
+    e.preventDefault();
+    activeCategory = a.dataset.cat;
+    drawChips();
+    drawProducts();
+    document.getElementById("products").scrollIntoView({behavior:"smooth"});
+  }
+});
 
-const ta={
-  heroPill:"பல கடைகளின் விலை ஒப்பீடு",
-  heroTitle:"ஒப்பிடுங்கள். தேர்வு செய்யுங்கள். சேமியுங்கள்.",
-  heroText:"அமேசான், ஃப்ளிப்கார்ட் மற்றும் க்ரோமா விலைகளை ஒப்பிட்டு சிறந்த விலையில் வாங்குங்கள்.",
-  heroBtn:"சலுகைகளைப் பாருங்கள் ↓",
-  catTitle:"வகை வாரியாகத் தேடுங்கள்",
-  catSub:"உங்களுக்குத் தேவையான பொருளைக் கண்டறியுங்கள்",
-  productsTitle:"அனைத்து கடைகளின் சிறந்த விற்பனைப் பொருட்கள்",
-  productsSub:"வாங்குவதற்கு முன் விலைகளை ஒப்பிடுங்கள்",
-  footerText:"அறிவுடன் ஒப்பிடுங்கள். நம்பிக்கையுடன் வாங்குங்கள்."
-};
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.getElementById("searchBtn");
+if(searchBtn && searchInput){
+  searchBtn.onclick = () => {
+    query = searchInput.value.trim();
+    drawProducts();
+  };
+  searchInput.oninput = () => {
+    query = searchInput.value.trim();
+    drawProducts();
+  };
+}
 
-const en={
-  heroPill:"MULTI-STORE PRICE COMPARISON",
-  heroTitle:"Compare. Choose. Save.",
-  heroText:"Compare real-time prices across Amazon, Flipkart, Croma & Myntra with automated affiliate tracking.",
-  heroBtn:"Explore deals ↓",
-  catTitle:"Shop by category",catSub:"Find the product you need",
-  productsTitle:"Best Sellers Across All Stores",
-  productsSub:"Compare prices and choose the best online shop",
-  footerText:"Compare thoughtfully. Buy confidently."
-};
+const sortSelect = document.getElementById("sortSelect");
+if(sortSelect){
+  sortSelect.onchange = drawProducts;
+}
 
-$("#langBtn").onclick = () => {
+const closeModal = document.getElementById("closeModal");
+const modal = document.getElementById("modal");
+if(closeModal && modal){
+  closeModal.onclick = () => modal.classList.remove("open");
+  modal.onclick = e => { if(e.target.id === "modal") modal.classList.remove("open"); };
+}
+
+document.addEventListener("keydown", e => {
+  if(e.key === "Escape" && modal) modal.classList.remove("open");
+});
+
+document.getElementById("langBtn").onclick = () => {
   language = language === "en" ? "ta" : "en";
-  const d = language === "ta" ? ta : en;
-  Object.keys(d).forEach(k => {
-    let el = $("#" + k);
-    if(el) el.textContent = d[k];
-  });
-  $("#langBtn").textContent = language === "en" ? "தமிழ்" : "English";
+  document.getElementById("langBtn").textContent = language === "en" ? "தமிழ்" : "English";
   document.documentElement.lang = language === "ta" ? "ta" : "en";
 };
 
