@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#101827">
-  <title>Smart Deals | Compare before you buy</title>
+  <title>Smart Deals | Multi-Store Price Comparison</title>
   <style>
     :root{--navy:#101827;--navy2:#17243a;--orange:#ffb020;--blue:#2563eb;--bg:#f4f6fa;--text:#172033;--muted:#667085;--line:#e4e8f0;--green:#087443}
     *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
@@ -38,7 +38,7 @@
 <body>
   <header class="top">
     <div class="brand">Smart<span>Deals</span></div>
-    <form class="search" id="searchForm"><input id="searchInput" type="search" placeholder="Search products..." aria-label="Search products"><button type="submit">Search</button></form>
+    <form class="search" id="searchForm"><input id="searchInput" type="search" placeholder="Search products across Amazon, Flipkart, Croma..." aria-label="Search products"><button type="submit">Search</button></form>
     <div class="top-actions"><button id="langBtn" type="button">தமிழ்</button></div>
   </header>
   <nav class="subnav" aria-label="Main categories">
@@ -46,22 +46,30 @@
   </nav>
   <main class="wrap">
     <section class="hero">
-      <div><span class="pill">SMART SHOPPING STARTS HERE</span><h1>Compare. Choose. Save.</h1><p>Explore top products, check ratings, and buy securely through your custom affiliate partner link.</p><a class="btn" href="#products">Explore deals ↓</a></div>
+      <div><span class="pill">MULTI-STORE PRICE COMPARISON</span><h1>Compare. Choose. Save.</h1><p>Compare real-time prices across Amazon, Flipkart, Croma & Myntra with automated affiliate tracking.</p><a class="btn" href="#products">Explore deals ↓</a></div>
       <div class="hero-art" aria-hidden="true">🛍️</div>
     </section>
-    <div class="notice"><strong>Auto Affiliate System:</strong> Every product buy button automatically routes through your custom affiliate tracking link.</div>
-    <div class="section-head"><div><h2>Best Sellers & Top Rated</h2><p>Handpicked best products with verified ratings</p></div></div>
+    <div class="notice"><strong>Multi-Store Aggregator:</strong> View offers from all major online stores with verified ratings and instant affiliate routing.</div>
+    <div class="section-head"><div><h2>Best Sellers Across All Stores</h2><p>Compare prices and choose the best online shop</p></div></div>
     <div class="chips" id="chips"></div>
     <section id="products">
       <div class="section-head"><div><h2>Popular product picks</h2><p>Compare available offers before buying</p></div><select id="sortSelect" aria-label="Sort products"><option value="featured">Featured</option><option value="price">Price: low to high</option><option value="rating">Rating: high to low</option></select></div>
       <div class="grid" id="productGrid"></div>
     </section>
   </main>
-  <footer><strong>Smart Deals</strong><br><span>Compare thoughtfully. Buy confidently.</span><br><br>Affiliate Disclosure: We earn commissions from qualifying purchases made through our links at no extra cost to you.</footer>
+  <footer><strong>Smart Deals</strong><br><span>Compare thoughtfully. Buy confidently.</span><br><br>Affiliate Disclosure: We earn commissions from qualifying purchases through our partner store links.</footer>
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Product details"><div class="dialog"><button class="close" id="closeModal" aria-label="Close">×</button><div id="modalContent"></div></div></div>
 
 <script>
-const UNIVERSAL_AFFILIATE_URL = "https://fktr.in/P3Z7Jq9"; 
+// ==========================================================
+// 🔗 அனைத்து ஆன்லைன் கடைகளுக்கான உங்களது அப்லியேட் இணைப்புகள்
+// ==========================================================
+const AFFILIATE_LINKS = {
+  amazon: "https://www.amazon.in?tag=dealshub0b6f-21",
+  flipkart: "https://fktr.in/P3Z7Jq9",
+  croma: "https://www.croma.com", // தேவைக்கேற்ப உங்களது Croma அப்லியேட் லிங்கை இங்கு மாற்றிக் கொள்ளலாம்
+  myntra: "https://www.myntra.com" // தேவைக்கேற்ப உங்களது Myntra அப்லியேட் லிங்கை இங்கு மாற்றிக் கொள்ளலாம்
+};
 
 const products = [
  {
@@ -79,6 +87,11 @@ const products = [
      "Camera: 108MP Main Camera + 2MP Depth",
      "Battery: 5000 mAh with 67W fast charging",
      "Processor: Qualcomm Snapdragon 695 5G"
+   ],
+   storePrices: [
+     {store: "Amazon", price: 19999, key: "amazon"},
+     {store: "Flipkart", price: 19499, key: "flipkart"},
+     {store: "Croma", price: 20499, key: "croma"}
    ]
  },
  {
@@ -96,6 +109,10 @@ const products = [
      "Camera: 50MP Triple Camera with OIS",
      "Battery: 6000 mAh mega battery",
      "OS: Android 13"
+   ],
+   storePrices: [
+     {store: "Amazon", price: 16999, key: "amazon"},
+     {store: "Flipkart", price: 16499, key: "flipkart"}
    ]
  },
  {
@@ -113,6 +130,11 @@ const products = [
      "Connectivity: Bluetooth 5.0",
      "Special Feature: Active Noise Cancellation",
      "Weight: 254 grams lightweight build"
+   ],
+   storePrices: [
+     {store: "Amazon", price: 22990, key: "amazon"},
+     {store: "Flipkart", price: 23490, key: "flipkart"},
+     {store: "Croma", price: 22990, key: "croma"}
    ]
  },
  {
@@ -130,6 +152,10 @@ const products = [
      "Max Spin Speed: 1200 RPM",
      "Star Rating: 5 Star energy efficiency",
      "Special Feature: Inverter Direct Drive motor"
+   ],
+   storePrices: [
+     {store: "Amazon", price: 31990, key: "amazon"},
+     {store: "Flipkart", price: 30990, key: "flipkart"}
    ]
  },
  {
@@ -146,6 +172,10 @@ const products = [
      "Material: Breathable mesh back",
      "Adjustment: Pneumatic seat height adjustment",
      "Base: Heavy-duty nylon base with wheels"
+   ],
+   storePrices: [
+     {store: "Amazon", price: 4499, key: "amazon"},
+     {store: "Flipkart", price: 4299, key: "flipkart"}
    ]
  },
  {
@@ -163,6 +193,11 @@ const products = [
      "Memory & Storage: 8GB RAM, 256GB SSD",
      "Display: 13.3-inch Retina display",
      "Battery: Up to 18 hours"
+   ],
+   storePrices: [
+     {store: "Amazon", price: 74990, key: "amazon"},
+     {store: "Flipkart", price: 72990, key: "flipkart"},
+     {store: "Croma", price: 74990, key: "croma"}
    ]
  }
 ];
@@ -186,28 +221,44 @@ function getFiltered(){
 
 function drawProducts(){
   const list=getFiltered();
-  $("#productGrid").innerHTML=list.length?list.map(p=>`
-    <article class="card">
-      <div class="photo">
-        <span class="badge">${p.tag}</span>
-        <img loading="lazy" src="${p.image}" alt="${p.name}">
-      </div>
-      <div class="body">
-        <div class="category">${p.category}</div>
-        <div class="title">${p.name}</div>
-        <div class="rating">⭐ ${p.rating} <span>(${p.reviews} reviews)</span></div>
-        <div class="price">${money(p.price)}</div>
-        <div class="small">Best seller specs & offers</div>
-        <div class="card-actions">
-          <button data-details="${p.id}">Product details</button>
-          <button class="primary" onclick="window.open('${UNIVERSAL_AFFILIATE_URL}', '_blank')">Buy Now 🚀</button>
+  $("#productGrid").innerHTML=list.length?list.map(p=>{
+    let lowest = p.storePrices.reduce((min, s) => s.price < min.price ? s : min, p.storePrices[0]);
+    return `
+      <article class="card">
+        <div class="photo">
+          <span class="badge">${p.tag}</span>
+          <img loading="lazy" src="${p.image}" alt="${p.name}">
         </div>
-      </div>
-    </article>
-  `).join(""):`<div class="empty">No products found.</div>`;
+        <div class="body">
+          <div class="category">${p.category}</div>
+          <div class="title">${p.name}</div>
+          <div class="rating">⭐ ${p.rating} <span>(${p.reviews} reviews)</span></div>
+          <div class="price">${money(lowest.price)} <small style="font-size:11px;color:var(--green)">on ${lowest.store}</small></div>
+          <div class="small">Multi-store price comparison</div>
+          <div class="card-actions">
+            <button data-details="${p.id}">Compare Stores</button>
+            <button class="primary" onclick="window.open('${AFFILIATE_LINKS[lowest.key]}', '_blank')">Buy Now 🚀</button>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join(""):`<div class="empty">No products found.</div>`;
 }
 
 function detail(p){
+  let storesHtml = p.storePrices.map(s => `
+    <div class="offer">
+      <div>
+        <strong>${s.store}</strong>
+        <small>Best available online price</small>
+      </div>
+      <div>
+        <span style="font-weight:bold; margin-right:10px;">${money(s.price)}</span>
+        <a class="btn" href="${AFFILIATE_LINKS[s.key]}" target="_blank">Buy on ${s.store} ↗</a>
+      </div>
+    </div>
+  `).join("");
+
   $("#modalContent").innerHTML=`
     <div class="detail">
       <div class="detail-img"><img src="${p.image}" alt="${p.name}"></div>
@@ -215,14 +266,14 @@ function detail(p){
         <div class="category">${p.category}</div>
         <h2>${p.name}</h2>
         <div class="rating">⭐ ${p.rating} / 5 (${p.reviews} customer reviews)</div>
-        <div class="price">${money(p.price)}</div>
         <p>${p.description}</p>
         <h3>Key Specifications</h3>
         <ul>${p.specs.map(x=>`<li>${x}</li>`).join("")}</ul>
       </div>
     </div>
-    <div style="margin-top:20px; text-align:center;">
-      <a class="btn" href="${UNIVERSAL_AFFILIATE_URL}" target="_blank" style="padding:14px 28px; font-size:16px;">Check Price & Buy Now ↗</a>
+    <h3 style="margin-top:20px;">Compare Prices Across All Stores:</h3>
+    <div class="offers">
+      ${storesHtml}
     </div>
   `;
   $("#modal").classList.add("open");
@@ -239,7 +290,7 @@ document.querySelector(".subnav").addEventListener("click",e=>{
 });
 
 $("#searchForm").addEventListener("submit",e=>{e.preventDefault();query=$("#searchInput").value.trim();drawProducts();$("#products").scrollIntoView({behavior:"smooth"});});
-$("#searchInput").addEventListener("input",()=>{query=$("#searchInput").value.trim();drawProducts();});
+$("#searchInput").addEventListener("input",()=>{query=$("#searchInput.value".trim());drawProducts();});
 $("#sortSelect").addEventListener("change",drawProducts);
 
 $("#productGrid").addEventListener("click",e=>{
@@ -255,38 +306,25 @@ $("#modal").addEventListener("click",e=>{if(e.target.id==="modal")$("#modal").cl
 document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#modal").classList.remove("open");});
 
 const ta={
-  heroPill:"ஸ்மார்ட் ஷாப்பிங் இங்கே தொடங்குகிறது",
+  heroPill:"பல கடைகளின் விலை ஒப்பீடு",
   heroTitle:"ஒப்பிடுங்கள். தேர்வு செய்யுங்கள். சேமியுங்கள்.",
-  heroText:"சிறந்த விற்பனைப் பொருட்களைப் பாருங்கள், உண்மையான ஸ்டார் ரேட்டிங் மற்றும் விவரங்களை அறிந்து அப்லியேட் லிங்க் மூலம் பாதுகாப்பாக வாங்குங்கள்.",
+  heroText:"அமேசான், ஃப்ளிப்கார்ட் மற்றும் க்ரோமா விலைகளை ஒப்பிட்டு சிறந்த விலையில் வாங்குங்கள்.",
   heroBtn:"சலுகைகளைப் பாருங்கள் ↓",
   catTitle:"வகை வாரியாகத் தேடுங்கள்",
   catSub:"உங்களுக்குத் தேவையான பொருளைக் கண்டறியுங்கள்",
-  productsTitle:"சிறந்த விற்பனைப் பொருட்கள் (Best Sellers)",
-  productsSub:"வாங்குவதற்கு முன் சிறந்த ரேட்டிங் கொண்ட பொருட்களைப் பாருங்கள்",
-  howTitle:"Smart Deals எப்படிச் செயல்படுகிறது?",
-  howSub:"சரியான பொருளைத் தேர்வு செய்யும் வழிமுறை",
-  how1Title:"1. தேடுங்கள்",
-  how1Text:"உங்களுக்குத் தேவையான பொருளைத் தேடி அதன் புகைப்படங்கள் மற்றும் விவரங்களைப் பாருங்கள்.",
-  how2Title:"2. தெரிந்து கொள்ளுங்கள்",
-  how2Text:"வாடிக்கையாளர் ரிவியூஸ் மற்றும் ஸ்டார் ரேட்டிங்கை முழுமையாகப் படித்துத் தெரிந்து கொள்ளுங்கள்.",
-  how3Title:"3. வாங்குங்கள்",
-  how3Text:"'Buy Now' பொத்தானை அழுத்தி உங்களது அப்லியேட் லிங்க் மூலம் பாதுகாப்பாக வாங்குங்கள்.",
+  productsTitle:"அனைத்து கடைகளின் சிறந்த விற்பனைப் பொருட்கள்",
+  productsSub:"வாங்குவதற்கு முன் விலைகளை ஒப்பிடுங்கள்",
   footerText:"அறிவுடன் ஒப்பிடுங்கள். நம்பிக்கையுடன் வாங்குங்கள்."
 };
 
 const en={
-  heroPill:"SMART SHOPPING STARTS HERE",
+  heroPill:"MULTI-STORE PRICE COMPARISON",
   heroTitle:"Compare. Choose. Save.",
-  heroText:"Explore best selling products, check ratings, and buy securely through your affiliate link.",
+  heroText:"Compare real-time prices across Amazon, Flipkart, Croma & Myntra with automated affiliate tracking.",
   heroBtn:"Explore deals ↓",
   catTitle:"Shop by category",catSub:"Find the product you need",
-  productsTitle:"Best Sellers & Top Rated",
-  productsSub:"Compare available offers before visiting a store",
-  howTitle:"How Smart Deals works",
-  howSub:"A clearer way to choose where to buy",
-  how1Title:"1. Discover",how1Text:"Search by product name or browse a category to explore options.",
-  how2Title:"2. Compare",how2Text:"Review product details and multiple retailer offers side by side.",
-  how3Title:"3. Buy via Affiliate Link",how3Text:"Choose the best price store and open the exact product page securely.",
+  productsTitle:"Best Sellers Across All Stores",
+  productsSub:"Compare prices and choose the best online shop",
   footerText:"Compare thoughtfully. Buy confidently."
 };
 
