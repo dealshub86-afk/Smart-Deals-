@@ -1294,5 +1294,20 @@
     renderProducts();
     renderSellers();
   </script>
+  <!-- Smart Deals Language Switch -->
+<div style="position:fixed;right:12px;bottom:15px;z-index:9999;">
+  <button onclick="setLanguage('en')">English</button>
+  <button onclick="setLanguage('ta')">தமிழ்</button>
+</div>
+
+<script>
+function setLanguage(lang) {
+  localStorage.setItem('smartDealsLanguage', lang);
+  document.documentElement.lang = lang;
+  alert(lang === 'ta'
+    ? 'தமிழ் மொழி தேர்வு செய்யப்பட்டது!'
+    : 'English selected!');
+}
+</script>
 </body>
 </html>
