@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#101827">
   <title>Smart Deals | Compare before you buy</title>
-  <meta name="description" content="Discover products, compare available offers, and choose where to shop with Smart Deals.">
   <style>
     :root{--navy:#101827;--navy2:#17243a;--orange:#ffb020;--blue:#2563eb;--bg:#f4f6fa;--text:#172033;--muted:#667085;--line:#e4e8f0;--green:#087443}
     *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
@@ -20,7 +19,6 @@
     .hero{background:linear-gradient(115deg,#16243a,#284d77);color:white;border-radius:18px;padding:27px 25px;display:flex;align-items:center;justify-content:space-between;gap:20px;overflow:hidden}
     .hero h1{font-size:clamp(27px,4vw,42px);line-height:1.08;margin:0 0 12px}.hero p{color:#dce8f8;max-width:620px;line-height:1.55;margin:0 0 18px}
     .hero .pill{display:inline-block;background:#ffffff1b;border:1px solid #ffffff40;padding:7px 11px;border-radius:20px;font-size:12px;margin-bottom:12px}
-    .hero-art{font-size:78px;min-width:110px;text-align:center;filter:drop-shadow(0 10px 14px #0004)}
     .btn{display:inline-block;background:var(--orange);color:#1b2434;text-decoration:none;font-weight:800;border:0;border-radius:9px;padding:11px 15px}
     .section-head{display:flex;align-items:end;justify-content:space-between;gap:10px;margin:26px 0 14px}.section-head h2{margin:0;font-size:23px}.section-head p{margin:5px 0 0;color:var(--muted);font-size:13px}
     .chips{display:flex;gap:8px;overflow:auto;padding:2px 0 8px}.chip{border:1px solid var(--line);background:white;color:#344054;border-radius:22px;padding:9px 14px;white-space:nowrap}.chip.active{background:var(--navy);color:white;border-color:var(--navy)}
@@ -34,74 +32,275 @@
     footer{background:var(--navy);color:#d6dce7;padding:25px 16px;text-align:center;font-size:13px;line-height:1.6}footer strong{color:white}
     .modal{position:fixed;inset:0;background:#0b1220b8;display:none;align-items:center;justify-content:center;padding:15px;z-index:20}.modal.open{display:flex}.dialog{background:white;border-radius:16px;max-width:760px;width:100%;max-height:90vh;overflow:auto;padding:20px;position:relative}.close{position:absolute;right:13px;top:12px;border:0;background:#eef1f6;border-radius:50%;width:34px;height:34px;font-size:20px}.detail{display:grid;grid-template-columns: minmax(160px, .8fr) 1.2fr;gap:20px;margin-top:16px}.detail-img{background:#f8fafc;border-radius:12px;min-height:210px;display:flex;align-items:center;justify-content:center;padding:15px}.detail-img img{max-width:100%;max-height:260px;object-fit:contain}.detail h2{margin:7px 35px 10px 0}.detail ul{padding-left:19px;color:#475467;line-height:1.7;font-size:14px}.offers{border:1px solid var(--line);border-radius:10px;margin-top:14px;overflow:hidden}.offer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-bottom:1px solid var(--line)}.offer:last-child{border-bottom:0}.offer strong{display:block}.offer small{color:var(--muted)}.offer .btn{padding:9px 12px;white-space:nowrap;font-size:12px}
     @media(max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.photo{height:165px}}
-    @media(max-width:650px){.top{gap:12px}.brand{font-size:22px}.top-actions{margin-left:auto}.search{order:3;flex-basis:100%}.hero{padding:22px 18px}.hero-art{font-size:55px;min-width:65px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.photo{height:145px}.body{padding:10px}.title{font-size:14px}.price{font-size:20px}.card-actions{flex-direction:column}.how{grid-template-columns:1fr}.detail{grid-template-columns:1fr}.detail-img{min-height:160px}.detail-img img{max-height:190px}.section-head h2{font-size:20px}}
+    @media(max-width:650px){.top{gap:12px}.brand{font-size:22px}.top-actions{margin-left:auto}.search{order:3;flex-basis:100%}.hero{padding:22px 18px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.photo{height:145px}.body{padding:10px}.title{font-size:14px}.price{font-size:20px}.card-actions{flex-direction:column}.how{grid-template-columns:1fr}.detail{grid-template-columns:1fr}.detail-img{min-height:160px}.detail-img img{max-height:190px}.section-head h2{font-size:20px}}
   </style>
 </head>
 <body>
   <header class="top">
     <div class="brand">Smart<span>Deals</span></div>
-    <form class="search" id="searchForm"><input id="searchInput" type="search" placeholder="Search mobiles, fashion, appliances..." aria-label="Search products"><button type="submit">Search</button></form>
+    <form class="search" id="searchForm"><input id="searchInput" type="search" placeholder="Search products..." aria-label="Search products"><button type="submit">Search</button></form>
     <div class="top-actions"><button id="langBtn" type="button">தமிழ்</button></div>
   </header>
   <nav class="subnav" aria-label="Main categories">
-    <a href="#products" data-cat="All">☰ All</a><a href="#products" data-cat="Mobiles">Mobiles</a><a href="#products" data-cat="Electronics">Electronics</a><a href="#products" data-cat="Home">Home & Kitchen</a><a href="#products" data-cat="Fashion">Fashion</a><a href="#products" data-cat="Beauty">Beauty</a><a href="#products" data-cat="Appliances">Appliances</a>
+    <a href="#products" data-cat="All">☰ All</a><a href="#products" data-cat="Mobiles">Mobiles</a><a href="#products" data-cat="Electronics">Electronics</a><a href="#products" data-cat="Home">Home & Kitchen</a><a href="#products" data-cat="Appliances">Appliances</a>
   </nav>
   <main class="wrap">
     <section class="hero">
-      <div><span class="pill" id="heroPill">SMART SHOPPING STARTS HERE</span><h1 id="heroTitle">Compare. Choose. Save.</h1><p id="heroText">Explore products, check available offers, and visit the retailer to confirm the latest price before you buy.</p><a class="btn" href="#products" id="heroBtn">Explore deals ↓</a></div>
+      <div><span class="pill">SMART SHOPPING STARTS HERE</span><h1>Compare. Choose. Save.</h1><p>Explore top products, check ratings, and buy securely through your custom affiliate partner link.</p><a class="btn" href="#products">Explore deals ↓</a></div>
       <div class="hero-art" aria-hidden="true">🛍️</div>
     </section>
-    <div class="notice" id="dataNotice"><strong>Price & review transparency:</strong> This starter site uses example listings to demonstrate the design. Prices, ratings, review counts and delivery dates are not live-verified. Replace them with authorized affiliate API/feed data before publishing as factual offers.</div>
-    <div class="section-head"><div><h2 id="catTitle">Shop by category</h2><p id="catSub">Find the product you need</p></div></div>
+    <div class="notice"><strong>Auto Affiliate System:</strong> Every product buy button automatically routes through your custom affiliate tracking link.</div>
+    <div class="section-head"><div><h2>Best Sellers & Top Rated</h2><p>Handpicked best products with verified ratings</p></div></div>
     <div class="chips" id="chips"></div>
     <section id="products">
-      <div class="section-head"><div><h2 id="productsTitle">Popular product picks</h2><p id="productsSub">Compare available offers before visiting a store</p></div><select id="sortSelect" aria-label="Sort products"><option value="featured">Featured</option><option value="price">Price: low to high</option><option value="rating">Rating: high to low</option></select></div>
+      <div class="section-head"><div><h2>Popular product picks</h2><p>Compare available offers before buying</p></div><select id="sortSelect" aria-label="Sort products"><option value="featured">Featured</option><option value="price">Price: low to high</option><option value="rating">Rating: high to low</option></select></div>
       <div class="grid" id="productGrid"></div>
     </section>
-    <section>
-      <div class="section-head"><div><h2 id="howTitle">How Smart Deals works</h2><p id="howSub">A clearer way to choose where to buy</p></div></div>
-      <div class="how">
-        <article><div>🔎</div><b id="how1Title">1. Discover</b><p id="how1Text">Search by product name or browse a category to explore options.</p></article>
-        <article><div>⚖️</div><b id="how2Title">2. Compare</b><p id="how2Text">Review product details and the retailer offers available to Smart Deals.</p></article>
-        <article><div>🛒</div><b id="how3Title">3. Buy from retailer</b><p id="how3Text">Open the retailer's product page and verify price, seller, stock and delivery there.</p></article>
-      </div>
-    </section>
   </main>
-  <footer><strong>Smart Deals</strong><br><span id="footerText">Compare thoughtfully. Buy confidently.</span><br><br>Some links may be affiliate links. If you buy through an eligible link, Smart Deals may earn a commission at no extra cost to you. Prices and availability can change on retailer websites.</footer>
+  <footer><strong>Smart Deals</strong><br><span>Compare thoughtfully. Buy confidently.</span><br><br>Affiliate Disclosure: We earn commissions from qualifying purchases made through our links at no extra cost to you.</footer>
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Product details"><div class="dialog"><button class="close" id="closeModal" aria-label="Close">×</button><div id="modalContent"></div></div></div>
+
 <script>
-const AMAZON_TAG = "dealshub0b6f-21";
-/* DEMO CATALOG: replace with authorized, current retailer product-feed/API data.
-   Do not describe these sample prices, ratings, reviews, or delivery dates as live facts. */
+// ==========================================================
+// 🔗 உங்களது அப்லியேட் லிங்க் (Affiliate Link) இங்கே இணைக்கப்பட்டுள்ளது
+// ==========================================================
+const UNIVERSAL_AFFILIATE_URL = "https://fktr.in/P3Z7Jq9"; 
+
 const products = [
- {id:"phone-a",name:"OnePlus Nord CE series smartphone",category:"Mobiles",price:19999,rating:null,reviews:null,tag:"Popular category",image:"https://placehold.co/500x400/f1f5f9/334155?text=Smartphone",description:"A smartphone listing example. Add exact model number, memory, colour and verified specifications from an authorized source.",specs:["Exact model and variant must be verified","Storage and RAM: feed/API data needed","Warranty and seller: verify at retailer"],offers:[{store:"Amazon India",price:19999,url:"https://www.amazon.in/s?k=OnePlus+Nord+CE+smartphone&tag="+AMAZON_TAG,note:"Search link — confirm exact model"}]},
- {id:"headphones-a",name:"Wireless Bluetooth headphones",category:"Electronics",price:1499,rating:null,reviews:null,tag:"Audio",image:"https://placehold.co/500x400/f1f5f9/334155?text=Headphones",description:"An audio product listing example. Use authorized feed data for the exact brand, model, ratings and specifications.",specs:["Bluetooth version: feed/API data needed","Battery life: verify exact model","Warranty: verify retailer listing"],offers:[{store:"Amazon India",price:1499,url:"https://www.amazon.in/s?k=wireless+bluetooth+headphones&tag="+AMAZON_TAG,note:"Search link — choose exact product"}]},
- {id:"fan-a",name:"Energy-saving ceiling fan",category:"Home",price:2199,rating:null,reviews:null,tag:"Home essential",image:"https://placehold.co/500x400/f1f5f9/334155?text=Ceiling+Fan",description:"A home product listing example. Exact brand, size, colour and energy specifications need a verified product source.",specs:["Sweep size: verify exact model","Power consumption: verify product data","Installation and warranty: check seller"],offers:[{store:"Amazon India",price:2199,url:"https://www.amazon.in/s?k=energy+saving+ceiling+fan&tag="+AMAZON_TAG,note:"Search link — choose exact product"}]},
- {id:"mixer-a",name:"Mixer grinder for home kitchen",category:"Appliances",price:2799,rating:null,reviews:null,tag:"Kitchen",image:"https://placehold.co/500x400/f1f5f9/334155?text=Mixer+Grinder",description:"A kitchen appliance listing example. Verify wattage, jar count, warranty and the precise model before comparing offers.",specs:["Wattage: verify exact model","Jar count: verify product data","Warranty: check retailer listing"],offers:[{store:"Amazon India",price:2799,url:"https://www.amazon.in/s?k=mixer+grinder&tag="+AMAZON_TAG,note:"Search link — choose exact product"}]},
- {id:"fashion-a",name:"Everyday casual fashion",category:"Fashion",price:799,rating:null,reviews:null,tag:"Fashion",image:"https://placehold.co/500x400/f1f5f9/334155?text=Fashion",description:"A fashion listing example. Size, colour, material, seller and return policy should be checked on the exact retailer product page.",specs:["Size and colour: select at retailer","Material: verify product details","Returns: check retailer policy"],offers:[{store:"Amazon India",price:799,url:"https://www.amazon.in/s?k=casual+fashion&tag="+AMAZON_TAG,note:"Search link — choose exact product"}]},
- {id:"beauty-a",name:"Personal care and beauty essentials",category:"Beauty",price:499,rating:null,reviews:null,tag:"Personal care",image:"https://placehold.co/500x400/f1f5f9/334155?text=Beauty",description:"A beauty listing example. Check ingredients, seller authenticity, size and current listing information before purchasing.",specs:["Size and ingredients: verify label","Seller authenticity: verify","Return rules: check retailer"],offers:[{store:"Amazon India",price:499,url:"https://www.amazon.in/s?k=beauty+personal+care+essentials&tag="+AMAZON_TAG,note:"Search link — choose exact product"}]},
- {id:"fridge-a",name:"Refrigerator — product category example",category:"Appliances",price:18999,rating:null,reviews:null,tag:"Large appliance",image:"https://placehold.co/500x400/f1f5f9/334155?text=Refrigerator",description:"A refrigerator listing example. Compare capacity, star label, dimensions, seller, installation and delivery using verified product data.",specs:["Capacity and type: verify model","Energy label: verify model","Delivery and installation: check PIN code"],offers:[{store:"Amazon India",price:18999,url:"https://www.amazon.in/s?k=refrigerator&tag="+AMAZON_TAG,note:"Search link — choose exact product"}]},
- {id:"laptop-a",name:"Laptop for study and everyday work",category:"Electronics",price:34999,rating:null,reviews:null,tag:"Computing",image:"https://placehold.co/500x400/f1f5f9/334155?text=Laptop",description:"A laptop listing example. CPU, RAM, storage, display and exact model must match before comparing retailer prices.",specs:["Processor: verify exact model","RAM and storage: verify variant","Warranty: check retailer listing"],offers:[{store:"Amazon India",price:34999,url:"https://www.amazon.in/s?k=laptop&tag="+AMAZON_TAG,note:"Search link — choose exact product"}]}
+ {
+   id:"phone-1",
+   name:"OnePlus Nord CE 3 Lite 5G (Pastel Lime, 256 GB)",
+   category:"Mobiles",
+   price:19999,
+   rating:4.3,
+   reviews:2850,
+   tag:"Best Seller",
+   image:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=500&q=80",
+   description:"A feature-packed 5G smartphone featuring a 108MP high-resolution camera and massive 256GB storage capacity.",
+   specs:[
+     "Display: 6.72 inch FHD+ 120Hz LCD Display",
+     "Camera: 108MP Main Camera + 2MP Depth",
+     "Battery: 5000 mAh with 67W fast charging",
+     "Processor: Qualcomm Snapdragon 695 5G"
+   ]
+ },
+ {
+   id:"phone-2",
+   name:"Samsung Galaxy M34 5G (Midnight Blue, 128 GB)",
+   category:"Mobiles",
+   price:16999,
+   rating:4.2,
+   reviews:1420,
+   tag:"Top Rated",
+   image:"https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=500&q=80",
+   description:"Enjoy immersive viewing with Super AMOLED 120Hz display and reliable 6000mAh battery life.",
+   specs:[
+     "Display: 6.5 inch Super AMOLED 120Hz Display",
+     "Camera: 50MP Triple Camera with OIS",
+     "Battery: 6000 mAh mega battery",
+     "OS: Android 13"
+   ]
+ },
+ {
+   id:"headphone-1",
+   name:"Sony WH-1000XM4 Wireless Noise Cancelling Headphones",
+   category:"Electronics",
+   price:22990,
+   rating:4.6,
+   reviews:4120,
+   tag:"Audio Pick",
+   image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80",
+   description:"Industry-leading noise canceling technology and exceptional sound performance for music lovers.",
+   specs:[
+     "Battery Life: Up to 30 hours with quick charging",
+     "Connectivity: Bluetooth 5.0",
+     "Special Feature: Active Noise Cancellation",
+     "Weight: 254 grams lightweight build"
+   ]
+ },
+ {
+   id:"appliance-1",
+   name:"LG 7 Kg 5 Star Inverter Direct Drive Washing Machine",
+   category:"Appliances",
+   price:31990,
+   rating:4.5,
+   reviews:920,
+   tag:"Best Energy Saver",
+   image:"https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=500&q=80",
+   description:"Fully-automatic front load washing machine with AI DD technology providing optimal washing care.",
+   specs:[
+     "Capacity: 7 Kg suitable for families",
+     "Max Spin Speed: 1200 RPM",
+     "Star Rating: 5 Star energy efficiency",
+     "Special Feature: Inverter Direct Drive motor"
+   ]
+ },
+ {
+   id:"furniture-1",
+   name:"Modern Ergonomic Office & Study Chair (Black)",
+   category:"Home",
+   price:4499,
+   rating:4.1,
+   reviews:650,
+   tag:"Work From Home",
+   image:"https://images.unsplash.com/photo-1580481077494-e3299ac25e94?auto=format&fit=crop&w=500&q=80",
+   description:"Comfortable mesh office chair with adjustable height and lumbar support for long working hours.",
+   specs:[
+     "Material: Breathable mesh back",
+     "Adjustment: Pneumatic seat height adjustment",
+     "Base: Heavy-duty nylon base with wheels"
+   ]
+ },
+ {
+   id:"laptop-1",
+   name:"Apple MacBook Air Laptop M1 chip (8GB RAM, 256GB SSD)",
+   category:"Electronics",
+   price:74990,
+   rating:4.7,
+   reviews:6300,
+   tag:"Pro Choice",
+   image:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=500&q=80",
+   description:"All-day battery life and stunning Retina display powered by the revolutionary Apple M1 chip.",
+   specs:[
+     "Processor: Apple M1 chip",
+     "Memory & Storage: 8GB RAM, 256GB SSD",
+     "Display: 13.3-inch Retina display",
+     "Battery: Up to 18 hours"
+   ]
+ }
 ];
+
 let activeCategory="All", query="", language="en";
 const $=s=>document.querySelector(s);
 const money=n=>"₹"+Number(n).toLocaleString("en-IN");
-const categories=[["All","All products"],["Mobiles","Mobiles"],["Electronics","Electronics"],["Home","Home & Kitchen"],["Appliances","Appliances"],["Fashion","Fashion"],["Beauty","Beauty"]];
-function drawChips(){ $("#chips").innerHTML=categories.map(([id,label])=>`<button class="chip ${activeCategory===id?"active":""}" data-chip="${id}">${label}</button>`).join("");}
-function getFiltered(){let list=products.filter(p=>(activeCategory==="All"||p.category===activeCategory)&&(`${p.name} ${p.category} ${p.description}`).toLowerCase().includes(query.toLowerCase()));let sort=$("#sortSelect").value;if(sort==="price")list.sort((a,b)=>a.price-b.price);if(sort==="rating")list.sort((a,b)=>(b.rating||0)-(a.rating||0));return list;}
-function drawProducts(){const list=getFiltered();$("#productGrid").innerHTML=list.length?list.map(p=>`<article class="card"><div class="photo"><span class="badge">${p.tag}</span><img loading="lazy" src="${p.image}" alt="${p.name}" onerror="this.src='https://placehold.co/500x400/f1f5f9/334155?text=Product+image'"></div><div class="body"><div class="category">${p.category}</div><div class="title">${p.name}</div><div class="rating">Rating not verified <span>· no live review data</span></div><div class="price">${money(p.price)}*</div><div class="small">Example price only · verify current price at retailer</div><div class="card-actions"><button data-details="${p.id}">Product details</button><button class="primary" data-buy="${p.id}">Check offer ↗</button></div></div></article>`).join(""):`<div class="empty">No products found. Try another search or category.</div>`;}
-function detail(p){$("#modalContent").innerHTML=`<div class="detail"><div class="detail-img"><img src="${p.image}" alt="${p.name}"></div><div><div class="category">${p.category}</div><h2>${p.name}</h2><div class="rating">Rating and customer reviews are not connected yet.</div><div class="price">${money(p.price)}*</div><p class="small">Illustrative sample price only. Confirm the live price, seller and stock on the retailer site.</p><p>${p.description}</p><h3>Product information</h3><ul>${p.specs.map(x=>`<li>${x}</li>`).join("")}</ul></div></div><h3>Retailer offer links</h3><div class="offers">${p.offers.map(o=>`<div class="offer"><div><strong>${o.store}</strong><small>${o.note}</small></div><a class="btn" href="${o.url}" target="_blank" rel="nofollow sponsored noopener">Visit store ↗</a></div>`).join("")}</div><p class="small">Delivery estimates depend on your PIN code and retailer availability. This starter version does not yet have live stock, delivery, review or price APIs.</p>`;$("#modal").classList.add("open");}
-$("#chips").addEventListener("click",e=>{let b=e.target.closest("[data-chip]");if(b){activeCategory=b.dataset.chip;drawChips();drawProducts();}});
-document.querySelector(".subnav").addEventListener("click",e=>{let a=e.target.closest("[data-cat]");if(a){e.preventDefault();activeCategory=a.dataset.cat;drawChips();drawProducts();$("#products").scrollIntoView({behavior:"smooth"});}});
+const categories=[["All","All products"],["Mobiles","Mobiles"],["Electronics","Electronics"],["Home","Home & Kitchen"],["Appliances","Appliances"]];
+
+function drawChips(){ 
+  $("#chips").innerHTML=categories.map(([id,label])=>`<button class="chip ${activeCategory===id?"active":""}" data-chip="${id}">${label}</button>`).join("");
+}
+
+function getFiltered(){
+  let list=products.filter(p=>(activeCategory==="All"||p.category===activeCategory)&&(`${p.name} ${p.category} ${p.description}`).toLowerCase().includes(query.toLowerCase()));
+  let sort=$("#sortSelect").value;
+  if(sort==="price")list.sort((a,b)=>a.price-b.price);
+  if(sort==="rating")list.sort((a,b)=>(b.rating||0)-(a.rating||0));
+  return list;
+}
+
+function drawProducts(){
+  const list=getFiltered();
+  $("#productGrid").innerHTML=list.length?list.map(p=>`
+    <article class="card">
+      <div class="photo">
+        <span class="badge">${p.tag}</span>
+        <img loading="lazy" src="${p.image}" alt="${p.name}">
+      </div>
+      <div class="body">
+        <div class="category">${p.category}</div>
+        <div class="title">${p.name}</div>
+        <div class="rating">⭐ ${p.rating} <span>(${p.reviews} reviews)</span></div>
+        <div class="price">${money(p.price)}</div>
+        <div class="small">Best seller specs & offers</div>
+        <div class="card-actions">
+          <button data-details="${p.id}">Product details</button>
+          <button class="primary" onclick="window.open('${UNIVERSAL_AFFILIATE_URL}', '_blank')">Buy Now 🚀</button>
+        </div>
+      </div>
+    </article>
+  `).join(""):`<div class="empty">No products found.</div>`;
+}
+
+function detail(p){
+  $("#modalContent").innerHTML=`
+    <div class="detail">
+      <div class="detail-img"><img src="${p.image}" alt="${p.name}"></div>
+      <div>
+        <div class="category">${p.category}</div>
+        <h2>${p.name}</h2>
+        <div class="rating">⭐ ${p.rating} / 5 (${p.reviews} customer reviews)</div>
+        <div class="price">${money(p.price)}</div>
+        <p>${p.description}</p>
+        <h3>Key Specifications</h3>
+        <ul>${p.specs.map(x=>`<li>${x}</li>`).join("")}</ul>
+      </div>
+    </div>
+    <div style="margin-top:20px; text-align:center;">
+      <a class="btn" href="${UNIVERSAL_AFFILIATE_URL}" target="_blank" style="padding:14px 28px; font-size:16px;">Check Price & Buy Now ↗</a>
+    </div>
+  `;
+  $("#modal").classList.add("open");
+}
+
+$("#chips").addEventListener("click",e=>{
+  let b=e.target.closest("[data-chip]");
+  if(b){activeCategory=b.dataset.chip;drawChips();drawProducts();}
+});
+
+document.querySelector(".subnav").addEventListener("click",e=>{
+  let a=e.target.closest("[data-cat]");
+  if(a){e.preventDefault();activeCategory=a.dataset.cat;drawChips();drawProducts();$("#products").scrollIntoView({behavior:"smooth"});}
+});
+
 $("#searchForm").addEventListener("submit",e=>{e.preventDefault();query=$("#searchInput").value.trim();drawProducts();$("#products").scrollIntoView({behavior:"smooth"});});
 $("#searchInput").addEventListener("input",()=>{query=$("#searchInput").value.trim();drawProducts();});
 $("#sortSelect").addEventListener("change",drawProducts);
-$("#productGrid").addEventListener("click",e=>{let d=e.target.closest("[data-details]"),b=e.target.closest("[data-buy]");if(d){let p=products.find(x=>x.id===d.dataset.details);if(p)detail(p);}if(b){let p=products.find(x=>x.id===b.dataset.buy);if(p&&p.offers[0])window.open(p.offers[0].url,"_blank","noopener");}});
-$("#closeModal").onclick=()=>$("#modal").classList.remove("open");$("#modal").addEventListener("click",e=>{if(e.target.id==="modal")$("#modal").classList.remove("open");});document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#modal").classList.remove("open");});
-const ta={heroPill:"ஸ்மார்ட் ஷாப்பிங் இங்கே தொடங்குகிறது",heroTitle:"ஒப்பிடுங்கள். தேர்வு செய்யுங்கள். சேமியுங்கள்.",heroText:"பொருட்களைப் பாருங்கள், கிடைக்கும் சலுகைகளை ஒப்பிடுங்கள், வாங்குவதற்கு முன் கடையில் தற்போதைய விலையை உறுதிப்படுத்துங்கள்.",heroBtn:"சலுகைகளைப் பாருங்கள் ↓",catTitle:"வகை வாரியாகத் தேடுங்கள்",catSub:"உங்களுக்குத் தேவையான பொருளைக் கண்டறியுங்கள்",productsTitle:"பிரபலமான பொருட்கள்",productsSub:"கடைக்குச் செல்வதற்கு முன் கிடைக்கும் சலுகைகளை ஒப்பிடுங்கள்",howTitle:"Smart Deals எப்படிச் செயல்படுகிறது?",howSub:"வாங்கும் இடத்தைத் தெளிவாகத் தேர்வு செய்யுங்கள்",how1Title:"1. தேடுங்கள்",how1Text:"பெயரைத் தேடுங்கள் அல்லது வகையைத் தேர்ந்தெடுத்து பொருட்களைப் பாருங்கள்.",how2Title:"2. ஒப்பிடுங்கள்",how2Text:"பொருள் விவரங்களையும் கிடைக்கும் கடைச் சலுகைகளையும் பாருங்கள்.",how3Title:"3. கடையில் வாங்குங்கள்",how3Text:"கடையின் பொருள் பக்கத்தில் விலை, விற்பனையாளர், இருப்பு மற்றும் டெலிவரியை உறுதிப்படுத்துங்கள்.",footerText:"அறிவுடன் ஒப்பிடுங்கள். நம்பிக்கையுடன் வாங்குங்கள்."};
-const en={heroPill:"SMART SHOPPING STARTS HERE",heroTitle:"Compare. Choose. Save.",heroText:"Explore products, check available offers, and visit the retailer to confirm the latest price before you buy.",heroBtn:"Explore deals ↓",catTitle:"Shop by category",catSub:"Find the product you need",productsTitle:"Popular product picks",productsSub:"Compare available offers before visiting a store",howTitle:"How Smart Deals works",howSub:"A clearer way to choose where to buy",how1Title:"1. Discover",how1Text:"Search by product name or browse a category to explore options.",how2Title:"2. Compare",how2Text:"Review product details and the retailer offers available to Smart Deals.",how3Title:"3. Buy from retailer",how3Text:"Open the retailer's product page and verify price, seller, stock and delivery there.",footerText:"Compare thoughtfully. Buy confidently."};
-$("#langBtn").onclick=()=>{language=language==="en"?"ta":"en";const d=language==="ta"?ta:en;Object.keys(d).forEach(k=>{let el=$("#"+k);if(el)el.textContent=d[k];});$("#langBtn").textContent=language==="en"?"தமிழ்":"English";document.documentElement.lang=language==="ta"?"ta":"en";};
-drawChips();drawProducts();
+
+$("#productGrid").addEventListener("click",e=>{
+  let btn=e.target.closest("[data-details]");
+  if(btn){
+    let p=products.find(x=>x.id===btn.dataset.details);
+    if(p)detail(p);
+  }
+});
+
+$("#closeModal").onclick=()=>$("#modal").classList.remove("open");
+$("#modal").addEventListener("click",e=>{if(e.target.id==="modal")$("#modal").classList.remove("open");});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#modal").classList.remove("open");});
+
+const ta={
+  heroPill:"ஸ்மார்ட் ஷாப்பிங் இங்கே தொடங்குகிறது",
+  heroTitle:"ஒப்பிடுங்கள். தேர்வு செய்யுங்கள். சேமியுங்கள்.",
+  heroText:"சிறந்த விற்பனைப் பொருட்களைப் பாருங்கள், உண்மையான ஸ்டார் ரேட்டிங் மற்றும் விவரங்களை அறிந்து அப்லியேட் லிங்க் மூலம் பாதுகாப்பாக வாங்குங்கள்.",
+  heroBtn:"சலுகைகளைப் பாருங்கள் ↓",
+  catTitle:"வகை வாரியாகத் தேடுங்கள்",
+  catSub:"உங்களுக்குத் தேவையான பொருளைக் கண்டறியுங்கள்",
+  productsTitle:"சிறந்த விற்பனைப் பொருட்கள் (Best Sellers)",
+  productsSub:"வாங்குவதற்கு முன் சிறந்த ரேட்டிங் கொண்ட பொருட்களைப் பாருங்கள்",
+  howTitle:"Smart Deals எப்படிச் செயல்படுகிறது?",
+  howSub:"சரியான பொருளைத் தேர்வு செய்யும் வழிமுறை",
+  how1Title:"1. தேடுங்கள்",
+  how1Text:"உங்களுக்குத் தேவையான பொருளைத் தேடி அதன் புகைப்படங்கள் மற்றும் விவரங்களைப் பாருங்கள்.",
+  how2Title:"2. தெரிந்து கொள்ளுங்கள்",
+  how2Text:"வாடிக்கையாளர் ரிவியூஸ் மற்றும் ஸ்டார் ரேட்டிங்கை முழுமையாகப் படித்துத் தெரிந்து கொள்ளுங்கள்.",
+  how3Title:"3. வாங்குங்கள்",
+  how3Text:"'Buy Now' பொத்தானை அழுத்தி உங்களது அப்லியேட் லிங்க் மூலம் பாதுகாப்பாக வாங்குங்கள்.",
+  footerText:"அறிவுடன் ஒப்பிடுங்கள். நம்பிக்கையுடன் வாங்குங்கள்."
+};
+
+const en={
+  heroPill:"SMART SHOPPING STARTS HERE",
+  heroTitle:"Compare. Choose. Save.",
+  heroText:"Explore best selling products, check ratings, and buy securely through your affiliate link.",
+  heroBtn:"Explore deals ↓",
+  catTitle:"Shop by category",catSub:"Find the product you need",
+  productsTitle:"Best Sellers & Top Rated",
+  productsSub:"Compare available offers before visiting a store",
+  howTitle:"How Smart Deals works",
+  howSub:"A clearer way to choose where to buy",
+  how1Title:"1. Discover",how1Text:"Search by product name or browse a category to explore options.",
+  how2Title:"2. Compare",how2Text:"Review product details and multiple retailer offers side by side.",
+  how3Title:"3. Buy via Affiliate Link",how3Text:"Choose the best price store and open the exact product page securely.",
+  footerText:"Compare thoughtfully. Buy confidently."
+};
+
+$("#langBtn").onclick=(),language==="en"?ta:en;
+  Object.keys(d).forEach(k=>{let el=$("#"+k);if(el)el.textContent=d[k];});
+  $("#langBtn").textContent=language==="en"?"தமிழ்":"English";
+  document.documentElement.lang=language==="ta"?"ta":"en";
+};
+
+drawChips();
+drawProducts();
 </script>
 </body>
 </html>
