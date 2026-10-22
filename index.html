@@ -290,12 +290,15 @@ const en={
   footerText:"Compare thoughtfully. Buy confidently."
 };
 
-$("#langBtn").onclick=()=>{
-  language=language==="en"?"ta":"en";
-  const d=language==="ta"?ta:en;
-  Object.keys(d).forEach(k=>{let el=$("#"+k);if(el)el.textContent=d[k];});
-  $("#langBtn").textContent=language==="en"?"தமிழ்":"English";
-  document.documentElement.lang=language==="ta"?"ta":"en";
+$("#langBtn").onclick = () => {
+  language = language === "en" ? "ta" : "en";
+  const d = language === "ta" ? ta : en;
+  Object.keys(d).forEach(k => {
+    let el = $("#" + k);
+    if(el) el.textContent = d[k];
+  });
+  $("#langBtn").textContent = language === "en" ? "தமிழ்" : "English";
+  document.documentElement.lang = language === "ta" ? "ta" : "en";
 };
 
 drawChips();
