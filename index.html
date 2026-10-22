@@ -5,85 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Smart Deals — Compare before you buy</title>
   <style>
-    :root{
-      --site-primary:#123b35;
-      --site-secondary:#e8b85a;
-      --site-background:#f7f5ef;
-      --site-on-primary:#ffffff;
-      --site-on-secondary:#17251b;
-      --site-on-background:#17251b;
-      --site-font-body:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      --site-font-heading:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      --site-heading-scale:1;
-      --site-spacing-scale:1;
-      --site-radius-scale:1;
-      --site-decoration-opacity:1;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:var(--site-font-body);background:light-dark(#f6f8f5,#101711);color:light-dark(#17251b,#edf5ed)}
-    #app{background-color:var(--site-background);background:light-dark(#f6f8f5,#101711);color:light-dark(#17251b,#edf5ed);min-height:100vh;border-radius:0}
-    a{color:inherit}
-    .topline{background:#102e29;color:#e8f4e8;text-align:center;padding:9px 16px;font-size:12px;letter-spacing:.2px}
-    header{background:light-dark(#fff,#18221a);border-bottom:1px solid light-dark(#e2e9e0,#2c392e);position:sticky;top:0;z-index:5}
-    .nav{max-width:1200px;margin:auto;padding:15px 22px;display:flex;align-items:center;gap:20px}
-    .logo{font-weight:950;font-size:25px;letter-spacing:-1.1px;color:#123b35;white-space:nowrap}
-    .logo span{color:#e7a821}
-    .search{flex:1;display:flex;max-width:590px;background:light-dark(#f2f5f0,#202b22);border:1px solid light-dark(#dce5d9,#344337);border-radius:13px;overflow:hidden}
-    .search input{width:100%;min-width:0;border:0;background:transparent;color:inherit;padding:13px 15px;font:inherit;outline:none}
-    .search button{border:0;background:#123b35;color:white;padding:0 18px;font-weight:800;cursor:pointer}
-    .navlink{font-size:13px;text-decoration:none;font-weight:700;white-space:nowrap}
-    main{max-width:1200px;margin:auto;padding:24px 22px 60px}
-    .hero{background:linear-gradient(115deg,#102e29,#17584d 70%,#2c7969);color:white;border-radius:24px;padding:36px;display:grid;grid-template-columns:1.4fr .8fr;gap:20px;overflow:hidden;position:relative}
-    .hero:after{content:"";position:absolute;right:-60px;bottom:-130px;width:360px;height:360px;border:60px solid rgba(255,255,255,.07);border-radius:50%;pointer-events:none}
-    .eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:900;color:#f8ca62}
-    h1{font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-1.8px;margin:12px 0}
-    .hero p{max-width:540px;color:#dcece0;line-height:1.7;margin:12px 0 22px}
-    .hero .cta{display:inline-block;background:#f4b942;color:#17251b;text-decoration:none;padding:13px 18px;border-radius:10px;font-weight:900}
-    .hero-art{display:flex;align-items:center;justify-content:center;min-height:180px;position:relative;z-index:1}
-    .deal-orb{width:190px;height:190px;border-radius:42px;transform:rotate(-8deg);background:linear-gradient(145deg,#f9d776,#f4b942);box-shadow:0 22px 60px #061b0e66;display:flex;align-items:center;justify-content:center;color:#123b35;font-size:62px;font-weight:900}
-    .sectionhead{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:32px 0 16px}
-    .sectionhead h2{margin:0;font-size:calc(25px * var(--site-heading-scale));letter-spacing:-.7px}
-    .muted{color:light-dark(#657367,#a7b7a8);font-size:13px}
-    .categories{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:11px}
-    .cat{border:1px solid light-dark(#e1e9df,#2c392e);background:light-dark(#fff,#18221a);border-radius:15px;padding:15px 8px;text-align:center;cursor:pointer;color:inherit;font:inherit;transition:.18s ease}
-    .cat:hover,.cat.active{border-color:#24735e;background:light-dark(#edf7ee,#1b3523);transform:translateY(-2px)}
-    .cat .emoji{font-size:25px;display:block;margin-bottom:8px}
-    .cat span:last-child{font-size:12px;font-weight:800}
-    .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:18px 0}
-    .pill{border:1px solid light-dark(#dce5d9,#344337);background:light-dark(#fff,#18221a);padding:9px 13px;border-radius:99px;font-size:12px;color:inherit;cursor:pointer;font-weight:700}
-    .pill.active{background:#123b35;color:white;border-color:#123b35}
-    .sort{margin-left:auto;padding:10px 12px;border:1px solid light-dark(#dce5d9,#344337);border-radius:10px;background:light-dark(#fff,#18221a);color:inherit}
-    .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-    .card{border:1px solid light-dark(#e2e9e0,#2c392e);background:light-dark(#fff,#18221a);border-radius:17px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
-    .product-art{height:150px;display:flex;align-items:center;justify-content:center;font-size:57px;background:linear-gradient(135deg,light-dark(#edf4eb,#202d22),light-dark(#fafbf8,#1b241d));position:relative}
-    .badge{position:absolute;top:12px;left:12px;border-radius:6px;background:#f4b942;color:#382b0a;font-size:10px;font-weight:900;padding:6px 8px}
-    .cardbody{padding:15px;display:flex;flex-direction:column;flex:1}
-    .brand{font-size:10px;color:#438154;font-weight:900;text-transform:uppercase;letter-spacing:1px}
-    .card h3{font-size:15px;line-height:1.4;margin:7px 0 8px;min-height:42px}
-    .rating{font-size:12px;color:#d19b1d;font-weight:800}
-    .rating small{color:light-dark(#69776a,#a7b7a8);font-weight:500}
-    .price{font-size:22px;font-weight:900;letter-spacing:-.5px;margin:12px 0 3px}
-    .old{font-size:12px;color:#7c897d;text-decoration:line-through;margin-left:6px;font-weight:500}
-    .saving{font-size:11px;color:#24735e;font-weight:800}
-    .storeline{font-size:11px;color:light-dark(#69776a,#a7b7a8);margin-top:13px;padding-top:11px;border-top:1px solid light-dark(#e9eee7,#2c392e)}
-    .actions{display:flex;gap:8px;margin-top:12px}
-    .btn{border:0;border-radius:9px;padding:10px 8px;font-weight:900;font-size:12px;cursor:pointer}
-    .buy{background:#123b35;color:#fff;flex:1}
-    .compare{background:light-dark(#edf3eb,#263429);color:inherit}
-    .empty{grid-column:1/-1;text-align:center;padding:40px;color:light-dark(#657367,#a7b7a8)}
-    .info{margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .info article{padding:18px;border:1px solid light-dark(#e2e9e0,#2c392e);border-radius:16px;background:light-dark(#fff,#18221a)}
-    .info strong{display:block;margin:8px 0}
-    .info p{font-size:13px;line-height:1.6;color:light-dark(#657367,#a7b7a8);margin:0}
-    .notice{margin-top:24px;border:1px solid #ead7a0;background:light-dark(#fff8e4,#332d1b);color:light-dark(#584718,#f4e4b0);border-radius:13px;padding:14px 16px;font-size:12px;line-height:1.6}
-    footer{background:light-dark(#102b1b,#0b120d);color:#dbe9dc;padding:26px 22px}
-    .footerinner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:12px}
-    dialog{border:0;border-radius:18px;max-width:460px;width:calc(100% - 32px);padding:24px;background:light-dark(#fff,#18221a);color:inherit;box-shadow:0 24px 90px #0005}
-    dialog::backdrop{background:#07130acc}
-    dialog h3{margin-top:0}
-    .close{float:right;border:0;background:transparent;color:inherit;font-size:23px;cursor:pointer}
-    @media(max-width:850px){.categories{grid-template-columns:repeat(4,1fr)}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr}.hero-art{min-height:100px}.deal-orb{width:170px;height:170px}}
-    @media(max-width:520px){main{padding:16px 13px 40px}.hero{padding:25px 21px}.categories{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.cat{padding:12px 3px}.nav{padding:12px 13px}.search{max-width:none}.grid{grid-template-columns:1fr}}
+    :root{--site-primary:#123b35;--site-secondary:#e8b85a;--site-background:#f7f5ef;--site-on-primary:#ffffff;--site-on-secondary:#17251b;--site-on-background:#17251b;--site-font-body:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--site-font-heading:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--site-heading-scale:1;--site-spacing-scale:1;--site-radius-scale:1;--site-decoration-opacity:1}
+    *{box-sizing:border-box} body{margin:0;font-family:var(--site-font-body);background:light-dark(#f6f8f5,#101711);color:light-dark(#17251b,#edf5ed)} a{color:inherit} .topline{background:#102e29;color:#e8f4e8;text-align:center;padding:9px 16px;font-size:12px;letter-spacing:.2px} header{background:light-dark(#fff,#18221a);border-bottom:1px solid light-dark(#e2e9e0,#2c392e);position:sticky;top:0;z-index:5} .nav{max-width:1200px;margin:auto;padding:15px 22px;display:flex;align-items:center;gap:20px}.logo{font-weight:950;font-size:25px;letter-spacing:-1.1px;color:#123b35;white-space:nowrap}.logo span{color:#e7a821}.search{flex:1;display:flex;max-width:590px;background:light-dark(#f2f5f0,#202b22);border:1px solid light-dark(#dce5d9,#344337);border-radius:13px;overflow:hidden}.search input{width:100%;min-width:0;border:0;background:transparent;color:inherit;padding:13px 15px;font:inherit;outline:none}.search button{border:0;background:#123b35;color:white;padding:0 18px;font-weight:800;cursor:pointer}.navlink{font-size:13px;text-decoration:none;font-weight:700;white-space:nowrap} main{max-width:1200px;margin:auto;padding:24px 22px 60px}.hero{background:linear-gradient(115deg,#102e29,#17584d 70%,#2c7969);color:white;border-radius:24px;padding:36px;display:grid;grid-template-columns:1.4fr .8fr;gap:20px;overflow:hidden;position:relative}.hero:after{content:"";position:absolute;right:-60px;bottom:-130px;width:360px;height:360px;border:60px solid rgba(255,255,255,.07);border-radius:50%;pointer-events:none}.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:900;color:#f8ca62} h1{font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-1.8px;margin:12px 0}.hero p{max-width:540px;color:#dcece0;line-height:1.7;margin:12px 0 22px}.hero .cta{display:inline-block;background:#f4b942;color:#17251b;text-decoration:none;padding:13px 18px;border-radius:10px;font-weight:900}.hero-art{display:flex;align-items:center;justify-content:center;min-height:180px;position:relative;z-index:1}.deal-orb{width:190px;height:190px;border-radius:42px;transform:rotate(-8deg);background:linear-gradient(145deg,#f9d776,#f4b942);box-shadow:0 22px 60px #061b0e66;display:flex;align-items:center;justify-content:center;color:#123b35;font-size:62px;font-weight:900}.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:32px 0 16px}.sectionhead h2{margin:0;font-size:calc(25px * var(--site-heading-scale));letter-spacing:-.7px}.muted{color:light-dark(#657367,#a7b7a8);font-size:13px}.categories{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:11px}.cat{border:1px solid light-dark(#e1e9df,#2c392e);background:light-dark(#fff,#18221a);border-radius:15px;padding:15px 8px;text-align:center;cursor:pointer;color:inherit;font:inherit;transition:.18s ease}.cat:hover,.cat.active{border-color:#24735e;background:light-dark(#edf7ee,#1b3523);transform:translateY(-2px)}.cat .emoji{font-size:25px;display:block;margin-bottom:8px}.cat span:last-child{font-size:12px;font-weight:800}.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:18px 0}.pill{border:1px solid light-dark(#dce5d9,#344337);background:light-dark(#fff,#18221a);padding:9px 13px;border-radius:99px;font-size:12px;color:inherit;cursor:pointer;font-weight:700}.pill.active{background:#123b35;color:white;border-color:#123b35}.sort{margin-left:auto;padding:10px 12px;border:1px solid light-dark(#dce5d9,#344337);border-radius:10px;background:light-dark(#fff,#18221a);color:inherit}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.card{border:1px solid light-dark(#e2e9e0,#2c392e);background:light-dark(#fff,#18221a);border-radius:17px;overflow:hidden;display:flex;flex-direction:column;min-width:0}.product-art{height:150px;display:flex;align-items:center;justify-content:center;font-size:57px;background:linear-gradient(135deg,light-dark(#edf4eb,#202d22),light-dark(#fafbf8,#1b241d));position:relative}.badge{position:absolute;top:12px;left:12px;border-radius:6px;background:#f4b942;color:#382b0a;font-size:10px;font-weight:900;padding:6px 8px}.cardbody{padding:15px;display:flex;flex-direction:column;flex:1}.brand{font-size:10px;color:#438154;font-weight:900;text-transform:uppercase;letter-spacing:1px}.card h3{font-size:15px;line-height:1.4;margin:7px 0 8px;min-height:42px}.rating{font-size:12px;color:#d19b1d;font-weight:800}.rating small{color:light-dark(#69776a,#a7b7a8);font-weight:500}.price{font-size:22px;font-weight:900;letter-spacing:-.5px;margin:12px 0 3px}.old{font-size:12px;color:#7c897d;text-decoration:line-through;margin-left:6px;font-weight:500}.saving{font-size:11px;color:#24735e;font-weight:800}.storeline{font-size:11px;color:light-dark(#69776a,#a7b7a8);margin-top:13px;padding-top:11px;border-top:1px solid light-dark(#e9eee7,#2c392e)}.actions{display:flex;gap:8px;margin-top:12px}.btn{border:0;border-radius:9px;padding:10px 8px;font-weight:900;font-size:12px;cursor:pointer}.buy{background:#123b35;color:#fff;flex:1}.compare{background:light-dark(#edf3eb,#263429);color:inherit}.empty{grid-column:1/-1;text-align:center;padding:40px;color:light-dark(#657367,#a7b7a8)}.info{margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.info article{padding:18px;border:1px solid light-dark(#e2e9e0,#2c392e);border-radius:16px;background:light-dark(#fff,#18221a)}.info strong{display:block;margin:8px 0}.info p{font-size:13px;line-height:1.6;color:light-dark(#657367,#a7b7a8);margin:0}.notice{margin-top:24px;border:1px solid #ead7a0;background:light-dark(#fff8e4,#332d1b);color:light-dark(#584718,#f4e4b0);border-radius:13px;padding:14px 16px;font-size:12px;line-height:1.6} footer{background:light-dark(#102b1b,#0b120d);color:#dbe9dc;padding:26px 22px}.footerinner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:12px} dialog{border:0;border-radius:18px;max-width:460px;width:calc(100% - 32px);padding:24px;background:light-dark(#fff,#18221a);color:inherit;box-shadow:0 24px 90px #0005} dialog::backdrop{background:#07130acc} dialog h3{margin-top:0}.close{float:right;border:0;background:transparent;color:inherit;font-size:23px;cursor:pointer}@media(max-width:850px){.categories{grid-template-columns:repeat(4,1fr)}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr}.hero-art{min-height:100px}.deal-orb{width:170px;height:170px}}@media(max-width:520px){main{padding:16px 13px 40px}.hero{padding:25px 21px}.categories{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.cat{padding:12px 3px}.nav{padding:12px 13px}.search{max-width:none}.grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -92,25 +15,15 @@
     <header>
       <div class="nav">
         <div class="logo">smart<span>deals</span><sup style="font-size:9px;color:#7b8c7d"> INDIA</sup></div>
-        <form class="search" id="searchForm">
-          <input id="searchInput" placeholder="Search mobiles, fashion, beauty, home..." />
-          <button type="submit">Search</button>
-        </form>
+        <form class="search" id="searchForm"><input id="searchInput" placeholder="Search mobiles, fashion, beauty, home..." /><button type="submit">Search</button></form>
         <a class="navlink" href="#products">Explore deals ↓</a>
       </div>
     </header>
-
     <main>
       <section class="hero">
-        <div>
-          <div class="eyebrow">Less searching. Smarter buying.</div>
-          <h1>Great deals.<br>Clear choices.</h1>
-          <p>Discover products across electronics, fashion, home appliances, beauty and more. Compare example offers in one simple place.</p>
-          <a class="cta" href="#products">Explore products →</a>
-        </div>
+        <div><div class="eyebrow">Less searching. Smarter buying.</div><h1>Great deals.<br>Clear choices.</h1><p>Discover products across electronics, fashion, home appliances, beauty and more. Compare example offers in one simple place.</p><a class="cta" href="#products">Explore products →</a></div>
         <div class="hero-art"><div class="deal-orb">%</div></div>
       </section>
-
       <div class="sectionhead"><h2>Shop by category</h2><span class="muted">Find what you need</span></div>
       <section class="categories" id="categories">
         <button class="cat active" data-category="All"><span class="emoji">✨</span><span>All deals</span></button>
@@ -121,129 +34,47 @@
         <button class="cat" data-category="Beauty"><span class="emoji">🧴</span><span>Beauty</span></button>
         <button class="cat" data-category="More"><span class="emoji">🎒</span><span>More</span></button>
       </section>
-
       <section id="products">
         <div class="sectionhead"><div><h2>Popular picks</h2><div class="muted" style="margin-top:6px">Price, rating and offer comparison</div></div></div>
         <div class="toolbar">
           <button class="pill active" data-filter="All">All products</button>
           <button class="pill" data-filter="Top">Top rated</button>
           <button class="pill" data-filter="Savings">Best savings</button>
-          <select class="sort" id="sortSelect" aria-label="Sort products">
-            <option value="featured">Sort: Featured</option>
-            <option value="low">Price: Low to high</option>
-            <option value="high">Price: High to low</option>
-            <option value="rating">Highest rating</option>
-          </select>
+          <select class="sort" id="sortSelect" aria-label="Sort products"><option value="featured">Sort: Featured</option><option value="low">Price: Low to high</option><option value="high">Price: High to low</option><option value="rating">Highest rating</option></select>
         </div>
         <div class="grid" id="productGrid"></div>
       </section>
-
-      <section class="info">
-        <article><div style="font-size:24px">🔎</div><strong>Compare in one place</strong><p>See product details and example offers together, instead of opening lots of tabs.</p></article>
-        <article><div style="font-size:24px">🔗</div><strong>Retailer links</strong><p>Approved affiliate links can be added once your affiliate accounts are accepted and tracking IDs are ready.</p></article>
-        <article><div style="font-size:24px">📊</div><strong>Track performance</strong><p>Retailer dashboards report eligible clicks, orders and commissions. This demo includes no live tracking.</p></article>
-      </section>
+      <section class="info"><article><div style="font-size:24px">🔎</div><strong>Compare in one place</strong><p>See product details and example offers together, instead of opening lots of tabs.</p></article><article><div style="font-size:24px">🔗</div><strong>Retailer links</strong><p>Approved affiliate links can be added once your affiliate accounts are accepted and tracking IDs are ready.</p></article><article><div style="font-size:24px">📊</div><strong>Track performance</strong><p>Retailer dashboards report eligible clicks, orders and commissions. This demo includes no live tracking.</p></article></section>
       <div class="notice"><strong>Prototype notice:</strong> This is a front-end demo. Product prices, ratings, sellers and savings are sample data. Buy buttons are placeholders and no live affiliate tracking is connected yet.</div>
     </main>
-
-    <footer>
-      <div class="footerinner">
-        <div><strong style="font-size:16px">smart<span style="color:#f4b942">deals</span></strong><br><span>Compare more. Choose smarter.</span></div>
-        <div>About · Contact · Privacy · Affiliate</div>
-      </div>
-    </footer>
+    <footer><div class="footerinner"><div><strong style="font-size:16px">smart<span style="color:#f4b942">deals</span></strong><br><span>Compare more. Choose smarter.</span></div><div>About · Contact · Privacy · Affiliate</div></div></footer>
   </div>
-
-  <dialog id="modal">
-    <button class="close" id="closeModal" aria-label="Close">×</button>
-    <h3 id="modalTitle">Smart Deals</h3>
-    <p id="modalText" style="line-height:1.7"></p>
-    <button class="btn buy" id="modalOk">Close</button>
-  </dialog>
-
+  <dialog id="modal"><button class="close" id="closeModal" aria-label="Close">×</button><h3 id="modalTitle">Smart Deals</h3><p id="modalText" style="line-height:1.7"></p><button class="btn buy" id="modalOk">Close</button></dialog>
+  <script src="product-data.js"></script>
   <script>
-    const products = [
+    const productSeed = window.smartDealsProducts || [];
+    const products = productSeed.length ? productSeed : [
       {id:1,name:'Wireless Bluetooth Headphones',brand:'SoundCore',cat:'Electronics',icon:'🎧',price:1899,mrp:2999,rating:4.4,reviews:1240,store:'Example Store',tag:'Popular',spec:'Bluetooth · Noise cancelling · 30h battery'},
-      {id:2,name:'Smartphone 5G · 128 GB',brand:'Nova Mobile',cat:'Electronics',icon:'📱',price:14999,mrp:17999,rating:4.3,reviews:864,store:'Example Store',tag:'Trending',spec:'5G · 128 GB · 5000mAh battery'},
-      {id:3,name:'Everyday Running Shoes',brand:'Stride',cat:'Fashion',icon:'👟',price:1299,mrp:2499,rating:4.2,reviews:593,store:'Example Store',tag:'Deal pick',spec:'Lightweight · Breathable mesh · Cushioned sole'},
-      {id:4,name:'Cotton Casual Shirt',brand:'Thread & Co.',cat:'Fashion',icon:'👕',price:799,mrp:1499,rating:4.1,reviews:324,store:'Example Store',tag:'Value',spec:'Cotton blend · Regular fit · Modern cut'},
-      {id:5,name:'Air Fryer 4.5 L',brand:'KitchenMate',cat:'Appliances',icon:'🍟',price:3499,mrp:4999,rating:4.5,reviews:1022,store:'Example Store',tag:'Top rated',spec:'4.5 L · Adjustable temp · 360° airflow'},
-      {id:6,name:'Front Load Washing Machine',brand:'HomeEase',cat:'Appliances',icon:'🧺',price:22990,mrp:27990,rating:4.4,reviews:782,store:'Example Store',tag:'Popular',spec:'7 kg · Inverter motor · Steam care'},
-      {id:7,name:'Daily Hydration Face Serum',brand:'Glow Lab',cat:'Beauty',icon:'🧴',price:499,mrp:699,rating:4.2,reviews:2110,store:'Example Store',tag:'Best seller',spec:'Hydrating formula · 30 ml · Vitamin C'},
-      {id:8,name:'Hair Styling Dryer',brand:'StylePro',cat:'Beauty',icon:'💨',price:1199,mrp:1799,rating:4.3,reviews:668,store:'Example Store',tag:'Deal pick',spec:'Multiple heat settings · Compact design'},
-      {id:9,name:'Memory Foam Pillow Pair',brand:'RestNest',cat:'Home',icon:'🛏️',price:999,mrp:1599,rating:4.1,reviews:426,store:'Example Store',tag:'Value',spec:'Set of 2 · Supportive foam · Soft cover'},
-      {id:10,name:'LED Desk Lamp',brand:'BrightSpace',cat:'Home',icon:'💡',price:649,mrp:999,rating:4.4,reviews:534,store:'Example Store',tag:'Popular',spec:'Dimmable · USB powered · Flexible neck'},
-      {id:11,name:'Travel Backpack 28 L',brand:'Roam',cat:'More',icon:'🎒',price:1099,mrp:1799,rating:4.2,reviews:792,store:'Example Store',tag:'Trending',spec:'28 L · Water resistant · Laptop sleeve'},
-      {id:12,name:'Stainless Steel Water Bottle',brand:'PureSip',cat:'More',icon:'🥤',price:399,mrp:699,rating:4.3,reviews:915,store:'Example Store',tag:'Value',spec:'750 ml · Reusable · Leak resistant'}
+      {id:2,name:'Smartphone 5G · 128 GB',brand:'Nova Mobile',cat:'Electronics',icon:'📱',price:14999,mrp:17999,rating:4.3,reviews:864,store:'Example Store',tag:'Trending',spec:'5G · 128 GB · 5000mAh battery'}
     ];
-
     let category='All', filter='All', query='';
     const grid=document.getElementById('productGrid');
     const rupee=n=>'₹'+n.toLocaleString('en-IN');
-
     function render(){
-      let list=products.filter(p=>(category==='All'||p.cat===category)&&`${p.name} ${p.brand} ${p.cat} ${p.spec}`.toLowerCase().includes(query));
+      let list=products.filter(p=>(category==='All'||p.category===category||p.cat===category)&&`${p.name} ${p.brand} ${p.category||p.cat} ${p.spec || p.description || ''}`.toLowerCase().includes(query));
       if(filter==='Top') list=list.filter(p=>p.rating>=4.4);
       if(filter==='Savings') list=list.filter(p=>(p.mrp-p.price)/p.mrp>=.35);
       const sort=document.getElementById('sortSelect').value;
-      if(sort==='low') list.sort((a,b)=>a.price-b.price);
-      if(sort==='high') list.sort((a,b)=>b.price-a.price);
-      if(sort==='rating') list.sort((a,b)=>b.rating-a.rating);
-
+      if(sort==='low') list.sort((a,b)=>a.price-b.price); if(sort==='high') list.sort((a,b)=>b.price-a.price); if(sort==='rating') list.sort((a,b)=>b.rating-a.rating);
       if(!list.length){grid.innerHTML='<div class="empty">No products found. Try a different search or category.</div>';return}
-
-      grid.innerHTML=list.map(p=>`<article class="card">
-        <div class="product-art"><span class="badge">${p.tag}</span>${p.icon}</div>
-        <div class="cardbody">
-          <div class="brand">${p.brand} · ${p.cat}</div>
-          <h3>${p.name}</h3>
-          <div class="rating">★ ${p.rating.toFixed(1)} <small>(${p.reviews.toLocaleString('en-IN')} ratings)</small></div>
-          <div class="price">${rupee(p.price)} <span class="old">${rupee(p.mrp)}</span></div>
-          <div class="saving">Save ${Math.round((p.mrp-p.price)/p.mrp*100)}% · sample offer</div>
-          <div class="storeline">Example seller · illustrative price<br><span style="display:block;margin-top:5px">${p.spec}</span></div>
-          <div class="actions">
-            <button class="btn buy" onclick="buyNotice(${p.id})">View offer ↗</button>
-            <button class="btn compare" onclick="compareProduct(${p.id})">Details</button>
-          </div>
-        </div>
-      </article>`).join('');
+      grid.innerHTML=list.map(p=>`<article class="card"><div class="product-art"><span class="badge">${p.best_seller?'Best Seller':p.tag||'Popular'}</span>${p.image||p.icon}</div><div class="cardbody"><div class="brand">${p.brand} · ${p.category||p.cat}</div><h3>${p.name}</h3><div class="rating">★ ${p.rating.toFixed ? p.rating.toFixed(1) : p.rating} <small>(${(p.review_count || p.reviews).toLocaleString('en-IN')} ratings)</small></div><div class="price">${rupee(p.price)} <span class="old">${rupee(p.mrp)}</span></div><div class="saving">Save ${Math.round(((p.mrp-p.price)/p.mrp)*100)}% · sample offer</div><div class="storeline">${(p.offers&&p.offers[0]?p.offers[0].store:'Example seller')} · ${(p.offers&&p.offers[0]?p.offers[0].affiliate_url?'affiliate store':'illustrative price':'illustrative price')}<br><span style="display:block;margin-top:5px">${p.spec||p.description||''}</span></div><div class="actions"><button class="btn buy" onclick="openOffer('${(p.offers&&p.offers[0]&&p.offers[0].affiliate_url)||'#'}')">View offer ↗</button><button class="btn compare" onclick="compareProduct(${p.id})">Details</button></div></div></article>`).join('');
     }
-
-    function buyNotice(id){
-      const p=products.find(x=>x.id===id);
-      openModal('Retailer link not connected', `“${p.name}” is currently demo content. When you connect an affiliate program, this button can open the retailer with your affiliate tracking ID.`);
-    }
-
-    function compareProduct(id){
-      const p=products.find(x=>x.id===id);
-      openModal(p.name, `Category: ${p.cat}<br>Sample price: <strong>${rupee(p.price)}</strong><br>Sample MRP: ${rupee(p.mrp)}<br>Rating: ★ ${p.rating.toFixed(1)}<br>Store: ${p.store}<br>Specs: ${p.spec}`);
-    }
-
-    function openModal(title, body){
-      document.getElementById('modalTitle').textContent = title;
-      document.getElementById('modalText').innerHTML = body;
-      document.getElementById('modal').showModal();
-    }
-
-    document.getElementById('closeModal').onclick = () => document.getElementById('modal').close();
-    document.getElementById('modalOk').onclick = () => document.getElementById('modal').close();
-    document.getElementById('searchForm').addEventListener('submit', e => {
-      e.preventDefault();
-      query=document.getElementById('searchInput').value.trim().toLowerCase();
-      render();
-    });
-    document.getElementById('sortSelect').addEventListener('change', render);
-    document.querySelectorAll('[data-category]').forEach(b => b.addEventListener('click', () => {
-      category=b.dataset.category;
-      document.querySelectorAll('[data-category]').forEach(x => x.classList.toggle('active', x===b));
-      render();
-    }));
-    document.querySelectorAll('[data-filter]').forEach(b => b.addEventListener('click', () => {
-      filter=b.dataset.filter;
-      document.querySelectorAll('[data-filter]').forEach(x => x.classList.toggle('active', x===b));
-      render();
-    }));
-
+    function openOffer(url){ if(url && url !== '#'){ window.open(url, '_blank', 'noopener,noreferrer'); } else { openModal('Retailer link not connected', 'Add your approved affiliate URL here to enable direct store purchase.'); }}
+    function compareProduct(id){ const p = products.find(x => x.id === id); if(!p) return; const offerList = (p.offers||[]).map(o => `<li><strong>${o.store}</strong>: ${rupee(o.price)} <a href="${o.affiliate_url}" target="_blank">Buy</a></li>`).join(''); openModal(p.name, `Category: ${p.category||p.cat}<br>Sample price: <strong>${rupee(p.price)}</strong><br>Sample MRP: ${rupee(p.mrp)}<br>Rating: ★ ${(p.rating || 0).toFixed ? p.rating.toFixed(1) : p.rating}<br>Specs: ${p.spec || p.description || ''}<br><ul>${offerList || '<li>No offers available</li>'}</ul>`); }
+    function openModal(title, body){ document.getElementById('modalTitle').textContent = title; document.getElementById('modalText').innerHTML = body; document.getElementById('modal').showModal(); }
+    document.getElementById('closeModal').onclick = () => document.getElementById('modal').close(); document.getElementById('modalOk').onclick = () => document.getElementById('modal').close();
+    document.getElementById('searchForm').addEventListener('submit', e => { e.preventDefault(); query = document.getElementById('searchInput').value.trim().toLowerCase(); render(); });
+    document.getElementById('sortSelect').addEventListener('change', render); document.querySelectorAll('[data-category]').forEach(b => b.addEventListener('click', () => { category=b.dataset.category; document.querySelectorAll('[data-category]').forEach(x => x.classList.toggle('active', x===b)); render(); })); document.querySelectorAll('[data-filter]').forEach(b => b.addEventListener('click', () => { filter=b.dataset.filter; document.querySelectorAll('[data-filter]').forEach(x => x.classList.toggle('active', x===b)); render(); }));
     render();
   </script>
 </body>
