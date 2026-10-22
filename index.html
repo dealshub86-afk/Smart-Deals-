@@ -1,81 +1,1298 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Smart Deals — Compare before you buy</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Smart Deals helps shoppers compare product prices, specs, ratings and best offers across top stores before they buy." />
+  <title>Smart Deals | Compare Prices Before You Buy</title>
   <style>
-    :root{--site-primary:#123b35;--site-secondary:#e8b85a;--site-background:#f7f5ef;--site-on-primary:#ffffff;--site-on-secondary:#17251b;--site-on-background:#17251b;--site-font-body:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--site-font-heading:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--site-heading-scale:1;--site-spacing-scale:1;--site-radius-scale:1;--site-decoration-opacity:1}
-    *{box-sizing:border-box} body{margin:0;font-family:var(--site-font-body);background:light-dark(#f6f8f5,#101711);color:light-dark(#17251b,#edf5ed)} a{color:inherit} .topline{background:#102e29;color:#e8f4e8;text-align:center;padding:9px 16px;font-size:12px;letter-spacing:.2px} header{background:light-dark(#fff,#18221a);border-bottom:1px solid light-dark(#e2e9e0,#2c392e);position:sticky;top:0;z-index:5} .nav{max-width:1200px;margin:auto;padding:15px 22px;display:flex;align-items:center;gap:20px}.logo{font-weight:950;font-size:25px;letter-spacing:-1.1px;color:#123b35;white-space:nowrap}.logo span{color:#e7a821}.search{flex:1;display:flex;max-width:590px;background:light-dark(#f2f5f0,#202b22);border:1px solid light-dark(#dce5d9,#344337);border-radius:13px;overflow:hidden}.search input{width:100%;min-width:0;border:0;background:transparent;color:inherit;padding:13px 15px;font:inherit;outline:none}.search button{border:0;background:#123b35;color:white;padding:0 18px;font-weight:800;cursor:pointer}.navlink{font-size:13px;text-decoration:none;font-weight:700;white-space:nowrap} main{max-width:1200px;margin:auto;padding:24px 22px 60px}.hero{background:linear-gradient(115deg,#102e29,#17584d 70%,#2c7969);color:white;border-radius:24px;padding:36px;display:grid;grid-template-columns:1.4fr .8fr;gap:20px;overflow:hidden;position:relative}.hero:after{content:"";position:absolute;right:-60px;bottom:-130px;width:360px;height:360px;border:60px solid rgba(255,255,255,.07);border-radius:50%;pointer-events:none}.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:900;color:#f8ca62} h1{font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-1.8px;margin:12px 0}.hero p{max-width:540px;color:#dcece0;line-height:1.7;margin:12px 0 22px}.hero .cta{display:inline-block;background:#f4b942;color:#17251b;text-decoration:none;padding:13px 18px;border-radius:10px;font-weight:900}.hero-art{display:flex;align-items:center;justify-content:center;min-height:180px;position:relative;z-index:1}.deal-orb{width:190px;height:190px;border-radius:42px;transform:rotate(-8deg);background:linear-gradient(145deg,#f9d776,#f4b942);box-shadow:0 22px 60px #061b0e66;display:flex;align-items:center;justify-content:center;color:#123b35;font-size:62px;font-weight:900}.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:32px 0 16px}.sectionhead h2{margin:0;font-size:calc(25px * var(--site-heading-scale));letter-spacing:-.7px}.muted{color:light-dark(#657367,#a7b7a8);font-size:13px}.categories{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:11px}.cat{border:1px solid light-dark(#e1e9df,#2c392e);background:light-dark(#fff,#18221a);border-radius:15px;padding:15px 8px;text-align:center;cursor:pointer;color:inherit;font:inherit;transition:.18s ease}.cat:hover,.cat.active{border-color:#24735e;background:light-dark(#edf7ee,#1b3523);transform:translateY(-2px)}.cat .emoji{font-size:25px;display:block;margin-bottom:8px}.cat span:last-child{font-size:12px;font-weight:800}.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:18px 0}.pill{border:1px solid light-dark(#dce5d9,#344337);background:light-dark(#fff,#18221a);padding:9px 13px;border-radius:99px;font-size:12px;color:inherit;cursor:pointer;font-weight:700}.pill.active{background:#123b35;color:white;border-color:#123b35}.sort{margin-left:auto;padding:10px 12px;border:1px solid light-dark(#dce5d9,#344337);border-radius:10px;background:light-dark(#fff,#18221a);color:inherit}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.card{border:1px solid light-dark(#e2e9e0,#2c392e);background:light-dark(#fff,#18221a);border-radius:17px;overflow:hidden;display:flex;flex-direction:column;min-width:0}.product-art{height:150px;display:flex;align-items:center;justify-content:center;font-size:57px;background:linear-gradient(135deg,light-dark(#edf4eb,#202d22),light-dark(#fafbf8,#1b241d));position:relative}.badge{position:absolute;top:12px;left:12px;border-radius:6px;background:#f4b942;color:#382b0a;font-size:10px;font-weight:900;padding:6px 8px}.cardbody{padding:15px;display:flex;flex-direction:column;flex:1}.brand{font-size:10px;color:#438154;font-weight:900;text-transform:uppercase;letter-spacing:1px}.card h3{font-size:15px;line-height:1.4;margin:7px 0 8px;min-height:42px}.rating{font-size:12px;color:#d19b1d;font-weight:800}.rating small{color:light-dark(#69776a,#a7b7a8);font-weight:500}.price{font-size:22px;font-weight:900;letter-spacing:-.5px;margin:12px 0 3px}.old{font-size:12px;color:#7c897d;text-decoration:line-through;margin-left:6px;font-weight:500}.saving{font-size:11px;color:#24735e;font-weight:800}.storeline{font-size:11px;color:light-dark(#69776a,#a7b7a8);margin-top:13px;padding-top:11px;border-top:1px solid light-dark(#e9eee7,#2c392e)}.actions{display:flex;gap:8px;margin-top:12px}.btn{border:0;border-radius:9px;padding:10px 8px;font-weight:900;font-size:12px;cursor:pointer}.buy{background:#123b35;color:#fff;flex:1}.compare{background:light-dark(#edf3eb,#263429);color:inherit}.empty{grid-column:1/-1;text-align:center;padding:40px;color:light-dark(#657367,#a7b7a8)}.info{margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.info article{padding:18px;border:1px solid light-dark(#e2e9e0,#2c392e);border-radius:16px;background:light-dark(#fff,#18221a)}.info strong{display:block;margin:8px 0}.info p{font-size:13px;line-height:1.6;color:light-dark(#657367,#a7b7a8);margin:0}.notice{margin-top:24px;border:1px solid #ead7a0;background:light-dark(#fff8e4,#332d1b);color:light-dark(#584718,#f4e4b0);border-radius:13px;padding:14px 16px;font-size:12px;line-height:1.6} footer{background:light-dark(#102b1b,#0b120d);color:#dbe9dc;padding:26px 22px}.footerinner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:12px} dialog{border:0;border-radius:18px;max-width:460px;width:calc(100% - 32px);padding:24px;background:light-dark(#fff,#18221a);color:inherit;box-shadow:0 24px 90px #0005} dialog::backdrop{background:#07130acc} dialog h3{margin-top:0}.close{float:right;border:0;background:transparent;color:inherit;font-size:23px;cursor:pointer}@media(max-width:850px){.categories{grid-template-columns:repeat(4,1fr)}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr}.hero-art{min-height:100px}.deal-orb{width:170px;height:170px}}@media(max-width:520px){main{padding:16px 13px 40px}.hero{padding:25px 21px}.categories{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.cat{padding:12px 3px}.nav{padding:12px 13px}.search{max-width:none}.grid{grid-template-columns:1fr}}
+    :root {
+      --primary: #123b35;
+      --primary-deep: #0d2b27;
+      --secondary: #f2b544;
+      --secondary-soft: #fbe7b5;
+      --bg: #f6f1e8;
+      --card: #ffffff;
+      --muted: #607169;
+      --text: #17251b;
+      --line: #e7e0d6;
+      --green: #1a8c5d;
+      --red: #d44945;
+      --shadow: 0 18px 40px rgba(13, 28, 24, 0.10);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --max: 1220px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #f8f5ef 0%, #f4efe5 100%);
+      color: var(--text);
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    button, input, select { font: inherit; }
+
+    .topbar {
+      background: var(--primary-deep);
+      color: #edf7ef;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 10px 18px;
+      font-weight: 700;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 28px));
+      margin: 0 auto;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,0.82);
+      border-bottom: 1px solid rgba(18,59,53,0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      font-size: clamp(1.6rem, 2vw, 2.2rem);
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      white-space: nowrap;
+    }
+
+    .brand span { color: var(--secondary); }
+
+    .brand small {
+      display: inline-block;
+      font-size: 0.52rem;
+      letter-spacing: 0.12em;
+      color: #6d847a;
+      margin-left: 8px;
+      vertical-align: top;
+      transform: translateY(-6px);
+    }
+
+    .search-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      background: #f2f5f1;
+      border: 1px solid #dde6df;
+      border-radius: 14px;
+      overflow: hidden;
+      max-width: 620px;
+      min-height: 52px;
+      margin-left: auto;
+    }
+
+    .search-wrap input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 0 16px;
+      min-width: 0;
+      color: var(--text);
+      font-size: 0.98rem;
+      outline: none;
+    }
+
+    .search-wrap button {
+      border: none;
+      height: 100%;
+      background: var(--primary);
+      color: #fff;
+      padding: 0 18px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero {
+      padding: 38px 0 10px;
+    }
+
+    .hero-card {
+      background: linear-gradient(118deg, #0f2e2a 0%, #174b46 58%, #1d6a60 100%);
+      border-radius: 32px;
+      padding: clamp(24px, 4vw, 42px);
+      display: grid;
+      grid-template-columns: 1.45fr 0.9fr;
+      gap: 22px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      right: -50px;
+      bottom: -90px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 60px solid rgba(255,255,255,0.07);
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      color: white;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #f9d484;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      padding: 8px 12px;
+    }
+
+    h1 {
+      margin: 18px 0 12px;
+      font-size: clamp(2.3rem, 5vw, 4.3rem);
+      line-height: 0.98;
+      letter-spacing: -0.07em;
+    }
+
+    .hero-copy p {
+      margin: 0 0 22px;
+      max-width: 600px;
+      color: rgba(241, 250, 244, 0.82);
+      font-size: 1.08rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .primary-btn, .secondary-btn, .deal-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      font-weight: 800;
+      padding: 14px 20px;
+      cursor: pointer;
+      transition: transform 0.18s ease;
+    }
+
+    .primary-btn, .deal-btn {
+      background: var(--secondary);
+      color: #1a2918;
+      border: none;
+      box-shadow: 0 12px 24px rgba(242,181,68,0.2);
+    }
+
+    .secondary-btn {
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .primary-btn:hover, .secondary-btn:hover, .deal-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-panel {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+    }
+
+    .metrics-box {
+      width: min(100%, 410px);
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 26px;
+      padding: 22px;
+      color: white;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .mini-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,0,0,0.12);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .metric {
+      background: rgba(5,24,20,0.12);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 14px 12px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.4rem;
+      letter-spacing: -0.06em;
+      margin-bottom: 4px;
+    }
+
+    .metric span {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.8);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .category-bar {
+      padding: 24px 0 6px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.7rem, 2vw, 2.5rem);
+      letter-spacing: -0.07em;
+    }
+
+    .section-head span {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .category-btn {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.52);
+      border-radius: 16px;
+      padding: 16px 10px;
+      cursor: pointer;
+      color: var(--text);
+      text-align: center;
+      font-weight: 800;
+      transition: all 0.2s ease;
+    }
+
+    .category-btn .emoji {
+      display: block;
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .category-btn.active,
+    .category-btn:hover {
+      border-color: rgba(18,59,53,0.4);
+      background: #e7f4ec;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(18,59,53,0.08);
+    }
+
+    .products-section {
+      padding-top: 18px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+
+    .pill-filter {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+      border-radius: 999px;
+      padding: 9px 16px;
+      font-weight: 800;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    .pill-filter.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .sort-select {
+      margin-left: auto;
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 12px;
+      padding: 10px 14px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .product-card {
+      background: rgba(255,255,255,0.84);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 8px 16px rgba(18,59,53,0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .product-media {
+      position: relative;
+      height: 170px;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #eef5f1, #faf0d8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      overflow: hidden;
+    }
+
+    .badge {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.9);
+      color: var(--primary);
+      border-radius: 999px;
+      padding: 7px 10px;
+      border: 1px solid rgba(18,59,53,0.08);
+    }
+
+    .product-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+    }
+
+    .product-head h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+    }
+
+    .mini-tag {
+      display: inline-flex;
+      align-items: center;
+      background: #eef8f2;
+      color: var(--green);
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .rating-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .stars {
+      color: #f5b000;
+      letter-spacing: 0.05em;
+      font-size: 0.9rem;
+    }
+
+    .text-price {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 10px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 12px 0;
+    }
+
+    .price-block strong {
+      display: block;
+      font-size: clamp(1.5rem, 2vw, 2rem);
+      letter-spacing: -0.06em;
+    }
+
+    .price-block span {
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-decoration: line-through;
+      margin-right: 8px;
+    }
+
+    .save-text {
+      font-weight: 800;
+      color: var(--green);
+      background: #eaf8ef;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 0.75rem;
+    }
+
+    .specs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 12px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .specs div {
+      background: #f7f7f3;
+      border: 1px solid #ece7df;
+      border-radius: 10px;
+      padding: 8px 10px;
+    }
+
+    .specs strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 4px;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .offers {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .offer-row {
+      display: grid;
+      grid-template-columns: 1.2fr auto auto;
+      gap: 8px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+      background: #fafcf9;
+    }
+
+    .offer-store {
+      font-weight: 800;
+    }
+
+    .offer-price {
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .offer-cta {
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.8rem;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .commission {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .deal-btn {
+      padding: 11px 16px;
+      font-size: 0.9rem;
+    }
+
+    .stores-section, .benefits-section {
+      padding: 44px 0 10px;
+    }
+
+    .seller-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .seller-card {
+      background: rgba(255,255,255,0.84);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px 18px;
+    }
+
+    .seller-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      background: linear-gradient(135deg, #cfe8d7, #fce9b9);
+      margin-bottom: 16px;
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+
+    .seller-card h3,
+    .benefit-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.14rem;
+      letter-spacing: -0.04em;
+    }
+
+    .seller-card p,
+    .benefit-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.92rem;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .benefit-card {
+      background: rgba(255,255,255,0.84);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px 20px;
+    }
+
+    .benefit-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, #edf8f1, #f9ebc7);
+    }
+
+    .cta-banner {
+      margin: 38px 0 50px;
+      background: linear-gradient(120deg, #0f2d2a 0%, #1d645d 100%);
+      border-radius: 28px;
+      padding: 30px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-banner h3 {
+      margin: 0 0 8px;
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      letter-spacing: -0.06em;
+    }
+
+    .cta-banner p {
+      margin: 0;
+      color: rgba(255,255,255,0.8);
+      font-size: 1.02rem;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 22px 0 40px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.24);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-weight: 700;
+    }
+
+    @media (max-width: 980px) {
+      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .seller-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .category-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .hero-card { grid-template-columns: 1fr; }
+      .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+      }
+      .search-wrap {
+        width: 100%;
+        max-width: none;
+        order: 3;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .product-grid,
+      .benefits-grid,
+      .seller-grid,
+      .category-grid { grid-template-columns: 1fr; }
+      .toolbar { align-items: stretch; }
+      .sort-select { margin-left: 0; width: 100%; }
+      .cta-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .header .nav {
+        padding: 14px 0;
+      }
+      .brand {
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <div id="app">
-    <div class="topline">✦ Smarter shopping starts here · Compare offers before you buy</div>
-    <header>
-      <div class="nav">
-        <div class="logo">smart<span>deals</span><sup style="font-size:9px;color:#7b8c7d"> INDIA</sup></div>
-        <form class="search" id="searchForm"><input id="searchInput" placeholder="Search mobiles, fashion, beauty, home..." /><button type="submit">Search</button></form>
-        <a class="navlink" href="#products">Explore deals ↓</a>
-      </div>
-    </header>
-    <main>
-      <section class="hero">
-        <div><div class="eyebrow">Less searching. Smarter buying.</div><h1>Great deals.<br>Clear choices.</h1><p>Discover products across electronics, fashion, home appliances, beauty and more. Compare example offers in one simple place.</p><a class="cta" href="#products">Explore products →</a></div>
-        <div class="hero-art"><div class="deal-orb">%</div></div>
-      </section>
-      <div class="sectionhead"><h2>Shop by category</h2><span class="muted">Find what you need</span></div>
-      <section class="categories" id="categories">
-        <button class="cat active" data-category="All"><span class="emoji">✨</span><span>All deals</span></button>
-        <button class="cat" data-category="Electronics"><span class="emoji">🎧</span><span>Electronics</span></button>
-        <button class="cat" data-category="Fashion"><span class="emoji">👟</span><span>Fashion</span></button>
-        <button class="cat" data-category="Home"><span class="emoji">🏠</span><span>Home</span></button>
-        <button class="cat" data-category="Appliances"><span class="emoji">🧺</span><span>Appliances</span></button>
-        <button class="cat" data-category="Beauty"><span class="emoji">🧴</span><span>Beauty</span></button>
-        <button class="cat" data-category="More"><span class="emoji">🎒</span><span>More</span></button>
-      </section>
-      <section id="products">
-        <div class="sectionhead"><div><h2>Popular picks</h2><div class="muted" style="margin-top:6px">Price, rating and offer comparison</div></div></div>
-        <div class="toolbar">
-          <button class="pill active" data-filter="All">All products</button>
-          <button class="pill" data-filter="Top">Top rated</button>
-          <button class="pill" data-filter="Savings">Best savings</button>
-          <select class="sort" id="sortSelect" aria-label="Sort products"><option value="featured">Sort: Featured</option><option value="low">Price: Low to high</option><option value="high">Price: High to low</option><option value="rating">Highest rating</option></select>
+  <div class="topbar">Smarter shopping starts here • Compare offers before you buy</div>
+
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">smart<span>deals</span><small>INDIA</small></div>
+      <form class="search-wrap" id="searchForm">
+        <input id="searchInput" type="text" placeholder="Search mobiles, fashion, home, beauty..." aria-label="Search products" />
+        <button type="submit">Search</button>
+      </form>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#products">Deals</a>
+        <a href="#sellers">Top sellers</a>
+        <a href="#benefits">Why us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-card">
+        <div class="hero-copy">
+          <div class="eyebrow">Less searching. Smarter buying.</div>
+          <h1>Great deals.<br>Clear choices.</h1>
+          <p>Compare prices, specs, ratings and store offers in one place. Discover top deals across electronics, fashion, home, beauty and more before you click buy.</p>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#products">Explore deals</a>
+            <a class="secondary-btn" href="#benefits">See how it works</a>
+          </div>
         </div>
-        <div class="grid" id="productGrid"></div>
-      </section>
-      <section class="info"><article><div style="font-size:24px">🔎</div><strong>Compare in one place</strong><p>See product details and example offers together, instead of opening lots of tabs.</p></article><article><div style="font-size:24px">🔗</div><strong>Retailer links</strong><p>Approved affiliate links can be added once your affiliate accounts are accepted and tracking IDs are ready.</p></article><article><div style="font-size:24px">📊</div><strong>Track performance</strong><p>Retailer dashboards report eligible clicks, orders and commissions. This demo includes no live tracking.</p></article></section>
-      <div class="notice"><strong>Prototype notice:</strong> This is a front-end demo. Product prices, ratings, sellers and savings are sample data. Buy buttons are placeholders and no live affiliate tracking is connected yet.</div>
-    </main>
-    <footer><div class="footerinner"><div><strong style="font-size:16px">smart<span style="color:#f4b942">deals</span></strong><br><span>Compare more. Choose smarter.</span></div><div>About · Contact · Privacy · Affiliate</div></div></footer>
-  </div>
-  <dialog id="modal"><button class="close" id="closeModal" aria-label="Close">×</button><h3 id="modalTitle">Smart Deals</h3><p id="modalText" style="line-height:1.7"></p><button class="btn buy" id="modalOk">Close</button></dialog>
-  <script src="product-data.js"></script>
+
+        <div class="hero-panel">
+          <div class="metrics-box">
+            <div class="mini-badge">● Live deal tracker</div>
+            <div class="metrics-grid">
+              <div class="metric">
+                <strong>9.8k</strong>
+                <span>Products</span>
+              </div>
+              <div class="metric">
+                <strong>24+</strong>
+                <span>Stores</span>
+              </div>
+              <div class="metric">
+                <strong>4.8★</strong>
+                <span>Rated</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="category-bar">
+      <div class="section-head">
+        <h2>Shop by category</h2>
+        <span>Find what you need fast</span>
+      </div>
+      <div class="category-grid" id="categoryGrid">
+        <button class="category-btn active" data-category="All"><span class="emoji">✨</span>All deals</button>
+        <button class="category-btn" data-category="Electronics"><span class="emoji">🎧</span>Electronics</button>
+        <button class="category-btn" data-category="Fashion"><span class="emoji">👟</span>Fashion</button>
+        <button class="category-btn" data-category="Home"><span class="emoji">🏠</span>Home</button>
+        <button class="category-btn" data-category="Appliances"><span class="emoji">🧺</span>Appliances</button>
+        <button class="category-btn" data-category="Beauty"><span class="emoji">🧴</span>Beauty</button>
+        <button class="category-btn" data-category="More"><span class="emoji">🎒</span>More</button>
+      </div>
+    </section>
+
+    <section class="products-section" id="products">
+      <div class="section-head">
+        <h2>Popular picks</h2>
+        <span>Price, ratings, specs and best offers</span>
+      </div>
+
+      <div class="toolbar">
+        <button class="pill-filter active" data-filter="All">All products</button>
+        <button class="pill-filter" data-filter="Top">Top rated</button>
+        <button class="pill-filter" data-filter="Savings">Best savings</button>
+        <select class="sort-select" id="sortSelect" aria-label="Sort products">
+          <option value="featured">Sort: Featured</option>
+          <option value="low">Price: Low to high</option>
+          <option value="high">Price: High to low</option>
+          <option value="rating">Top rated</option>
+        </select>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section class="stores-section" id="sellers">
+      <div class="section-head">
+        <h2>Top sellers</h2>
+        <span>Trusted stores with competitive commission rates</span>
+      </div>
+      <div class="seller-grid" id="sellerGrid"></div>
+    </section>
+
+    <section class="benefits-section" id="benefits">
+      <div class="section-head">
+        <h2>Why shoppers choose Smart Deals</h2>
+        <span>Everything before you buy</span>
+      </div>
+      <div class="benefits-grid">
+        <article class="benefit-card">
+          <div class="benefit-icon">🔎</div>
+          <h3>Compare all prices</h3>
+          <p>See side-by-side prices from multiple online stores in a single clean dashboard.</p>
+        </article>
+        <article class="benefit-card">
+          <div class="benefit-icon">⭐</div>
+          <h3>Ratings and trust</h3>
+          <p>Check product reviews, user ratings and best-seller status before making a choice.</p>
+        </article>
+        <article class="benefit-card">
+          <div class="benefit-icon">💸</div>
+          <h3>Affiliate-ready</h3>
+          <p>Each offer includes commission info and a direct purchase link to help convert visits into revenue.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <div>
+        <h3>Find the best deal. Earn smarter.</h3>
+        <p>Smart Deals combines product comparison, store pricing and affiliate conversion into one streamlined shopping experience.</p>
+      </div>
+      <a class="primary-btn" href="#products">Start comparing</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <strong style="font-size: 1.25rem; color: var(--primary);">smart<span style="color: var(--secondary);">deals</span></strong>
+        <div>Compare more. Choose smarter.</div>
+      </div>
+      <div class="footer-links">
+        <a href="#products">Deals</a>
+        <a href="#sellers">Sellers</a>
+        <a href="#benefits">About</a>
+      </div>
+    </div>
+  </footer>
+
   <script>
-    const productSeed = window.smartDealsProducts || [];
-    const products = productSeed.length ? productSeed : [
-      {id:1,name:'Wireless Bluetooth Headphones',brand:'SoundCore',cat:'Electronics',icon:'🎧',price:1899,mrp:2999,rating:4.4,reviews:1240,store:'Example Store',tag:'Popular',spec:'Bluetooth · Noise cancelling · 30h battery'},
-      {id:2,name:'Smartphone 5G · 128 GB',brand:'Nova Mobile',cat:'Electronics',icon:'📱',price:14999,mrp:17999,rating:4.3,reviews:864,store:'Example Store',tag:'Trending',spec:'5G · 128 GB · 5000mAh battery'}
+    const products = [
+      {
+        id: 1,
+        name: 'Noise Cancelling Headphones',
+        brand: 'SoundCore',
+        category: 'Electronics',
+        image: '🎧',
+        price: 1899,
+        mrp: 2999,
+        rating: 4.4,
+        reviewCount: 1240,
+        bestSeller: true,
+        topRated: true,
+        description: 'Wireless over-ear audio with immersive bass and active noise cancellation.',
+        specs: {
+          Battery: '30 hours',
+          Connectivity: 'Bluetooth 5.3',
+          Cancellation: 'Active',
+          Weight: '240g'
+        },
+        offers: [
+          { store: 'Amazon', price: 1899, affiliate_url: 'https://www.amazon.in/?tag=smartdeals-21', commission_rate: 4.5 },
+          { store: 'Flipkart', price: 1999, affiliate_url: 'https://www.flipkart.com/search?q=wireless+headphones', commission_rate: 3.8 },
+          { store: 'Croma', price: 2199, affiliate_url: 'https://www.croma.com/search/?q=wireless+headphones', commission_rate: 3.2 }
+        ]
+      },
+      {
+        id: 2,
+        name: '5G Smartphone 128GB',
+        brand: 'Nova Mobile',
+        category: 'Electronics',
+        image: '📱',
+        price: 14999,
+        mrp: 17999,
+        rating: 4.3,
+        reviewCount: 864,
+        bestSeller: true,
+        topRated: false,
+        description: 'AI camera phone with 5G, smooth display and long-life battery.',
+        specs: {
+          Battery: '5000mAh',
+          Storage: '128GB',
+          Camera: '50MP AI',
+          Connectivity: '5G'
+        },
+        offers: [
+          { store: 'Amazon', price: 14999, affiliate_url: 'https://www.amazon.in/?tag=smartdeals-22', commission_rate: 4.3 },
+          { store: 'Flipkart', price: 15499, affiliate_url: 'https://www.flipkart.com/search?q=5g+smartphone+128gb', commission_rate: 4.1 },
+          { store: 'Croma', price: 16249, affiliate_url: 'https://www.croma.com/search/?q=5g+smartphone', commission_rate: 3.7 }
+        ]
+      },
+      {
+        id: 3,
+        name: 'Running Shoes',
+        brand: 'Stride',
+        category: 'Fashion',
+        image: '👟',
+        price: 1299,
+        mrp: 2499,
+        rating: 4.2,
+        reviewCount: 593,
+        bestSeller: false,
+        topRated: false,
+        description: 'All-day comfort sneaker built for workouts and city walking.',
+        specs: {
+          Material: 'Mesh upper',
+          Usage: 'Running',
+          Sole: 'Cushioned',
+          Fit: 'Regular'
+        },
+        offers: [
+          { store: 'Myntra', price: 1299, affiliate_url: 'https://www.myntra.com/', commission_rate: 5.0 },
+          { store: 'Ajio', price: 1399, affiliate_url: 'https://www.ajio.com/', commission_rate: 4.2 },
+          { store: 'Amazon', price: 1499, affiliate_url: 'https://www.amazon.in/?tag=smartdeals-23', commission_rate: 3.6 }
+        ]
+      },
+      {
+        id: 4,
+        name: 'Cotton Casual Shirt',
+        brand: 'Thread & Co.',
+        category: 'Fashion',
+        image: '👕',
+        price: 799,
+        mrp: 1499,
+        rating: 4.1,
+        reviewCount: 324,
+        bestSeller: false,
+        topRated: false,
+        description: 'Relaxed-fit shirt with breathable fabric and a classic collar.',
+        specs: {
+          Fabric: 'Cotton blend',
+          Fit: 'Regular',
+          Neck: 'Classic',
+          Care: 'Machine wash'
+        },
+        offers: [
+          { store: 'Myntra', price: 799, affiliate_url: 'https://www.myntra.com/', commission_rate: 4.9 },
+          { store: 'Ajio', price: 899, affiliate_url: 'https://www.ajio.com/', commission_rate: 4.4 },
+          { store: 'Amazon', price: 949, affiliate_url: 'https://www.amazon.in/?tag=smartdeals-24', commission_rate: 3.9 }
+        ]
+      },
+      {
+        id: 5,
+        name: 'Air Fryer 5.5L',
+        brand: 'Crocker',
+        category: 'Home',
+        image: '🍟',
+        price: 4999,
+        mrp: 6799,
+        rating: 4.5,
+        reviewCount: 1186,
+        bestSeller: true,
+        topRated: true,
+        description: 'Healthy cooking appliance with rapid air circulation and digital controls.',
+        specs: {
+          Capacity: '5.5L',
+          Power: '1500W',
+          Presets: '8 modes',
+          Warranty: '1 year'
+        },
+        offers: [
+          { store: 'Amazon', price: 4999, affiliate_url: 'https://www.amazon.in/?tag=smartdeals-25', commission_rate: 4.8 },
+          { store: 'Flipkart', price: 5299, affiliate_url: 'https://www.flipkart.com/search?q=air+fryer+5.5l', commission_rate: 4.2 },
+          { store: 'Pepperfry', price: 5499, affiliate_url: 'https://www.pepperfry.com/', commission_rate: 3.5 }
+        ]
+      },
+      {
+        id: 6,
+        name: 'Hydrating Face Serum',
+        brand: 'GlowLab',
+        category: 'Beauty',
+        image: '🧴',
+        price: 899,
+        mrp: 1599,
+        rating: 4.6,
+        reviewCount: 715,
+        bestSeller: true,
+        topRated: true,
+        description: 'Vitamin C serum for hydration, glow and smoother-looking skin.',
+        specs: {
+          Skin: 'All types',
+          Formula: 'Vitamin C',
+          Volume: '30ml',
+          Use: 'Daily'
+        },
+        offers: [
+          { store: 'Nykaa', price: 899, affiliate_url: 'https://www.nykaa.com/', commission_rate: 6.1 },
+          { store: 'Amazon', price: 949, affiliate_url: 'https://www.amazon.in/?tag=smartdeals-26', commission_rate: 4.1 },
+          { store: 'Flipkart', price: 999, affiliate_url: 'https://www.flipkart.com/search?q=vitamin+c+serum', commission_rate: 3.8 }
+        ]
+      },
+      {
+        id: 7,
+        name: 'Smart Fitness Watch',
+        brand: 'PulseFit',
+        category: 'Electronics',
+        image: '⌚',
+        price: 3299,
+        mrp: 4999,
+        rating: 4.4,
+        reviewCount: 690,
+        bestSeller: false,
+        topRated: true,
+        description: 'Activity tracker with heart-rate monitoring and sleep insights.',
+        specs: {
+          Display: 'AMOLED',
+          Battery: '7 days',
+          Water: '5 ATM',
+          Health: 'HR + sleep'
+        },
+        offers: [
+          { store: 'Amazon', price: 3299, affiliate_url: 'https://www.amazon.in/?tag=smartdeals-27', commission_rate: 4.7 },
+          { store: 'Flipkart', price: 3399, affiliate_url: 'https://www.flipkart.com/search?q=smart+fitness+watch', commission_rate: 4.0 },
+          { store: 'Croma', price: 3599, affiliate_url: 'https://www.croma.com/search/?q=fitness+watch', commission_rate: 3.6 }
+        ]
+      },
+      {
+        id: 8,
+        name: '4K Smart TV 55 inch',
+        brand: 'LumaVision',
+        category: 'Appliances',
+        image: '📺',
+        price: 38499,
+        mrp: 52999,
+        rating: 4.5,
+        reviewCount: 954,
+        bestSeller: true,
+        topRated: true,
+        description: 'Ultra-sharp 4K display with smart features and immersive sound.',
+        specs: {
+          Screen: '55 inch',
+          Resolution: '4K UHD',
+          OS: 'Android TV',
+          Sound: 'Dolby Audio'
+        },
+        offers: [
+          { store: 'Croma', price: 38499, affiliate_url: 'https://www.croma.com/search/?q=55+inch+4k+tv', commission_rate: 4.3 },
+          { store: 'Amazon', price: 39999, affiliate_url: 'https://www.amazon.in/?tag=smartdeals-28', commission_rate: 3.9 },
+          { store: 'Flipkart', price: 41599, affiliate_url: 'https://www.flipkart.com/search?q=55+inch+4k+smart+tv', commission_rate: 3.7 }
+        ]
+      }
     ];
-    let category='All', filter='All', query='';
-    const grid=document.getElementById('productGrid');
-    const rupee=n=>'₹'+n.toLocaleString('en-IN');
-    function render(){
-      let list=products.filter(p=>(category==='All'||p.category===category||p.cat===category)&&`${p.name} ${p.brand} ${p.category||p.cat} ${p.spec || p.description || ''}`.toLowerCase().includes(query));
-      if(filter==='Top') list=list.filter(p=>p.rating>=4.4);
-      if(filter==='Savings') list=list.filter(p=>(p.mrp-p.price)/p.mrp>=.35);
-      const sort=document.getElementById('sortSelect').value;
-      if(sort==='low') list.sort((a,b)=>a.price-b.price); if(sort==='high') list.sort((a,b)=>b.price-a.price); if(sort==='rating') list.sort((a,b)=>b.rating-a.rating);
-      if(!list.length){grid.innerHTML='<div class="empty">No products found. Try a different search or category.</div>';return}
-      grid.innerHTML=list.map(p=>`<article class="card"><div class="product-art"><span class="badge">${p.best_seller?'Best Seller':p.tag||'Popular'}</span>${p.image||p.icon}</div><div class="cardbody"><div class="brand">${p.brand} · ${p.category||p.cat}</div><h3>${p.name}</h3><div class="rating">★ ${p.rating.toFixed ? p.rating.toFixed(1) : p.rating} <small>(${(p.review_count || p.reviews).toLocaleString('en-IN')} ratings)</small></div><div class="price">${rupee(p.price)} <span class="old">${rupee(p.mrp)}</span></div><div class="saving">Save ${Math.round(((p.mrp-p.price)/p.mrp)*100)}% · sample offer</div><div class="storeline">${(p.offers&&p.offers[0]?p.offers[0].store:'Example seller')} · ${(p.offers&&p.offers[0]?p.offers[0].affiliate_url?'affiliate store':'illustrative price':'illustrative price')}<br><span style="display:block;margin-top:5px">${p.spec||p.description||''}</span></div><div class="actions"><button class="btn buy" onclick="openOffer('${(p.offers&&p.offers[0]&&p.offers[0].affiliate_url)||'#'}')">View offer ↗</button><button class="btn compare" onclick="compareProduct(${p.id})">Details</button></div></div></article>`).join('');
+
+    const state = {
+      category: 'All',
+      filter: 'All',
+      sort: 'featured',
+      search: ''
+    };
+
+    const productGrid = document.getElementById('productGrid');
+    const sellerGrid = document.getElementById('sellerGrid');
+    const searchInput = document.getElementById('searchInput');
+    const searchForm = document.getElementById('searchForm');
+    const sortSelect = document.getElementById('sortSelect');
+
+    const formatPrice = (value) => new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: 'INR',
+      maximumFractionDigits: 0
+    }).format(value);
+
+    const getStars = (rating) => {
+      const full = '★'.repeat(Math.round(rating));
+      const empty = '☆'.repeat(5 - Math.round(rating));
+      return full + empty;
+    };
+
+    const getTopOffer = (offers) => {
+      return [...offers].sort((a, b) => a.price - b.price)[0];
+    };
+
+    const filteredProducts = () => {
+      let list = [...products];
+
+      if (state.category !== 'All') {
+        list = list.filter(product => product.category === state.category || state.category === 'More' && ['Electronics', 'Fashion', 'Home', 'Beauty', 'Appliances'].includes(product.category) === false);
+      }
+
+      if (state.search) {
+        const term = state.search.toLowerCase();
+        list = list.filter(product =>
+          product.name.toLowerCase().includes(term) ||
+          product.brand.toLowerCase().includes(term) ||
+          product.category.toLowerCase().includes(term)
+        );
+      }
+
+      if (state.filter === 'Top') {
+        list = list.filter(product => product.topRated || product.rating >= 4.5);
+      }
+
+      if (state.filter === 'Savings') {
+        list = list.filter(product => {
+          const best = getTopOffer(product.offers);
+          const savings = ((product.mrp - best.price) / product.mrp) * 100;
+          return savings >= 18;
+        });
+      }
+
+      if (state.sort === 'low') {
+        list.sort((a, b) => getTopOffer(a.offers).price - getTopOffer(b.offers).price);
+      } else if (state.sort === 'high') {
+        list.sort((a, b) => getTopOffer(b.offers).price - getTopOffer(a.offers).price);
+      } else if (state.sort === 'rating') {
+        list.sort((a, b) => b.rating - a.rating);
+      } else {
+        list.sort((a, b) => Number(b.bestSeller) - Number(a.bestSeller) || b.rating - a.rating);
+      }
+
+      return list;
+    };
+
+    function renderProducts() {
+      const data = filteredProducts();
+
+      if (!data.length) {
+        productGrid.innerHTML = `
+          <div class="product-card" style="grid-column: 1 / -1; text-align: center; padding: 28px 18px;">
+            <h3 style="margin:0; font-size: 1.4rem; letter-spacing: -0.04em;">No products match your search.</h3>
+            <p style="margin: 8px 0 0; color: var(--muted);">Try another keyword or switch to another category.</p>
+          </div>
+        `;
+        return;
+      }
+
+      productGrid.innerHTML = data.map(product => {
+        const bestOffer = getTopOffer(product.offers);
+        const savings = Math.round(((product.mrp - bestOffer.price) / product.mrp) * 100);
+        const topSpecs = Object.entries(product.specs).slice(0, 4);
+
+        return `
+          <article class="product-card">
+            <div class="product-media">
+              <span>${product.image}</span>
+              ${product.bestSeller ? '<span class="badge">Best seller</span>' : ''}
+            </div>
+
+            <div class="product-head">
+              <div>
+                <h3>${product.name}</h3>
+              </div>
+              <span class="mini-tag">${product.category}</span>
+            </div>
+
+            <div class="brand-row">
+              <span>${product.brand}</span>
+            </div>
+
+            <div class="rating-row">
+              <span class="stars">${getStars(product.rating)}</span>
+              <span>${product.rating.toFixed(1)} · ${product.reviewCount.toLocaleString()} reviews</span>
+            </div>
+
+            <div class="text-price">
+              <div class="price-block">
+                <span>${formatPrice(product.mrp)}</span>
+                <strong>${formatPrice(bestOffer.price)}</strong>
+              </div>
+              <div class="save-text">Save ${savings}%</div>
+            </div>
+
+            <div class="specs">
+              ${topSpecs.map(([key, value]) => `<div><strong>${key}</strong>${value}</div>`).join('')}
+            </div>
+
+            <div class="offers">
+              ${product.offers.slice(0, 3).map(offer => `
+                <div class="offer-row">
+                  <span class="offer-store">${offer.store}</span>
+                  <span class="offer-price">${formatPrice(offer.price)}</span>
+                  <a class="offer-cta" href="${offer.affiliate_url}" target="_blank" rel="noopener noreferrer">View deal</a>
+                </div>
+              `).join('')}
+            </div>
+
+            <div class="card-footer">
+              <div class="commission">Commission up to ${Math.max(...product.offers.map(offer => offer.commission_rate)).toFixed(1)}%</div>
+              <a class="deal-btn" href="${bestOffer.affiliate_url}" target="_blank" rel="noopener noreferrer">Buy now</a>
+            </div>
+          </article>
+        `;
+      }).join('');
     }
-    function openOffer(url){ if(url && url !== '#'){ window.open(url, '_blank', 'noopener,noreferrer'); } else { openModal('Retailer link not connected', 'Add your approved affiliate URL here to enable direct store purchase.'); }}
-    function compareProduct(id){ const p = products.find(x => x.id === id); if(!p) return; const offerList = (p.offers||[]).map(o => `<li><strong>${o.store}</strong>: ${rupee(o.price)} <a href="${o.affiliate_url}" target="_blank">Buy</a></li>`).join(''); openModal(p.name, `Category: ${p.category||p.cat}<br>Sample price: <strong>${rupee(p.price)}</strong><br>Sample MRP: ${rupee(p.mrp)}<br>Rating: ★ ${(p.rating || 0).toFixed ? p.rating.toFixed(1) : p.rating}<br>Specs: ${p.spec || p.description || ''}<br><ul>${offerList || '<li>No offers available</li>'}</ul>`); }
-    function openModal(title, body){ document.getElementById('modalTitle').textContent = title; document.getElementById('modalText').innerHTML = body; document.getElementById('modal').showModal(); }
-    document.getElementById('closeModal').onclick = () => document.getElementById('modal').close(); document.getElementById('modalOk').onclick = () => document.getElementById('modal').close();
-    document.getElementById('searchForm').addEventListener('submit', e => { e.preventDefault(); query = document.getElementById('searchInput').value.trim().toLowerCase(); render(); });
-    document.getElementById('sortSelect').addEventListener('change', render); document.querySelectorAll('[data-category]').forEach(b => b.addEventListener('click', () => { category=b.dataset.category; document.querySelectorAll('[data-category]').forEach(x => x.classList.toggle('active', x===b)); render(); })); document.querySelectorAll('[data-filter]').forEach(b => b.addEventListener('click', () => { filter=b.dataset.filter; document.querySelectorAll('[data-filter]').forEach(x => x.classList.toggle('active', x===b)); render(); }));
-    render();
+
+    function renderSellers() {
+      const storeMap = new Map();
+
+      products.forEach(product => {
+        product.offers.forEach(offer => {
+          const current = storeMap.get(offer.store) || { name: offer.store, count: 0, avgCommission: 0 };
+          current.count += 1;
+          current.avgCommission += offer.commission_rate;
+          storeMap.set(offer.store, current);
+        });
+      });
+
+      const stores = [...storeMap.entries()].map(([name, stats]) => ({
+        name,
+        count: stats.count,
+        avgCommission: (stats.avgCommission / stats.count).toFixed(1)
+      })).sort((a, b) => b.count - a.count || b.avgCommission - a.avgCommission);
+
+      const logos = ['A', 'F', 'C', 'M', 'N', 'P'];
+
+      sellerGrid.innerHTML = stores.slice(0, 4).map((store, index) => `
+        <article class="seller-card">
+          <div class="seller-logo">${logos[index] || 'S'}</div>
+          <h3>${store.name}</h3>
+          <p>${store.count} products tracked</p>
+          <p style="margin-top: 8px;">Avg. affiliate commission: ${store.avgCommission}%</p>
+        </article>
+      `).join('');
+    }
+
+    document.querySelectorAll('.category-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        state.category = button.dataset.category;
+        document.querySelectorAll('.category-btn').forEach(btn => btn.classList.toggle('active', btn === button));
+        renderProducts();
+      });
+    });
+
+    document.querySelectorAll('.pill-filter').forEach(button => {
+      button.addEventListener('click', () => {
+        state.filter = button.dataset.filter;
+        document.querySelectorAll('.pill-filter').forEach(btn => btn.classList.toggle('active', btn === button));
+        renderProducts();
+      });
+    });
+
+    sortSelect.addEventListener('change', (event) => {
+      state.sort = event.target.value;
+      renderProducts();
+    });
+
+    searchForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      state.search = searchInput.value.trim();
+      renderProducts();
+    });
+
+    renderProducts();
+    renderSellers();
   </script>
 </body>
 </html>
