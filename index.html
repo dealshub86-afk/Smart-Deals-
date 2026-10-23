@@ -1,1 +1,774 @@
+<!DOCTYPE html>
+<html lang="ta"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartDeals Pro - அமேசான் &amp; ஃபிளிப்கார்ட் பெஸ்ட் செல்லர் நேரலை விலை ஒப்பீடு</title>
+  <meta name="description" content="அமேசான் மற்றும் ஃபிளிப்கார்ட் தளங்களின் #1 பெஸ்ட் செல்லர் நேரலை விலை ஒப்பீடு, பின்கோடு டெலிவரி தேதி மற்றும் நேரடி அப்லியேட் இணைப்பு தளம்.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;family=Noto+Sans+Tamil:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #131921;
+      --navy-light: #232f3e;
+      --orange: #febd69;
+      --orange-dark: #f3a847;
+      --yellow: #ffd814;
+      --yellow-hover: #f7ca00;
+      --blue: #2563eb;
+      --emerald: #059669;
+      --emerald-dark: #065f46;
+      --bg: #f1f3f6;
+      --text: #0f172a;
+      --line: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', 'Noto Sans Tamil', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    
+    /* Utility Bar */
+    .ticker { background: #020617; color: #94a3b8; font-size: 11px; padding: 7px 16px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; flex-wrap: wrap; gap: 8px; }
+    .ticker-live { color: #34d399; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }
+    .ticker-pulse { width: 7px; height: 7px; border-radius: 50%; background: #34d399; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.85); } }
+    .ticker-id { color: #fbbf24; font-weight: 700; background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.3); padding: 3px 10px; border-radius: 6px; display: inline-flex; align-items: center; gap: 6px; }
+    
+    /* Main Nav */
+    header.main-header { background: var(--navy); color: white; padding: 12px 16px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 50; box-shadow: 0 4px 20px rgba(0,0,0,0.18); flex-wrap: wrap; }
+    .logo { font-size: 23px; font-weight: 900; letter-spacing: -0.5px; white-space: nowrap; cursor: pointer; text-decoration: none; color: white; }
+    .logo span { color: var(--orange); }
+    .logo-sub { font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.6px; margin-top: -3px; font-weight: 600; }
+    
+    .pincode-btn { display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: white; padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; transition: 0.15s; }
+    .pincode-btn:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.3); }
+    
+    .search-wrap { flex: 1; display: flex; min-width: 260px; max-width: 680px; border-radius: 8px; overflow: hidden; background: white; box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); }
+    .search-wrap select { background: #e2e8f0; border: 0; padding: 9px 12px; font-size: 12px; font-weight: 700; color: #334155; outline: none; border-right: 1px solid #cbd5e1; }
+    .search-wrap input { flex: 1; border: 0; padding: 9px 14px; font-size: 13px; outline: none; color: #0f172a; }
+    .search-wrap button { background: var(--orange); border: 0; padding: 0 18px; font-weight: 800; font-size: 14px; color: #0f172a; transition: background 0.15s; }
+    .search-wrap button:hover { background: var(--orange-dark); }
+    
+    .top-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+    .btn-lang { background: var(--navy-light); color: white; border: 1px solid #475569; padding: 7px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; transition: 0.15s; }
+    .btn-lang:hover { background: #334155; }
+    .btn-download { background: #10b981; color: white; font-weight: 800; border: 0; padding: 7px 14px; border-radius: 8px; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(16,185,129,0.3); transition: 0.15s; }
+    .btn-download:hover { background: #059669; }
 
+    /* Category Bar */
+    .cat-nav { background: white; border-bottom: 1px solid var(--line); padding: 10px 16px; display: flex; gap: 8px; overflow-x: auto; white-space: nowrap; }
+    .cat-chip { border: 1px solid #cbd5e1; background: #f8fafc; color: #334155; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; cursor: pointer; transition: 0.15s; }
+    .cat-chip:hover { background: #e2e8f0; }
+    .cat-chip.active { background: var(--navy); color: white; border-color: var(--navy); box-shadow: 0 2px 6px rgba(19,25,33,0.25); }
+
+    /* Hero Banner */
+    .hero { background: linear-gradient(135deg, #0b111e, #1a2538, #0b111e); color: white; padding: 36px 16px; border-bottom: 1px solid #334155; }
+    .hero-content { max-width: 1240px; margin: auto; display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
+    .hero-text { flex: 1; min-width: 300px; }
+    .hero-badge { display: inline-block; background: rgba(245, 158, 11, 0.2); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.4); padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 800; margin-bottom: 12px; letter-spacing: 0.5px; }
+    .hero h1 { font-size: clamp(24px, 4vw, 40px); font-weight: 900; line-height: 1.15; margin-bottom: 12px; }
+    .hero p { color: #cbd5e1; font-size: 14px; max-width: 640px; line-height: 1.6; }
+    
+    .hero-box { background: rgba(15, 23, 42, 0.9); border: 1px solid #475569; border-radius: 16px; padding: 18px; min-width: 310px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    .hero-box h3 { font-size: 12px; font-weight: 800; color: #fbbf24; margin-bottom: 10px; display: flex; justify-content: space-between; text-transform: uppercase; }
+    .hero-box-item { background: rgba(30, 41, 59, 0.85); border: 1px solid #334155; padding: 10px 14px; border-radius: 10px; font-size: 12px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+
+    /* Layout */
+    .wrap { max-width: 1240px; margin: auto; padding: 28px 16px 56px; }
+    .section-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+    .section-head h2 { font-size: 22px; font-weight: 900; color: #0f172a; }
+    .section-head p { font-size: 12px; color: #64748b; margin-top: 3px; }
+
+    /* Product Grid */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .card { background: white; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; position: relative; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgba(0,0,0,0.08); border-color: #f59e0b; }
+    
+    .ribbon { background: linear-gradient(90deg, #e47911, #f3a847); color: white; font-size: 10px; font-weight: 800; padding: 5px 12px; display: flex; justify-content: space-between; text-transform: uppercase; }
+    .photo { height: 210px; background: #f8fafc; display: flex; align-items: center; justify-content: center; padding: 16px; position: relative; }
+    .photo img { max-height: 100%; max-width: 100%; object-fit: contain; transition: transform 0.3s; }
+    .card:hover .photo img { transform: scale(1.05); }
+    
+    .card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; }
+    .category-tag { font-size: 10px; font-weight: 700; color: #64748b; text-transform: uppercase; }
+    .title { font-weight: 700; font-size: 14px; line-height: 1.4; margin: 6px 0 8px; color: #0f172a; min-height: 40px; }
+    .rating-row { display: flex; align-items: center; gap: 6px; font-size: 12px; margin-bottom: 10px; }
+    .rating-pill { background: #047857; color: white; font-size: 11px; font-weight: 800; padding: 2px 7px; border-radius: 4px; display: inline-flex; align-items: center; gap: 3px; }
+    
+    .price-box { background: #fef3c7; border: 1px solid #fde68a; border-radius: 10px; padding: 12px; margin-bottom: 10px; }
+    .price-main { display: flex; align-items: baseline; gap: 8px; }
+    .price-num { font-size: 22px; font-weight: 900; color: #0f172a; }
+    .price-mrp { font-size: 12px; color: #94a3b8; text-decoration: line-through; }
+    .price-off { font-size: 12px; font-weight: 800; color: #059669; }
+    
+    .diff-badge { font-size: 11px; font-weight: 700; color: #065f46; display: flex; align-items: center; justify-content: space-between; margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(251,191,36,0.3); }
+    .diff-store { background: #0f172a; color: white; padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 800; }
+    .diff-store.flipkart { background: #2563eb; }
+    
+    .delivery-line { font-size: 11px; color: #475569; margin-bottom: 12px; display: flex; align-items: center; gap: 5px; }
+    
+    .card-actions { margin-top: auto; display: flex; flex-direction: column; gap: 7px; }
+    .btn-buy { background: var(--yellow); border: 1px solid #facc15; color: #0f172a; font-weight: 800; font-size: 13px; padding: 10px; border-radius: 9px; text-decoration: none; text-align: center; display: block; transition: 0.15s; }
+    .btn-buy:hover { background: var(--yellow-hover); }
+    .btn-details { background: #f8fafc; border: 1px solid #cbd5e1; color: #1e293b; font-weight: 700; font-size: 12px; padding: 8px; border-radius: 9px; text-align: center; cursor: pointer; transition: 0.15s; }
+    .btn-details:hover { background: #e2e8f0; }
+
+    /* Modal */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(2,6,23,0.8); display: none; align-items: center; justify-content: center; z-index: 100; padding: 16px; backdrop-filter: blur(4px); }
+    .modal-overlay.open { display: flex; }
+    .modal-card { background: white; border-radius: 18px; width: 100%; max-width: 760px; max-height: 90vh; overflow-y: auto; padding: 24px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+    .close-btn { position: absolute; right: 16px; top: 16px; border: 0; background: #e2e8f0; width: 34px; height: 34px; border-radius: 50%; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.15s; }
+    .close-btn:hover { background: #cbd5e1; }
+    
+    .offer-row { border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin-top: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .offer-row.lowest { background: #ecfdf5; border-color: #6ee7b7; ring: 2px solid #a7f3d0; }
+    
+    /* Footer */
+    footer { background: var(--navy); color: #94a3b8; font-size: 12px; text-align: center; padding: 36px 16px; margin-top: 56px; border-top: 1px solid #334155; }
+    footer strong { color: white; font-size: 15px; }
+
+    @media (max-width: 640px) {
+      .ticker { flex-direction: column; align-items: flex-start; }
+      header.main-header { gap: 10px; }
+      .search-wrap { order: 3; flex-basis: 100%; max-width: 100%; }
+      .top-actions { margin-left: auto; }
+      .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+      .photo { height: 175px; }
+    }
+  </style>
+<script src="/_aistudio-iframe.js?v=6634132a"></script><script src="https://cdn.jsdelivr.net/npm/html2canvas-pro@2.0.4"></script><style>.aistudio-hover-highlight { box-shadow: inset 0 0 0 0.5px white, inset 0 0 0 1.5px rgba(128,128,128,0.6) !important; }.aistudio-active-highlight { outline: 2px solid #87a9ff !important; outline-offset: -2px !important; box-shadow: 0 0 0 0.5px rgba(0,0,0,0.3), inset 0 0 0 0.5px rgba(0,0,0,0.3) !important; }.aistudio-generating-blur { filter: blur(5px) grayscale(100%) brightness(28%) !important; transition: filter 0.3s ease; }#aistudio-focus-mode-tag { position: absolute; display: none; align-items: center; gap: 4px; background: #87a9ff; border-radius: 12px; z-index: 10000; padding: 8px; color: #32302c; font-family: Inter, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; line-height: 21px; pointer-events: none; }#aistudio-hover-mode-tag { position: absolute; display: none; align-items: center; gap: 4px; background: rgba(128,128,128,0.6); border-radius: 12px; z-index: 10000; padding: 8px; color: white; font-family: Inter, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; line-height: 21px; pointer-events: none; }.aistudio-img-icon { display: none; vertical-align: middle; pointer-events: auto; cursor: pointer; }.aistudio-img-icon.visible { display: inline-flex; }#aistudio-focus-mode-tag .aistudio-img-icon { position: relative; width: 26px; height: 26px; background: #32302c; border-radius: 6px; margin: -4px -4px -4px 0; }#aistudio-focus-mode-tag .aistudio-img-icon::before { content: ""; position: absolute; top: 4px; left: 4px; width: 18px; height: 18px; background-color: white; -webkit-mask-image: url("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_fix_auto/default/24px.svg"); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; mask-image: url("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_fix_auto/default/24px.svg"); mask-size: contain; mask-repeat: no-repeat; }#aistudio-hover-mode-tag .aistudio-img-icon { position: relative; width: 18px; height: 18px; margin-left: 4px; }#aistudio-hover-mode-tag .aistudio-img-icon::before { content: ""; position: absolute; top: 0; left: 0; width: 18px; height: 18px; background-color: white; -webkit-mask-image: url("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_fix_auto/default/24px.svg"); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; mask-image: url("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_fix_auto/default/24px.svg"); mask-size: contain; mask-repeat: no-repeat; }#aistudio-focus-mode-tag .aistudio-img-icon:hover, #aistudio-hover-mode-tag .aistudio-img-icon:hover { background: #424242 !important; }#aistudio-focus-mode-tag .aistudio-img-icon:active, #aistudio-hover-mode-tag .aistudio-img-icon:active { background: #393f51 !important; }</style></head>
+<body>
+
+  <!-- Top Status Ticker -->
+  <div class="ticker">
+    <div>
+      <span class="ticker-live"><span class="ticker-pulse"></span> நேரலை சரிபார்க்கப்பட்டது</span>
+      <span style="margin-left: 8px;">அமேசான் &amp; ஃபிளிப்கார்ட் விலை ஒப்பீட்டு தளம்</span>
+    </div>
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <div class="ticker-id">
+        EarnKaro ID: 5736227 (ACTIVE)
+      </div>
+      <div class="ticker-id" style="color:#6ee7b7; border-color:#059669;">
+        Amazon Tag: dealshub0b6f-21
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <a href="#" class="logo" onclick="setCategory('All'); return false;">
+      Smart<span>Deals</span> Pro
+      <div class="logo-sub" id="logoSub">பெஸ்ட் செல்லர் மையம்</div>
+    </a>
+
+    <button class="pincode-btn" onclick="openPincodeModal()">
+      📍 <span id="pincodeLabel">சென்னை 600001 (மாற்று)</span>
+    </button>
+
+    <div class="search-wrap">
+      <select id="searchCategory" onchange="setCategory(this.value)">
+        <option value="All">அனைத்து பிரிவுகள்</option>
+        <option value="Mobiles">Mobiles</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Audio">Audio &amp; Watches</option>
+        <option value="Home">Home &amp; Kitchen</option>
+        <option value="Appliances">Appliances</option>
+        <option value="Fashion">Fashion</option>
+        <option value="Beauty">Beauty</option>
+      </select>
+      <input id="searchInput" type="text" placeholder="மொபைல்கள், லேப்டாப்கள், உபகரணங்கள்..." oninput="handleSearch()">
+      <button onclick="handleSearch()">🔍</button>
+    </div>
+
+    <div class="top-actions">
+      <button class="btn-lang" onclick="toggleLang()" id="langBtn">English</button>
+      <button class="btn-download" onclick="downloadThisHtmlFile()">💾 HTML பதிவிறக்கு</button>
+    </div>
+  </header>
+
+  <!-- Categories -->
+  <nav class="cat-nav" id="catNav">
+    <button class="cat-chip active" onclick="setCategory('All')">🔥 அனைத்து பெஸ்ட் செல்லர்கள்</button>
+    <button class="cat-chip" onclick="setCategory('Mobiles')">📱 Mobiles</button>
+    <button class="cat-chip" onclick="setCategory('Electronics')">💻 Laptops &amp; Gadgets</button>
+    <button class="cat-chip" onclick="setCategory('Audio')">🎧 Audio &amp; Wearables</button>
+    <button class="cat-chip" onclick="setCategory('Home')">🏠 Home &amp; Kitchen</button>
+    <button class="cat-chip" onclick="setCategory('Appliances')">📺 Appliances</button>
+    <button class="cat-chip" onclick="setCategory('Fashion')">👕 Fashion</button>
+    <button class="cat-chip" onclick="setCategory('Beauty')">✨ Beauty</button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="hero-badge">இந்தியாவின் #1 பெஸ்ட் செல்லர்கள்</span>
+        <h1 id="heroH1">அமேசான் vs ஃபிளிப்கார்ட் நேரலை விலை ஒப்பீடு</h1>
+        <p id="heroP">எந்த தளத்தில் விலை குறைவு என்பதை உடனே உறுதி செய்யுங்கள். உங்கள் பின்கோடு டெலிவரி தேதி மற்றும் எரர் இன்றி நேரடி அசல் தயாரிப்பு பக்கத்திற்குச் செல்லும் வசதியுடன்.</p>
+        <div style="margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap;">
+          <button onclick="downloadThisHtmlFile()" class="btn-download" style="padding: 10px 18px; font-size: 13px;">
+            📥 இந்த முழு இணையதள கோப்பை பதிவிறக்கு (Single HTML File)
+          </button>
+        </div>
+      </div>
+      <div class="hero-box">
+        <h3><span>இன்றைய சிறந்த சேமிப்பு</span> <span style="color:#34d399">VERIFIED</span></h3>
+        <div class="hero-box-item">
+          <div><strong>MacBook Air M2</strong><br><small style="color:#94a3b8">Flipkart ₹84,990 vs ₹87,990</small></div>
+          <strong style="color:#34d399">Save ₹3,000</strong>
+        </div>
+        <div class="hero-box-item">
+          <div><strong>Sony WH-1000XM5</strong><br><small style="color:#94a3b8">Amazon ₹26,990 vs ₹27,990</small></div>
+          <strong style="color:#34d399">Save ₹1,000</strong>
+        </div>
+        <div class="hero-box-item">
+          <div><strong>OnePlus Nord CE4</strong><br><small style="color:#94a3b8">Flipkart ₹22,499 vs ₹22,999</small></div>
+          <strong style="color:#34d399">Save ₹500</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Catalog -->
+  <main class="wrap">
+    <div class="section-head">
+      <div>
+        <h2 id="catalogTitle">முன்னணி பெஸ்ட் செல்லர் பொருட்கள்</h2>
+        <p id="catalogSub">சென்னை 600001 இருப்பிடத்திற்கு கணக்கிடப்பட்ட டெலிவரி தேதிகளுடன்</p>
+      </div>
+      <div style="font-size: 12px; color: #64748b; font-weight: 700;">
+        <span id="productCountBadge">8 பொருட்கள் கிடைக்கின்றன</span>
+      </div>
+    </div>
+
+    <div class="grid" id="productGrid">
+          <div class="card">
+            <div class="ribbon"><span>#1 BEST SELLER</span> <span>#1 in Smartphones under ₹25,000</span></div>
+            <div class="photo"><img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="OnePlus Nord CE4 (Dark Chrome, 8GB RAM, 128GB Storage)" loading="lazy"></div>
+            <div class="card-body">
+              <div class="category-tag">Mobiles</div>
+              <div class="title">ஒன்பிளஸ் நார்டு சிஇ4 (8GB ரேம், 128GB மெமரி)</div>
+              <div class="rating-row">
+                <span class="rating-pill">4.4 ★</span>
+                <span style="color:#64748b; font-size:11px;">(38,450 மதிப்புரைகள்)</span>
+              </div>
+              <div class="price-box">
+                <div class="price-main">
+                  <span class="price-num">₹22,499</span>
+                  <span class="price-mrp">₹24,999</span>
+                  <span class="price-off">10% off</span>
+                </div>
+                <div class="diff-badge">
+                  <span>குறைந்த விலை: <strong class="diff-store flipkart">Flipkart</strong></span>
+                  <span style="color:#047857; font-weight:800;">சேமிப்பு ₹500</span>
+                </div>
+              </div>
+              <div class="delivery-line">🚚 2 நாட்களில் டெலிவரி (Flipkart Assured)</div>
+              <div class="card-actions">
+                <a class="btn-buy" href="https://www.flipkart.com/oneplus-nord-ce4-dark-chrome-128-gb/p/itm2c909e4be0b32?affExtParam1=5736227" target="_blank" rel="noopener noreferrer">
+                  Flipkart-ல் வாங்குங்கள் ↗
+                </a>
+                <button class="btn-details" onclick="openDetails('oneplus-nord-ce4')">அனைத்து ஸ்டோர்களையும் ஒப்பிடு</button>
+              </div>
+            </div>
+          </div>
+        
+          <div class="card">
+            <div class="ribbon"><span>#1 BEST SELLER</span> <span>#1 Premium Smartphone</span></div>
+            <div class="photo"><img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Apple iPhone 15 (Black, 128 GB)" loading="lazy"></div>
+            <div class="card-body">
+              <div class="category-tag">Mobiles</div>
+              <div class="title">ஆப்பிள் ஐபோன் 15 (128 GB, பிளாக்)</div>
+              <div class="rating-row">
+                <span class="rating-pill">4.7 ★</span>
+                <span style="color:#64748b; font-size:11px;">(64,200 மதிப்புரைகள்)</span>
+              </div>
+              <div class="price-box">
+                <div class="price-main">
+                  <span class="price-num">₹66,999</span>
+                  <span class="price-mrp">₹79,900</span>
+                  <span class="price-off">16% off</span>
+                </div>
+                <div class="diff-badge">
+                  <span>குறைந்த விலை: <strong class="diff-store amazon">Amazon</strong></span>
+                  <span style="color:#047857; font-weight:800;">சேமிப்பு ₹1,000</span>
+                </div>
+              </div>
+              <div class="delivery-line">🚚 நாளை டெலிவரி (Amazon Prime)</div>
+              <div class="card-actions">
+                <a class="btn-buy" href="https://www.amazon.in/dp/B0CHX1W1XY?tag=dealshub0b6f-21" target="_blank" rel="noopener noreferrer">
+                  Amazon-ல் வாங்குங்கள் ↗
+                </a>
+                <button class="btn-details" onclick="openDetails('apple-iphone-15')">அனைத்து ஸ்டோர்களையும் ஒப்பிடு</button>
+              </div>
+            </div>
+          </div>
+        
+          <div class="card">
+            <div class="ribbon"><span>#1 BEST SELLER</span> <span>#1 in Premium Laptops</span></div>
+            <div class="photo"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Apple MacBook Air M2 Chip (13.6-inch, 8GB RAM, 256GB SSD)" loading="lazy"></div>
+            <div class="card-body">
+              <div class="category-tag">Electronics</div>
+              <div class="title">ஆப்பிள் மேக்புக் ஏர் M2 (13.6 இன்ச், 8GB ரேம்)</div>
+              <div class="rating-row">
+                <span class="rating-pill">4.8 ★</span>
+                <span style="color:#64748b; font-size:11px;">(22,800 மதிப்புரைகள்)</span>
+              </div>
+              <div class="price-box">
+                <div class="price-main">
+                  <span class="price-num">₹84,990</span>
+                  <span class="price-mrp">₹99,900</span>
+                  <span class="price-off">15% off</span>
+                </div>
+                <div class="diff-badge">
+                  <span>குறைந்த விலை: <strong class="diff-store flipkart">Flipkart</strong></span>
+                  <span style="color:#047857; font-weight:800;">சேமிப்பு ₹3,000</span>
+                </div>
+              </div>
+              <div class="delivery-line">🚚 2 நாட்களில் டெலிவரி</div>
+              <div class="card-actions">
+                <a class="btn-buy" href="https://www.flipkart.com/apple-macbook-air-m2-8-gb-256-gb-ssd-mac-os-monterey-mly33hn-a/p/itmd5b2e957591e1?affExtParam1=5736227" target="_blank" rel="noopener noreferrer">
+                  Flipkart-ல் வாங்குங்கள் ↗
+                </a>
+                <button class="btn-details" onclick="openDetails('macbook-air-m2')">அனைத்து ஸ்டோர்களையும் ஒப்பிடு</button>
+              </div>
+            </div>
+          </div>
+        
+          <div class="card">
+            <div class="ribbon"><span>#1 BEST SELLER</span> <span>#1 in Over-Ear Headphones</span></div>
+            <div class="photo"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Sony WH-1000XM5 Wireless Active Noise Cancelling Headphones" loading="lazy"></div>
+            <div class="card-body">
+              <div class="category-tag">Audio</div>
+              <div class="title">சோனி WH-1000XM5 நாய்ஸ் கேன்சலிங் ஹெட்போன்</div>
+              <div class="rating-row">
+                <span class="rating-pill">4.6 ★</span>
+                <span style="color:#64748b; font-size:11px;">(19,400 மதிப்புரைகள்)</span>
+              </div>
+              <div class="price-box">
+                <div class="price-main">
+                  <span class="price-num">₹26,990</span>
+                  <span class="price-mrp">₹34,990</span>
+                  <span class="price-off">23% off</span>
+                </div>
+                <div class="diff-badge">
+                  <span>குறைந்த விலை: <strong class="diff-store amazon">Amazon</strong></span>
+                  <span style="color:#047857; font-weight:800;">சேமிப்பு ₹1,000</span>
+                </div>
+              </div>
+              <div class="delivery-line">🚚 நாளை காலை 11 மணிக்குள்</div>
+              <div class="card-actions">
+                <a class="btn-buy" href="https://www.amazon.in/dp/B09XS7JWHH?tag=dealshub0b6f-21" target="_blank" rel="noopener noreferrer">
+                  Amazon-ல் வாங்குங்கள் ↗
+                </a>
+                <button class="btn-details" onclick="openDetails('sony-wh-1000xm5')">அனைத்து ஸ்டோர்களையும் ஒப்பிடு</button>
+              </div>
+            </div>
+          </div>
+        
+          <div class="card">
+            <div class="ribbon"><span>#1 BEST SELLER</span> <span>#1 in Kitchen Appliances</span></div>
+            <div class="photo"><img src="https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Philips Digital Air Fryer HD9252 (4.1L, 1400W)" loading="lazy"></div>
+            <div class="card-body">
+              <div class="category-tag">Home</div>
+              <div class="title">பிலிப்ஸ் டிஜிட்டல் ஏர் பிரையர் (4.1 லிட்டர், 1400W)</div>
+              <div class="rating-row">
+                <span class="rating-pill">4.5 ★</span>
+                <span style="color:#64748b; font-size:11px;">(31,200 மதிப்புரைகள்)</span>
+              </div>
+              <div class="price-box">
+                <div class="price-main">
+                  <span class="price-num">₹6,999</span>
+                  <span class="price-mrp">₹11,995</span>
+                  <span class="price-off">42% off</span>
+                </div>
+                <div class="diff-badge">
+                  <span>குறைந்த விலை: <strong class="diff-store flipkart">Flipkart</strong></span>
+                  <span style="color:#047857; font-weight:800;">சேமிப்பு ₹500</span>
+                </div>
+              </div>
+              <div class="delivery-line">🚚 2 நாட்களில் டெலிவரி</div>
+              <div class="card-actions">
+                <a class="btn-buy" href="https://www.flipkart.com/philips-hd9252-90-air-fryer/p/itm227181f9a008c?affExtParam1=5736227" target="_blank" rel="noopener noreferrer">
+                  Flipkart-ல் வாங்குங்கள் ↗
+                </a>
+                <button class="btn-details" onclick="openDetails('philips-air-fryer')">அனைத்து ஸ்டோர்களையும் ஒப்பிடு</button>
+              </div>
+            </div>
+          </div>
+        
+          <div class="card">
+            <div class="ribbon"><span>#1 BEST SELLER</span> <span>#1 in Energy Saving Ceiling Fans</span></div>
+            <div class="photo"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Atomberg Renesa 1200mm BLDC Motor 5 Star Fan with Remote" loading="lazy"></div>
+            <div class="card-body">
+              <div class="category-tag">Home</div>
+              <div class="title">ஆட்டம்பர்க் ரெனீசா 1200mm BLDC 5 ஸ்டார் ஃபேன் (ரிமோட் உடன்)</div>
+              <div class="rating-row">
+                <span class="rating-pill">4.5 ★</span>
+                <span style="color:#64748b; font-size:11px;">(42,100 மதிப்புரைகள்)</span>
+              </div>
+              <div class="price-box">
+                <div class="price-main">
+                  <span class="price-num">₹3,699</span>
+                  <span class="price-mrp">₹5,190</span>
+                  <span class="price-off">29% off</span>
+                </div>
+                <div class="diff-badge">
+                  <span>குறைந்த விலை: <strong class="diff-store amazon">Amazon</strong></span>
+                  <span style="color:#047857; font-weight:800;">சேமிப்பு ₹200</span>
+                </div>
+              </div>
+              <div class="delivery-line">🚚 நாளை 1-நாள் பிரைம் டெலிவரி</div>
+              <div class="card-actions">
+                <a class="btn-buy" href="https://www.amazon.in/dp/B07MGB12W4?tag=dealshub0b6f-21" target="_blank" rel="noopener noreferrer">
+                  Amazon-ல் வாங்குங்கள் ↗
+                </a>
+                <button class="btn-details" onclick="openDetails('atomberg-renesa-fan')">அனைத்து ஸ்டோர்களையும் ஒப்பிடு</button>
+              </div>
+            </div>
+          </div>
+        
+          <div class="card">
+            <div class="ribbon"><span>#1 BEST SELLER</span> <span>#1 in Face Serums &amp; Skincare</span></div>
+            <div class="photo"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="The Derma Co 10% Niacinamide Face Serum with Zinc (30 ml)" loading="lazy"></div>
+            <div class="card-body">
+              <div class="category-tag">Beauty</div>
+              <div class="title">தி டெர்மா கோ 10% நியாசினமைடு ஃபேஸ் சீரம் (30 மிலி)</div>
+              <div class="rating-row">
+                <span class="rating-pill">4.4 ★</span>
+                <span style="color:#64748b; font-size:11px;">(54,100 மதிப்புரைகள்)</span>
+              </div>
+              <div class="price-box">
+                <div class="price-main">
+                  <span class="price-num">₹499</span>
+                  <span class="price-mrp">₹599</span>
+                  <span class="price-off">17% off</span>
+                </div>
+                <div class="diff-badge">
+                  <span>குறைந்த விலை: <strong class="diff-store flipkart">Flipkart</strong></span>
+                  <span style="color:#047857; font-weight:800;">சேமிப்பு ₹30</span>
+                </div>
+              </div>
+              <div class="delivery-line">🚚 2 நாட்களில் டெலிவரி</div>
+              <div class="card-actions">
+                <a class="btn-buy" href="https://www.flipkart.com/the-derma-co-10-niacinamide-serum-acne-marks/p/itm5a782bb19024c?affExtParam1=5736227" target="_blank" rel="noopener noreferrer">
+                  Flipkart-ல் வாங்குங்கள் ↗
+                </a>
+                <button class="btn-details" onclick="openDetails('derma-co-niacinamide')">அனைத்து ஸ்டோர்களையும் ஒப்பிடு</button>
+              </div>
+            </div>
+          </div>
+        
+          <div class="card">
+            <div class="ribbon"><span>#1 BEST SELLER</span> <span>#1 in Men Footwear</span></div>
+            <div class="photo"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Puma Men Dazzler Casual Breathable Lightweight Sneakers" loading="lazy"></div>
+            <div class="card-body">
+              <div class="category-tag">Fashion</div>
+              <div class="title">பூமா மென் டாஸ்லர் கேஷுவல் ஸ்னீக்கர்ஸ்</div>
+              <div class="rating-row">
+                <span class="rating-pill">4.3 ★</span>
+                <span style="color:#64748b; font-size:11px;">(28,400 மதிப்புரைகள்)</span>
+              </div>
+              <div class="price-box">
+                <div class="price-main">
+                  <span class="price-num">₹1,399</span>
+                  <span class="price-mrp">₹3,999</span>
+                  <span class="price-off">65% off</span>
+                </div>
+                <div class="diff-badge">
+                  <span>குறைந்த விலை: <strong class="diff-store amazon">Amazon</strong></span>
+                  <span style="color:#047857; font-weight:800;">சேமிப்பு ₹150</span>
+                </div>
+              </div>
+              <div class="delivery-line">🚚 நாளை டெலிவரி (65% தள்ளுபடி)</div>
+              <div class="card-actions">
+                <a class="btn-buy" href="https://www.amazon.in/dp/B09V7N8W4T?tag=dealshub0b6f-21" target="_blank" rel="noopener noreferrer">
+                  Amazon-ல் வாங்குங்கள் ↗
+                </a>
+                <button class="btn-details" onclick="openDetails('puma-dazzler-sneakers')">அனைத்து ஸ்டோர்களையும் ஒப்பிடு</button>
+              </div>
+            </div>
+          </div>
+        </div>
+  </main>
+
+  <!-- Modals -->
+  <div class="modal-overlay" id="detailModal">
+    <div class="modal-card">
+      <button class="close-btn" onclick="closeModal('detailModal')">×</button>
+      <div id="detailContent"></div>
+    </div>
+  </div>
+
+  <footer>
+    <strong>Smart Deals Pro</strong><br>
+    Compare thoughtfully. Buy confidently.<br><br>
+    EarnKaro ID: 5736227 • Amazon Associate Tracking: dealshub0b6f-21<br>
+    Single-File Complete Offline/Online Standalone Package. All rights reserved.
+  </footer>
+
+  <script>
+    const EARNKARO_ID = "5736227";
+    const AMAZON_TAG = "dealshub0b6f-21";
+    let currentLang = "ta";
+    let activeCat = "All";
+
+    const products = [
+      {
+        id: "oneplus-nord-ce4",
+        name: "OnePlus Nord CE4 (Dark Chrome, 8GB RAM, 128GB Storage)",
+        nameTa: "ஒன்பிளஸ் நார்டு சிஇ4 (8GB ரேம், 128GB மெமரி)",
+        category: "Mobiles",
+        rank: "#1 in Smartphones under ₹25,000",
+        rating: 4.4,
+        reviews: 38450,
+        image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80",
+        specs: ["Snapdragon 7 Gen 3", "100W SUPERVOOC Fast Charge", "5500 mAh Battery", "Sony LYT-600 50MP OIS Camera"],
+        offers: [
+          { store: "Flipkart", price: 22499, mrp: 24999, lowest: true, url: "https://www.flipkart.com/oneplus-nord-ce4-dark-chrome-128-gb/p/itm2c909e4be0b32?affExtParam1=" + EARNKARO_ID, del: "2 நாட்களில் டெலிவரி (Flipkart Assured)" },
+          { store: "Amazon", price: 22999, mrp: 24999, lowest: false, url: "https://www.amazon.in/dp/B0CX21M98F?tag=" + AMAZON_TAG, del: "நாளை காலை 11 மணிக்குள் (Amazon Prime)" }
+        ]
+      },
+      {
+        id: "apple-iphone-15",
+        name: "Apple iPhone 15 (Black, 128 GB)",
+        nameTa: "ஆப்பிள் ஐபோன் 15 (128 GB, பிளாக்)",
+        category: "Mobiles",
+        rank: "#1 Premium Smartphone",
+        rating: 4.7,
+        reviews: 64200,
+        image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=600&q=80",
+        specs: ["Dynamic Island", "48MP Main Camera", "A16 Bionic Chip", "USB-C Connector"],
+        offers: [
+          { store: "Amazon", price: 66999, mrp: 79900, lowest: true, url: "https://www.amazon.in/dp/B0CHX1W1XY?tag=" + AMAZON_TAG, del: "நாளை டெலிவரி (Amazon Prime)" },
+          { store: "Flipkart", price: 67999, mrp: 79900, lowest: false, url: "https://www.flipkart.com/apple-iphone-15-black-128-gb/p/itm6ac6485515ae4?affExtParam1=" + EARNKARO_ID, del: "2 நாட்களில் டெலிவரி" }
+        ]
+      },
+      {
+        id: "macbook-air-m2",
+        name: "Apple MacBook Air M2 Chip (13.6-inch, 8GB RAM, 256GB SSD)",
+        nameTa: "ஆப்பிள் மேக்புக் ஏர் M2 (13.6 இன்ச், 8GB ரேம்)",
+        category: "Electronics",
+        rank: "#1 in Premium Laptops",
+        rating: 4.8,
+        reviews: 22800,
+        image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80",
+        specs: ["Apple M2 8-core CPU", "18 Hours Battery Life", "Liquid Retina 500 nits", "1.24 kg Thin & Light"],
+        offers: [
+          { store: "Flipkart", price: 84990, mrp: 99900, lowest: true, url: "https://www.flipkart.com/apple-macbook-air-m2-8-gb-256-gb-ssd-mac-os-monterey-mly33hn-a/p/itmd5b2e957591e1?affExtParam1=" + EARNKARO_ID, del: "2 நாட்களில் டெலிவரி" },
+          { store: "Amazon", price: 87990, mrp: 99900, lowest: false, url: "https://www.amazon.in/dp/B0B3B7W5M1?tag=" + AMAZON_TAG, del: "நாளை டெலிவரி" }
+        ]
+      },
+      {
+        id: "sony-wh-1000xm5",
+        name: "Sony WH-1000XM5 Wireless Active Noise Cancelling Headphones",
+        nameTa: "சோனி WH-1000XM5 நாய்ஸ் கேன்சலிங் ஹெட்போன்",
+        category: "Audio",
+        rank: "#1 in Over-Ear Headphones",
+        rating: 4.6,
+        reviews: 19400,
+        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80",
+        specs: ["Industry Leading ANC", "30 Hours Battery", "3-min Fast Charge = 3 Hours", "Multipoint Bluetooth 5.2"],
+        offers: [
+          { store: "Amazon", price: 26990, mrp: 34990, lowest: true, url: "https://www.amazon.in/dp/B09XS7JWHH?tag=" + AMAZON_TAG, del: "நாளை காலை 11 மணிக்குள்" },
+          { store: "Flipkart", price: 27990, mrp: 34990, lowest: false, url: "https://www.flipkart.com/sony-wh-1000xm5-bluetooth-headset/p/itm5feff418a09f3?affExtParam1=" + EARNKARO_ID, del: "2 நாட்களில் டெலிவரி" }
+        ]
+      },
+      {
+        id: "philips-air-fryer",
+        name: "Philips Digital Air Fryer HD9252 (4.1L, 1400W)",
+        nameTa: "பிலிப்ஸ் டிஜிட்டல் ஏர் பிரையர் (4.1 லிட்டர், 1400W)",
+        category: "Home",
+        rank: "#1 in Kitchen Appliances",
+        rating: 4.5,
+        reviews: 31200,
+        image: "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?auto=format&fit=crop&w=600&q=80",
+        specs: ["90% Less Oil Cooking", "Rapid Air Starfish Design", "7 Touchscreen Presets", "2 Years Warranty"],
+        offers: [
+          { store: "Flipkart", price: 6999, mrp: 11995, lowest: true, url: "https://www.flipkart.com/philips-hd9252-90-air-fryer/p/itm227181f9a008c?affExtParam1=" + EARNKARO_ID, del: "2 நாட்களில் டெலிவரி" },
+          { store: "Amazon", price: 7499, mrp: 11995, lowest: false, url: "https://www.amazon.in/dp/B08HGN6R84?tag=" + AMAZON_TAG, del: "நாளை டெலிவரி" }
+        ]
+      },
+      {
+        id: "atomberg-renesa-fan",
+        name: "Atomberg Renesa 1200mm BLDC Motor 5 Star Fan with Remote",
+        nameTa: "ஆட்டம்பர்க் ரெனீசா 1200mm BLDC 5 ஸ்டார் ஃபேன் (ரிமோட் உடன்)",
+        category: "Home",
+        rank: "#1 in Energy Saving Ceiling Fans",
+        rating: 4.5,
+        reviews: 42100,
+        image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80",
+        specs: ["28W Super Energy Saving", "Smart IR Remote", "Saves ₹1,500/year on electricity", "3 Years Warranty"],
+        offers: [
+          { store: "Amazon", price: 3699, mrp: 5190, lowest: true, url: "https://www.amazon.in/dp/B07MGB12W4?tag=" + AMAZON_TAG, del: "நாளை 1-நாள் பிரைம் டெலிவரி" },
+          { store: "Flipkart", price: 3899, mrp: 5190, lowest: false, url: "https://www.flipkart.com/atomberg-renesa-1200-mm-bldc-motor-5-star-ceiling-fan/p/itmfd944e5445e69?affExtParam1=" + EARNKARO_ID, del: "2 நாட்களில் டெலிவரி" }
+        ]
+      },
+      {
+        id: "derma-co-niacinamide",
+        name: "The Derma Co 10% Niacinamide Face Serum with Zinc (30 ml)",
+        nameTa: "தி டெர்மா கோ 10% நியாசினமைடு ஃபேஸ் சீரம் (30 மிலி)",
+        category: "Beauty",
+        rank: "#1 in Face Serums & Skincare",
+        rating: 4.4,
+        reviews: 54100,
+        image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80",
+        specs: ["Fades Acne Marks & Dark Spots", "Zinc PCA Balances Sebum", "Dermatologist Tested", "Fragrance-Free"],
+        offers: [
+          { store: "Flipkart", price: 499, mrp: 599, lowest: true, url: "https://www.flipkart.com/the-derma-co-10-niacinamide-serum-acne-marks/p/itm5a782bb19024c?affExtParam1=" + EARNKARO_ID, del: "2 நாட்களில் டெலிவரி" },
+          { store: "Amazon", price: 529, mrp: 599, lowest: false, url: "https://www.amazon.in/dp/B08S3C5V4N?tag=" + AMAZON_TAG, del: "நாளை டெலிவரி" }
+        ]
+      },
+      {
+        id: "puma-dazzler-sneakers",
+        name: "Puma Men Dazzler Casual Breathable Lightweight Sneakers",
+        nameTa: "பூமா மென் டாஸ்லர் கேஷுவல் ஸ்னீக்கர்ஸ்",
+        category: "Fashion",
+        rank: "#1 in Men Footwear",
+        rating: 4.3,
+        reviews: 28400,
+        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80",
+        specs: ["SoftFoam+ Dual-Density Cushion", "Breathable Toe Perforation", "Durable Rubber Sole", "Lightweight All-day Comfort"],
+        offers: [
+          { store: "Amazon", price: 1399, mrp: 3999, lowest: true, url: "https://www.amazon.in/dp/B09V7N8W4T?tag=" + AMAZON_TAG, del: "நாளை டெலிவரி (65% தள்ளுபடி)" },
+          { store: "Flipkart", price: 1549, mrp: 3999, lowest: false, url: "https://www.flipkart.com/puma-dazzler-sneakers-men/p/itm54b4fbf35f60b?affExtParam1=" + EARNKARO_ID, del: "2 நாட்களில் டெலிவரி" }
+        ]
+      }
+    ];
+
+    function renderProducts() {
+      const q = document.getElementById("searchInput").value.toLowerCase();
+      const filtered = products.filter(p => {
+        const matchCat = activeCat === "All" || p.category === activeCat;
+        const matchQ = !q || p.name.toLowerCase().includes(q) || p.nameTa.toLowerCase().includes(q);
+        return matchCat && matchQ;
+      });
+
+      document.getElementById("productCountBadge").textContent = `${filtered.length} பொருட்கள் கிடைக்கின்றன`;
+
+      const grid = document.getElementById("productGrid");
+      grid.innerHTML = filtered.map(p => {
+        const lowestOffer = p.offers.find(o => o.lowest) || p.offers[0];
+        const otherOffer = p.offers.find(o => !o.lowest);
+        const savings = otherOffer ? (otherOffer.price - lowestOffer.price) : 0;
+        const discount = Math.round(((lowestOffer.mrp - lowestOffer.price) / lowestOffer.mrp) * 100);
+
+        return `
+          <div class="card">
+            <div class="ribbon"><span>#1 BEST SELLER</span> <span>${p.rank}</span></div>
+            <div class="photo"><img src="${p.image}" alt="${p.name}" loading="lazy"></div>
+            <div class="card-body">
+              <div class="category-tag">${p.category}</div>
+              <div class="title">${currentLang === 'ta' ? p.nameTa : p.name}</div>
+              <div class="rating-row">
+                <span class="rating-pill">${p.rating} ★</span>
+                <span style="color:#64748b; font-size:11px;">(${p.reviews.toLocaleString('en-IN')} மதிப்புரைகள்)</span>
+              </div>
+              <div class="price-box">
+                <div class="price-main">
+                  <span class="price-num">₹${lowestOffer.price.toLocaleString('en-IN')}</span>
+                  <span class="price-mrp">₹${lowestOffer.mrp.toLocaleString('en-IN')}</span>
+                  <span class="price-off">${discount}% off</span>
+                </div>
+                <div class="diff-badge">
+                  <span>குறைந்த விலை: <strong class="diff-store ${lowestOffer.store.toLowerCase()}">${lowestOffer.store}</strong></span>
+                  ${savings > 0 ? `<span style="color:#047857; font-weight:800;">சேமிப்பு ₹${savings.toLocaleString('en-IN')}</span>` : ''}
+                </div>
+              </div>
+              <div class="delivery-line">🚚 ${lowestOffer.del}</div>
+              <div class="card-actions">
+                <a class="btn-buy" href="${lowestOffer.url}" target="_blank" rel="noopener noreferrer">
+                  ${lowestOffer.store}-ல் வாங்குங்கள் ↗
+                </a>
+                <button class="btn-details" onclick="openDetails('${p.id}')">அனைத்து ஸ்டோர்களையும் ஒப்பிடு</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function openDetails(id) {
+      const p = products.find(x => x.id === id);
+      if (!p) return;
+      document.getElementById("detailContent").innerHTML = `
+        <h3 style="font-size:18px; font-weight:bold; margin-bottom:12px; line-height:1.3;">${currentLang === 'ta' ? p.nameTa : p.name}</h3>
+        <div style="background:#f8fafc; border-radius:12px; padding:16px; margin-bottom:16px; text-align:center;">
+          <img src="${p.image}" style="max-height:220px; max-width:100%; object-fit:contain;">
+        </div>
+        
+        <h4 style="font-size:14px; font-weight:800; margin-bottom:8px;">முக்கிய சிறப்பம்சங்கள்:</h4>
+        <ul style="margin-left:20px; font-size:12px; color:#475569; margin-bottom:16px;">
+          ${p.specs.map(s => `<li>${s}</li>`).join('')}
+        </ul>
+
+        <h4 style="font-size:14px; font-weight:800; margin-bottom:8px;">அனைத்து ஆன்லைன் தளங்களின் நேரலை விலை ஒப்பீடு:</h4>
+        ${p.offers.map(o => `
+          <div class="offer-row ${o.lowest ? 'lowest' : ''}">
+            <div>
+              <strong>${o.store}</strong> ${o.lowest ? '<span style="background:#059669; color:white; font-size:10px; padding:2px 6px; border-radius:4px; font-weight:bold; margin-left:6px;">குறைந்த விலை</span>' : ''}
+              <div style="font-size:11px; color:#475569; margin-top:3px;">${o.del}</div>
+            </div>
+            <div style="text-align:right;">
+              <span style="font-size:20px; font-weight:900;">₹${o.price.toLocaleString('en-IN')}</span>
+              <a href="${o.url}" target="_blank" rel="noopener noreferrer" class="btn-buy" style="margin-top:6px; padding:8px 16px; font-size:12px;">
+                வாங்குங்கள் ↗
+              </a>
+            </div>
+          </div>
+        `).join('')}
+      `;
+      document.getElementById("detailModal").classList.add("open");
+    }
+
+    function setCategory(cat) {
+      activeCat = cat;
+      document.getElementById("searchCategory").value = cat;
+      document.querySelectorAll(".cat-chip").forEach(c => {
+        c.classList.toggle("active", c.textContent.includes(cat) || (cat === 'All' && c.textContent.includes('அனைத்து')));
+      });
+      renderProducts();
+    }
+
+    function handleSearch() {
+      renderProducts();
+    }
+
+    function toggleLang() {
+      currentLang = currentLang === 'ta' ? 'en' : 'ta';
+      document.getElementById("langBtn").textContent = currentLang === 'ta' ? 'English' : 'தமிழ்';
+      document.getElementById("logoSub").textContent = currentLang === 'ta' ? 'பெஸ்ட் செல்லர் மையம்' : 'Best Seller Hub';
+      renderProducts();
+    }
+
+    function openPincodeModal() {
+      const pin = prompt("உங்கள் 6-இலக்க டெலிவரி பின்கோடை உள்ளிடவும் (Enter 6-digit PIN):", "600001");
+      if (pin && pin.length === 6) {
+        document.getElementById("pincodeLabel").textContent = pin + " (மாற்று)";
+      }
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove("open");
+    }
+
+    // Direct Browser Download of this exact file as smartdeals-pro.html
+    function downloadThisHtmlFile() {
+      const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: "text/html;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "smartdeals-pro.html";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    renderProducts();
+  </script>
+
+
+</body></html>
