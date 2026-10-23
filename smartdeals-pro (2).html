@@ -1,244 +1,140 @@
 <!DOCTYPE html>
-<html lang="ta"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SmartDeals Pro - அமேசான் &amp; ஃபிளிப்கார்ட் பெஸ்ட் செல்லர் நேரலை விலை ஒப்பீடு</title>
-  <meta name="description" content="அமேசான் மற்றும் ஃபிளிப்கார்ட் தளங்களின் #1 பெஸ்ட் செல்லர் நேரலை விலை ஒப்பீடு. சிறந்த சலுகைகள், நேரடி விலை ஒப்பீடு, கூகுள்/மொபைல் பட்டியல் மற்றும் இ-காமர்ஸ் டீல்ஸ்.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Noto+Sans+Tamil:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<html lang="ta">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartDeals Pro</title>
   <style>
     :root {
       --navy: #131921;
       --navy-light: #232f3e;
       --orange: #febd69;
-      --orange-dark: #f3a847;
-      --yellow: #ffd814;
-      --yellow-hover: #f7ca00;
-      --blue: #2563eb;
-      --emerald: #059669;
-      --emerald-dark: #065f46;
       --bg: #f1f3f6;
       --text: #0f172a;
       --line: #e2e8f0;
+      --yellow: #ffd814;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Plus Jakarta Sans', 'Noto Sans Tamil', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+    body { font-family: Arial, sans-serif; background: var(--bg); color: var(--text); }
+    a { text-decoration: none; }
     button, input, select { font: inherit; }
-    button { cursor: pointer; }
-    
-    .ticker { background: #020617; color: #94a3b8; font-size: 11px; padding: 7px 16px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; flex-wrap: wrap; gap: 8px; }
-    .ticker-live { color: #34d399; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }
-    .ticker-pulse { width: 7px; height: 7px; border-radius: 50%; background: #34d399; animation: pulse 1.5s infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.85); } }
-    .ticker-id { color: #fbbf24; font-weight: 700; background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.3); padding: 3px 10px; border-radius: 6px; display: inline-flex; align-items: center; }
-    
-    header.main-header { background: var(--navy); color: white; padding: 12px 16px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 50; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.18); }
-    .logo { font-size: 23px; font-weight: 900; letter-spacing: -0.5px; white-space: nowrap; cursor: pointer; text-decoration: none; color: white; }
-    .logo span { color: var(--orange); }
-    .logo-sub { font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.6px; margin-top: -3px; font-weight: 600; }
-    
-    .pincode-btn { display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: white; padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; }
-    .pincode-btn:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.3); }
-    
-    .search-wrap { flex: 1; display: flex; min-width: 260px; max-width: 680px; border-radius: 8px; overflow: hidden; background: white; box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); }
-    .search-wrap select { background: #e2e8f0; border: 0; padding: 9px 12px; font-size: 12px; font-weight: 700; color: #334155; outline: none; border-right: 1px solid #cbd5e1; }
-    .search-wrap input { flex: 1; border: 0; padding: 9px 14px; font-size: 13px; outline: none; color: #0f172a; }
-    .search-wrap button { background: var(--orange); border: 0; padding: 0 18px; font-weight: 800; font-size: 14px; color: #0f172a; transition: background 0.15s; }
-    .search-wrap button:hover { background: var(--orange-dark); }
-    
-    .top-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
-    .btn-lang { background: var(--navy-light); color: white; border: 1px solid #475569; padding: 7px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; transition: 0.15s; }
-    .btn-lang:hover { background: #334155; }
-    .btn-download { background: #10b981; color: white; font-weight: 800; border: 0; padding: 7px 14px; border-radius: 8px; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
-    .btn-download:hover { background: #059669; }
-    
-    .cat-nav { background: white; border-bottom: 1px solid var(--line); padding: 10px 16px; display: flex; gap: 8px; overflow-x: auto; white-space: nowrap; }
-    .cat-chip { border: 1px solid #cbd5e1; background: #f8fafc; color: #334155; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; cursor: pointer; transition: 0.15s; }
-    .cat-chip:hover { background: #e2e8f0; }
-    .cat-chip.active { background: var(--navy); color: white; border-color: var(--navy); box-shadow: 0 2px 6px rgba(19,25,33,0.25); }
-    
-    .hero { background: linear-gradient(135deg, #0b111e, #1a2538, #0b111e); color: white; padding: 36px 16px; border-bottom: 1px solid #334155; }
-    .hero-content { max-width: 1240px; margin: auto; display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
-    .hero-text { flex: 1; min-width: 300px; }
-    .hero-badge { display: inline-block; background: rgba(245, 158, 11, 0.2); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.4); padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.4px; }
-    .hero h1 { font-size: clamp(24px, 4vw, 40px); font-weight: 900; line-height: 1.15; margin-bottom: 12px; }
-    .hero p { color: #cbd5e1; font-size: 14px; max-width: 640px; line-height: 1.6; }
-    
-    .hero-box { background: rgba(15, 23, 42, 0.9); border: 1px solid #475569; border-radius: 16px; padding: 18px; min-width: 310px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-    .hero-box h3 { font-size: 12px; font-weight: 800; color: #fbbf24; margin-bottom: 10px; display: flex; justify-content: space-between; text-transform: uppercase; }
-    .hero-box-item { background: rgba(30, 41, 59, 0.85); border: 1px solid #334155; padding: 10px 14px; border-radius: 10px; font-size: 12px; margin-bottom: 8px; display: flex; justify-content: space-between; gap: 12px; align-items: center; }
-    
-    .wrap { max-width: 1240px; margin: auto; padding: 28px 16px 56px; }
-    .section-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
-    .section-head h2 { font-size: 22px; font-weight: 900; color: #0f172a; }
-    .section-head p { font-size: 12px; color: #64748b; margin-top: 3px; }
-    
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-    .card { background: white; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
-    .card:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgba(0,0,0,0.08); border-color: #f59e0b; }
-    
-    .ribbon { background: linear-gradient(90deg, #e47911, #f3a847); color: white; font-size: 10px; font-weight: 800; padding: 5px 12px; display: flex; justify-content: space-between; text-transform: uppercase; letter-spacing: 0.04em; gap: 8px; }
-    .photo { height: 210px; background: #f8fafc; display: flex; align-items: center; justify-content: center; padding: 16px; position: relative; }
-    .photo img { max-height: 100%; max-width: 100%; object-fit: contain; transition: transform 0.3s; }
-    .card:hover .photo img { transform: scale(1.05); }
-    
-    .card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; }
-    .category-tag { font-size: 10px; font-weight: 700; color: #64748b; text-transform: uppercase; }
-    .title { font-weight: 700; font-size: 14px; line-height: 1.4; margin: 6px 0 8px; color: #0f172a; min-height: 40px; }
-    .rating-row { display: flex; align-items: center; gap: 6px; font-size: 12px; margin-bottom: 10px; }
-    .rating-pill { background: #047857; color: white; font-size: 11px; font-weight: 800; padding: 2px 7px; border-radius: 4px; display: inline-flex; align-items: center; gap: 3px; }
-    
-    .price-box { background: #fef3c7; border: 1px solid #fde68a; border-radius: 10px; padding: 12px; margin-bottom: 10px; }
-    .price-main { display: flex; align-items: baseline; gap: 8px; }
-    .price-num { font-size: 22px; font-weight: 900; color: #0f172a; }
-    .price-mrp { font-size: 12px; color: #94a3b8; text-decoration: line-through; }
-    .price-off { font-size: 12px; font-weight: 800; color: #059669; }
-    
-    .diff-badge { font-size: 11px; font-weight: 700; color: #065f46; display: flex; align-items: center; justify-content: space-between; margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(6, 95, 70, 0.14); }
-    .diff-store { background: #0f172a; color: white; padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 800; }
-    .diff-store.flipkart { background: #2563eb; }
-    
-    .delivery-line { font-size: 11px; color: #475569; margin-bottom: 12px; display: flex; align-items: center; gap: 5px; }
-    
-    .card-actions { margin-top: auto; display: flex; flex-direction: column; gap: 7px; }
-    .btn-buy { background: var(--yellow); border: 1px solid #facc15; color: #0f172a; font-weight: 800; font-size: 13px; padding: 10px; border-radius: 9px; text-decoration: none; text-align: center; transition: background 0.15s; }
-    .btn-buy:hover { background: var(--yellow-hover); }
-    .btn-details { background: #f8fafc; border: 1px solid #cbd5e1; color: #1e293b; font-weight: 700; font-size: 12px; padding: 8px; border-radius: 9px; text-align: center; cursor: pointer; transition: 0.15s; }
-    .btn-details:hover { background: #e2e8f0; }
 
-    .modal-overlay { position: fixed; inset: 0; background: rgba(2,6,23,0.8); display: none; align-items: center; justify-content: center; z-index: 100; padding: 16px; backdrop-filter: blur(4px); }
-    .modal-overlay.open { display: flex; }
-    .modal-card { background: white; border-radius: 18px; width: 100%; max-width: 760px; max-height: 90vh; overflow-y: auto; padding: 24px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.25); }
-    .close-btn { position: absolute; right: 16px; top: 16px; border: 0; background: #e2e8f0; width: 34px; height: 34px; border-radius: 50%; font-size: 18px; font-weight: bold; cursor: pointer; }
-    .close-btn:hover { background: #cbd5e1; }
-    
-    .offer-row { border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin-top: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-    .offer-row.lowest { background: #ecfdf5; border-color: #6ee7b7; box-shadow: inset 0 0 0 2px #a7f3d0; }
-    
-    footer { background: var(--navy); color: #94a3b8; font-size: 12px; text-align: center; padding: 36px 16px; margin-top: 56px; border-top: 1px solid #334155; }
-    footer strong { color: white; font-size: 15px; }
-
-    @media (max-width: 640px) {
-      .ticker { flex-direction: column; align-items: flex-start; }
-      header.main-header { gap: 10px; }
-      .search-wrap { order: 3; flex-basis: 100%; max-width: 100%; }
-      .top-actions { margin-left: auto; }
-      .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
-      .photo { height: 175px; }
+    header {
+      background: var(--navy); color: white;
+      padding: 14px 18px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 10;
     }
+    .logo { color: white; font-weight: 900; font-size: 24px; }
+    .logo span { color: var(--orange); }
+    .search-wrap { flex: 1; display: flex; max-width: 620px; background: white; border-radius: 8px; overflow: hidden; }
+    .search-wrap select, .search-wrap input, .search-wrap button {
+      border: 0; padding: 10px 12px; font-size: 14px;
+    }
+    .search-wrap select { background: #e2e8f0; border-right: 1px solid #cbd5e1; }
+    .search-wrap input { flex: 1; }
+    .search-wrap button { background: var(--orange); font-weight: 700; cursor: pointer; }
+    .top-actions { margin-left: auto; }
+    .btn-lang {
+      background: var(--navy-light); border: 1px solid #475569; color: white; border-radius: 8px; padding: 8px 14px; cursor: pointer;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0b111e, #1a2538, #0b111e); color: white; padding: 32px 18px;
+    }
+    .hero-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .hero h1 { font-size: clamp(28px, 4vw, 42px); margin-bottom: 10px; }
+    .hero p { max-width: 680px; color: #cbd5e1; line-height: 1.6; }
+    .hero-box {
+      background: rgba(15, 23, 42, 0.9); border: 1px solid #475569; border-radius: 16px; padding: 18px; min-width: 300px;
+    }
+    .hero-box h3 { color: #fbbf24; font-size: 12px; margin-bottom: 10px; text-transform: uppercase; }
+    .hero-box-item {
+      background: rgba(30, 41, 59, 0.85); border: 1px solid #334155; border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; display: flex; justify-content: space-between; gap: 10px; align-items: center;
+    }
+
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 28px 18px 50px; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 20px; flex-wrap: wrap; }
+    .section-head h2 { font-size: 22px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .card {
+      background: white; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;
+    }
+    .ribbon {
+      display: flex; justify-content: space-between; gap: 10px; background: linear-gradient(90deg, #e47911, #f3a847); color: white; font-size: 10px; font-weight: 800; padding: 6px 12px; text-transform: uppercase;
+    }
+    .photo { height: 210px; background: #f8fafc; display: flex; align-items: center; justify-content: center; }
+    .photo img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .card-body { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+    .category-tag { color: #64748b; text-transform: uppercase; font-size: 10px; font-weight: 700; }
+    .title { font-weight: 700; line-height: 1.4; min-height: 42px; }
+    .rating-row { font-size: 12px; color: #64748b; display: flex; align-items: center; gap: 8px; }
+    .rating-pill { background: #047857; color: white; padding: 3px 7px; border-radius: 4px; font-weight: 800; }
+    .price-box { background: #fef3c7; border: 1px solid #fde68a; border-radius: 10px; padding: 12px; }
+    .price-main { display: flex; align-items: baseline; gap: 8px; }
+    .price-num { font-size: 22px; font-weight: 900; }
+    .price-mrp { color: #94a3b8; text-decoration: line-through; font-size: 12px; }
+    .price-off { color: #059669; font-weight: 800; font-size: 12px; }
+    .diff-badge { display: flex; justify-content: space-between; gap: 8px; margin-top: 8px; font-size: 11px; color: #065f46; font-weight: 700; }
+    .diff-store { background: #0f172a; color: white; padding: 2px 7px; border-radius: 4px; }
+    .delivery-line { font-size: 11px; color: #475569; }
+    .card-actions { margin-top: auto; display: flex; flex-direction: column; gap: 8px; }
+    .btn-buy {
+      display: block; background: var(--yellow); color: #0f172a; border: 1px solid #facc15; font-weight: 800; padding: 10px; border-radius: 9px; text-align: center;
+    }
+    .btn-details {
+      background: #f8fafc; border: 1px solid #cbd5e1; color: #1e293b; font-weight: 700; padding: 8px; border-radius: 9px; cursor: pointer;
+    }
+    .modal-overlay { position: fixed; inset: 0; background: rgba(2,6,23,0.8); display: none; align-items: center; justify-content: center; padding: 16px; }
+    .modal-overlay.open { display: flex; }
+    .modal-card { background: white; border-radius: 18px; width: min(760px, 100%); max-height: 90vh; overflow-y: auto; padding: 24px; position: relative; }
+    .close-btn { position: absolute; right: 16px; top: 16px; width: 34px; height: 34px; border-radius: 50%; border: 0; cursor: pointer; background: #e2e8f0; }
+    .offer-row { border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin-top: 10px; display: flex; justify-content: space-between; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .offer-row.lowest { background: #ecfdf5; border-color: #6ee7b7; }
+    footer { background: var(--navy); color: #94a3b8; text-align: center; padding: 30px 18px; }
+    footer strong { color: white; }
   </style>
-<script src="/_aistudio-iframe.js?v=6634132a"></script><script src="https://cdn.jsdelivr.net/npm/html2canvas-pro@2.0.4"></script><style>.aistudio-hover-highlight { box-shadow: inset 0 0 0 0.5px rgba(99,102,241,0.8); }</style></head>
+</head>
 <body>
-
-  <div class="ticker">
-    <div>
-      <span class="ticker-live"><span class="ticker-pulse"></span> நேரலை சரிபார்க்கப்பட்டது</span>
-      <span style="margin-left: 8px;">அமேசான் &amp; ஃபிளிப்கார்ட் விலை ஒப்பீட்டு தளம்</span>
-    </div>
-    <div style="display: flex; gap: 8px; align-items: center;">
-      <div class="ticker-id">EarnKaro ID: 5736227 (ACTIVE)</div>
-      <div class="ticker-id" style="color:#6ee7b7; border-color:#059669;">Amazon Tag: dealshub0b6f-21</div>
-    </div>
-  </div>
-
-  <header class="main-header">
-    <a href="#" class="logo" onclick="setCategory('All'); return false;">
-      Smart<span>Deals</span> Pro
-      <div class="logo-sub" id="logoSub">பெஸ்ட் செல்லர் மையம்</div>
-    </a>
-
-    <button class="pincode-btn" onclick="openPincodeModal()">
-      📍 <span id="pincodeLabel">சென்னை 600001 (மாற்று)</span>
-    </button>
-
+  <header>
+    <a href="#" class="logo" onclick="setCategory('All'); return false;">Smart<span>Deals</span> Pro</a>
     <div class="search-wrap">
       <select id="searchCategory" onchange="setCategory(this.value)">
         <option value="All">அனைத்து பிரிவுகள்</option>
         <option value="Mobiles">Mobiles</option>
         <option value="Electronics">Electronics</option>
-        <option value="Audio">Audio &amp; Watches</option>
-        <option value="Home">Home &amp; Kitchen</option>
-        <option value="Appliances">Appliances</option>
+        <option value="Audio">Audio</option>
+        <option value="Home">Home</option>
         <option value="Fashion">Fashion</option>
         <option value="Beauty">Beauty</option>
       </select>
-      <input id="searchInput" type="text" placeholder="மொபைல்கள், லேப்டாப்கள், உபகரணங்கள்..." oninput="handleSearch()">
+      <input id="searchInput" type="text" placeholder="Search deals..." oninput="handleSearch()" />
       <button onclick="handleSearch()">🔍</button>
     </div>
-
     <div class="top-actions">
-      <button class="btn-lang" onclick="toggleLang()" id="langBtn">English</button>
+      <button class="btn-lang" id="langBtn" onclick="toggleLang()">English</button>
     </div>
   </header>
 
-  <nav class="cat-nav" id="catNav">
-    <button class="cat-chip active" onclick="setCategory('All')">🔥 அனைத்து பெஸ்ட் செல்லர்கள்</button>
-    <button class="cat-chip" onclick="setCategory('Mobiles')">📱 Mobiles</button>
-    <button class="cat-chip" onclick="setCategory('Electronics')">💻 Laptops &amp; Gadgets</button>
-    <button class="cat-chip" onclick="setCategory('Audio')">🎧 Audio &amp; Wearables</button>
-    <button class="cat-chip" onclick="setCategory('Home')">🏠 Home &amp; Kitchen</button>
-    <button class="cat-chip" onclick="setCategory('Appliances')">📺 Appliances</button>
-    <button class="cat-chip" onclick="setCategory('Fashion')">👕 Fashion</button>
-    <button class="cat-chip" onclick="setCategory('Beauty')">✨ Beauty</button>
-  </nav>
-
   <section class="hero">
-    <div class="hero-content">
-      <div class="hero-text">
-        <span class="hero-badge">இந்தியாவின் #1 பெஸ்ட் செல்லர்கள்</span>
-        <h1 id="heroH1">அமேசான் vs ஃபிளிப்கார்ட் நேரலை விலை ஒப்பீடு</h1>
-        <p id="heroP">எந்த தளத்தில் விலை குறைவு என்பதை உடனே உறுதி செய்யுங்கள். உங்கள் அன்றைய தேவைக்கேற்ப சிறந்த விலைக்கு பொருட்களைத் தேர்ந்தெடுக்கலாம்.</p>
+    <div class="hero-inner">
+      <div>
+        <h1>Amazon vs Flipkart live price comparison</h1>
+        <p>Compare the best deals, save time, and choose the lowest available offer without needing to visit multiple pages.</p>
       </div>
       <div class="hero-box">
-        <h3><span>இன்றைய சிறந்த சேமிப்பு</span> <span style="color:#34d399">VERIFIED</span></h3>
-        <div class="hero-box-item">
-          <div><strong>MacBook Air M2</strong><br><small style="color:#94a3b8">Flipkart ₹84,990 vs ₹87,990</small></div>
-          <strong style="color:#34d399">Save ₹3,000</strong>
-        </div>
-        <div class="hero-box-item">
-          <div><strong>Sony WH-1000XM5</strong><br><small style="color:#94a3b8">Amazon ₹26,990 vs ₹27,990</small></div>
-          <strong style="color:#34d399">Save ₹1,000</strong>
-        </div>
-        <div class="hero-box-item">
-          <div><strong>OnePlus Nord CE4</strong><br><small style="color:#94a3b8">Flipkart ₹22,499 vs ₹22,999</small></div>
-          <strong style="color:#34d399">Save ₹500</strong>
-        </div>
+        <h3>Top savings today</h3>
+        <div class="hero-box-item"><div><strong>MacBook Air M2</strong></div><strong>Save ₹3,000</strong></div>
+        <div class="hero-box-item"><div><strong>Sony WH-1000XM5</strong></div><strong>Save ₹1,000</strong></div>
+        <div class="hero-box-item"><div><strong>OnePlus Nord CE4</strong></div><strong>Save ₹500</strong></div>
       </div>
     </div>
   </section>
 
   <main class="wrap">
     <div class="section-head">
-      <div>
-        <h2 id="catalogTitle">முன்னணி பெஸ்ட் செல்லர் பொருட்கள்</h2>
-        <p id="catalogSub">சென்னை 600001 இருப்பிடத்திற்கு கணக்கிடப்பட்ட டெலிவரி தேதிகளுடன் சிறந்த சேமிப்பு பண்டங்கள்.</p>
-      </div>
-      <div style="font-size: 12px; color: #64748b; font-weight: 700;">
-        <span id="productCountBadge">8 பொருட்கள் கிடைக்கின்றன</span>
-      </div>
+      <h2>Best seller products</h2>
+      <div id="productCountBadge">1 products available</div>
     </div>
-
-    <div class="grid" id="productGrid">
-      <div class="card">
-        <div class="ribbon"><span>#1 BEST SELLER</span> <span>#1 in Smartphones under ₹25,000</span></div>
-        <div class="photo"><img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="OnePlus Nord CE4 (Dark Chrome, 8GB RAM, 128GB Storage)" loading="lazy"></div>
-        <div class="card-body">
-          <div class="category-tag">Mobiles</div>
-          <div class="title">ஒன்பிளஸ் நார்டு சிஇ4 (8GB ரேம், 128GB மெமரி)</div>
-          <div class="rating-row"><span class="rating-pill">4.4 ★</span><span style="color:#64748b; font-size:11px;">(38,450 மதிப்புரைகள்)</span></div>
-          <div class="price-box">
-            <div class="price-main"><span class="price-num">₹22,499</span><span class="price-mrp">₹24,999</span><span class="price-off">10% off</span></div>
-            <div class="diff-badge"><span>குறைந்த விலை: <strong class="diff-store flipkart">Flipkart</strong></span><span style="color:#047857; font-weight:800;">சேமிப்பு ₹500</span></div>
-          </div>
-          <div class="delivery-line">🚚 2 நாட்களில் டெலிவரி (Flipkart Assured)</div>
-          <div class="card-actions">
-            <a class="btn-buy" href="https://www.flipkart.com/oneplus-nord-ce4-dark-chrome-128-gb/p/itm2c909e4be0b32?affExtParam1=5736227" target="_blank" rel="noopener noreferrer">Flipkart-ல் வாங்குங்கள் ↗</a>
-            <button class="btn-details" onclick="openDetails('oneplus-nord-ce4')">அனைத்து ஸ்டோர்களையும் ஒப்பிடு</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div id="productGrid" class="grid"></div>
   </main>
 
   <div class="modal-overlay" id="detailModal">
@@ -250,63 +146,57 @@
 
   <footer>
     <strong>Smart Deals Pro</strong><br>
-    Compare thoughtfully. Buy confidently.<br><br>
-    EarnKaro ID: 5736227 • Amazon Associate Tracking: dealshub0b6f-21<br>
-    Single-File Complete Offline/Online Standalone Package. All rights reserved.
+    Compare thoughtfully. Buy confidently.
   </footer>
 
   <script>
     const EARNKARO_ID = "5736227";
     const AMAZON_TAG = "dealshub0b6f-21";
-    let currentLang = "ta";
-    let activeCat = "All";
+    let currentLang = 'ta';
+    let activeCat = 'All';
 
     const products = [
       {
-        id: "oneplus-nord-ce4",
-        name: "OnePlus Nord CE4 (Dark Chrome, 8GB RAM, 128GB Storage)",
-        nameTa: "ஒன்பிளஸ் நார்டு சிஇ4 (8GB ரேம், 128GB மெமரி)",
-        category: "Mobiles",
-        rank: "#1 in Smartphones under ₹25,000",
+        id: 'oneplus-nord-ce4',
+        name: 'OnePlus Nord CE4 (Dark Chrome, 8GB RAM, 128GB Storage)',
+        nameTa: 'ஒன்பிளஸ் நார்டு சிஇ4 (8GB ரேம், 128GB மெமரி)',
+        category: 'Mobiles',
+        rank: '#1 in Smartphones under ₹25,000',
         rating: 4.4,
         reviews: 38450,
-        image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80",
-        specs: ["Snapdragon 7 Gen 3", "100W SUPERVOOC Fast Charge", "5500 mAh Battery", "Sony LYT-600 50MP OIS Camera"],
+        image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80',
+        specs: ['Snapdragon 7 Gen 3', '100W SUPERVOOC Fast Charge', '5500 mAh Battery'],
         offers: [
-          { store: "Flipkart", price: 22499, mrp: 24999, lowest: true, url: "https://www.flipkart.com/oneplus-nord-ce4-dark-chrome-128-gb/p/itm2c909e4be0b32?affExtParam1=" + EARNKARO_ID, del: "2 நாட்களில் டெலிவரி (Flipkart Assured)" },
-          { store: "Amazon", price: 22999, mrp: 24999, lowest: false, url: "https://www.amazon.in/dp/B0CX21M98F?tag=" + AMAZON_TAG, del: "நாளை காலை 11 மணிக்குள்" }
+          { store: 'Flipkart', price: 22499, mrp: 24999, lowest: true, url: 'https://www.flipkart.com/oneplus-nord-ce4-dark-chrome-128-gb/p/itm2c909e4be0b32?affExtParam1=' + EARNKARO_ID, del: '2 days delivery' },
+          { store: 'Amazon', price: 22999, mrp: 24999, lowest: false, url: 'https://www.amazon.in/dp/B0CX21M98F?tag=' + AMAZON_TAG, del: 'Next-day delivery' }
         ]
       }
     ];
 
     function renderProducts() {
-      const q = document.getElementById("searchInput").value.toLowerCase();
+      const q = document.getElementById('searchInput').value.toLowerCase();
       const filtered = products.filter(p => {
-        const matchCat = activeCat === "All" || p.category === activeCat;
+        const matchCat = activeCat === 'All' || p.category === activeCat;
         const matchQ = !q || p.name.toLowerCase().includes(q) || p.nameTa.toLowerCase().includes(q);
         return matchCat && matchQ;
       });
 
-      document.getElementById("productCountBadge").textContent = `${filtered.length} பொருட்கள் கிடைக்கின்றன`;
-
-      const grid = document.getElementById("productGrid");
+      document.getElementById('productCountBadge').textContent = `${filtered.length} products available`;
+      const grid = document.getElementById('productGrid');
       grid.innerHTML = filtered.map(p => {
         const lowestOffer = p.offers.find(o => o.lowest) || p.offers[0];
         const otherOffer = p.offers.find(o => !o.lowest);
-        const savings = otherOffer ? (otherOffer.price - lowestOffer.price) : 0;
+        const savings = otherOffer ? otherOffer.price - lowestOffer.price : 0;
         const discount = Math.round(((lowestOffer.mrp - lowestOffer.price) / lowestOffer.mrp) * 100);
 
         return `
           <div class="card">
-            <div class="ribbon"><span>#1 BEST SELLER</span> <span>${p.rank}</span></div>
-            <div class="photo"><img src="${p.image}" alt="${p.name}" loading="lazy"></div>
+            <div class="ribbon"><span>#1 BEST SELLER</span><span>${p.rank}</span></div>
+            <div class="photo"><img src="${p.image}" alt="${p.name}" loading="lazy" /></div>
             <div class="card-body">
               <div class="category-tag">${p.category}</div>
               <div class="title">${currentLang === 'ta' ? p.nameTa : p.name}</div>
-              <div class="rating-row">
-                <span class="rating-pill">${p.rating} ★</span>
-                <span style="color:#64748b; font-size:11px;">(${p.reviews.toLocaleString('en-IN')} மதிப்புரைகள்)</span>
-              </div>
+              <div class="rating-row"><span class="rating-pill">${p.rating} ★</span><span>(${p.reviews.toLocaleString('en-IN')} reviews)</span></div>
               <div class="price-box">
                 <div class="price-main">
                   <span class="price-num">₹${lowestOffer.price.toLocaleString('en-IN')}</span>
@@ -314,14 +204,14 @@
                   <span class="price-off">${discount}% off</span>
                 </div>
                 <div class="diff-badge">
-                  <span>குறைந்த விலை: <strong class="diff-store ${lowestOffer.store.toLowerCase()}">${lowestOffer.store}</strong></span>
-                  ${savings > 0 ? `<span style="color:#047857; font-weight:800;">சேமிப்பு ₹${savings.toLocaleString('en-IN')}</span>` : ''}
+                  <span>Lowest: <strong class="diff-store">${lowestOffer.store}</strong></span>
+                  <span>${savings > 0 ? 'Save ₹' + savings.toLocaleString('en-IN') : ''}</span>
                 </div>
               </div>
               <div class="delivery-line">🚚 ${lowestOffer.del}</div>
               <div class="card-actions">
                 <a class="btn-buy" href="${lowestOffer.url}" target="_blank" rel="noopener noreferrer">${lowestOffer.store}-ல் வாங்குங்கள் ↗</a>
-                <button class="btn-details" onclick="openDetails('${p.id}')">அனைத்து ஸ்டோர்களையும் ஒப்பிடு</button>
+                <button class="btn-details" onclick="openDetails('${p.id}')">Compare all stores</button>
               </div>
             </div>
           </div>
@@ -332,40 +222,33 @@
     function openDetails(id) {
       const p = products.find(x => x.id === id);
       if (!p) return;
-      document.getElementById("detailContent").innerHTML = `
-        <h3 style="font-size:18px; font-weight:bold; margin-bottom:12px; line-height:1.3;">${currentLang === 'ta' ? p.nameTa : p.name}</h3>
-        <div style="background:#f8fafc; border-radius:12px; padding:16px; margin-bottom:16px; text-align:center;">
-          <img src="${p.image}" style="max-height:220px; max-width:100%; object-fit:contain;">
-        </div>
-
-        <h4 style="font-size:14px; font-weight:800; margin-bottom:8px;">முக்கிய சிறப்பம்சங்கள்:</h4>
-        <ul style="margin-left:20px; font-size:12px; color:#475569; margin-bottom:16px;">
+      document.getElementById('detailContent').innerHTML = `
+        <h3 style="font-size:24px; margin-bottom:12px;">${currentLang === 'ta' ? p.nameTa : p.name}</h3>
+        <div style="text-align:center; margin-bottom:16px;"><img src="${p.image}" style="max-height:220px; max-width:100%; object-fit:contain;" /></div>
+        <h4 style="margin-bottom:8px;">Key features</h4>
+        <ul style="margin:0 0 16px 20px; color:#475569;">
           ${p.specs.map(s => `<li>${s}</li>`).join('')}
         </ul>
-
-        <h4 style="font-size:14px; font-weight:800; margin-bottom:8px;">அனைத்து ஆன்லைன் தளங்களின் நேரலை விலை ஒப்பீடு:</h4>
         ${p.offers.map(o => `
           <div class="offer-row ${o.lowest ? 'lowest' : ''}">
             <div>
-              <strong>${o.store}</strong> ${o.lowest ? '<span style="background:#059669; color:white; font-size:10px; padding:2px 6px; border-radius:4px; font-weight:bold; margin-left:6px;">LOWEST</span>' : ''}
-              <div style="font-size:11px; color:#475569; margin-top:3px;">${o.del}</div>
+              <strong>${o.store}</strong>
+              ${o.lowest ? '<span style="background:#059669; color:white; font-size:10px; padding:2px 6px; border-radius:4px; margin-left:6px;">LOWEST</span>' : ''}
+              <div style="font-size:11px; color:#475569; margin-top:4px;">${o.del}</div>
             </div>
             <div style="text-align:right;">
-              <span style="font-size:20px; font-weight:900;">₹${o.price.toLocaleString('en-IN')}</span>
-              <a href="${o.url}" target="_blank" rel="noopener noreferrer" class="btn-buy" style="margin-top:6px; padding:8px 16px; font-size:12px; display:inline-block;">வாங்குங்கள் ↗</a>
+              <span style="font-size:20px; font-weight:900;">₹${o.price.toLocaleString('en-IN')}</span><br>
+              <a href="${o.url}" target="_blank" rel="noopener noreferrer" class="btn-buy" style="display:inline-block; margin-top:6px; padding:8px 16px;">Buy now ↗</a>
             </div>
           </div>
         `).join('')}
       `;
-      document.getElementById("detailModal").classList.add("open");
+      document.getElementById('detailModal').classList.add('open');
     }
 
     function setCategory(cat) {
       activeCat = cat;
-      document.getElementById("searchCategory").value = cat;
-      document.querySelectorAll(".cat-chip").forEach(c => {
-        c.classList.toggle("active", c.textContent.includes(cat) || (cat === 'All' && c.textContent.includes('அனைத்து')));
-      });
+      document.getElementById('searchCategory').value = cat;
       renderProducts();
     }
 
@@ -375,23 +258,15 @@
 
     function toggleLang() {
       currentLang = currentLang === 'ta' ? 'en' : 'ta';
-      document.getElementById("langBtn").textContent = currentLang === 'ta' ? 'English' : 'தமிழ்';
-      document.getElementById("logoSub").textContent = currentLang === 'ta' ? 'பெஸ்ட் செல்லர் மையம்' : 'Best Seller Hub';
+      document.getElementById('langBtn').textContent = currentLang === 'ta' ? 'English' : 'தமிழ்';
       renderProducts();
     }
 
-    function openPincodeModal() {
-      const pin = prompt("உங்கள் 6-இலக்க டெலிவரி பின்கோடை உள்ளிடவும் (Enter 6-digit PIN):", "600001");
-      if (pin && pin.length === 6) {
-        document.getElementById("pincodeLabel").textContent = pin + " (மாற்று)";
-      }
-    }
-
     function closeModal(id) {
-      document.getElementById(id).classList.remove("open");
+      document.getElementById(id).classList.remove('open');
     }
 
     renderProducts();
   </script>
-
-</body></html>
+</body>
+</html>
