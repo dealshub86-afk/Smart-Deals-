@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ta">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,266 +7,987 @@
   <style>
     :root {
       --navy: #131921;
-      --navy-light: #232f3e;
+      --navy-2: #232f3e;
       --orange: #febd69;
-      --bg: #f1f3f6;
-      --text: #0f172a;
-      --line: #e2e8f0;
+      --orange-2: #f59e0b;
       --yellow: #ffd814;
+      --yellow-2: #f7ca00;
+      --bg: #f3f4f6;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --green: #16a34a;
+      --green-soft: #ecfdf5;
+      --shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Arial, sans-serif; background: var(--bg); color: var(--text); }
-    a { text-decoration: none; }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    a { text-decoration: none; color: inherit; }
     button, input, select { font: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .topbar {
+      background: var(--navy);
+      color: white;
+      padding: 8px 18px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .topbar .live {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #34d399;
+      font-weight: 700;
+    }
+    .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #34d399;
+      box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7);
+      animation: pulse 1.6s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+    }
+    .topbar .right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .mini-pill {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      padding: 5px 10px;
+      color: #fbbf24;
+      font-weight: 700;
+    }
 
     header {
-      background: var(--navy); color: white;
-      padding: 14px 18px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 10;
+      background: var(--navy);
+      color: white;
+      padding: 14px 18px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
     }
-    .logo { color: white; font-weight: 900; font-size: 24px; }
-    .logo span { color: var(--orange); }
-    .search-wrap { flex: 1; display: flex; max-width: 620px; background: white; border-radius: 8px; overflow: hidden; }
-    .search-wrap select, .search-wrap input, .search-wrap button {
-      border: 0; padding: 10px 12px; font-size: 14px;
+    .header-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
     }
-    .search-wrap select { background: #e2e8f0; border-right: 1px solid #cbd5e1; }
-    .search-wrap input { flex: 1; }
-    .search-wrap button { background: var(--orange); font-weight: 700; cursor: pointer; }
-    .top-actions { margin-left: auto; }
-    .btn-lang {
-      background: var(--navy-light); border: 1px solid #475569; color: white; border-radius: 8px; padding: 8px 14px; cursor: pointer;
+    .brand {
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: -0.6px;
+      color: white;
+      white-space: nowrap;
     }
+    .brand span { color: var(--orange); }
+
+    .search-wrap {
+      flex: 1;
+      display: flex;
+      min-width: 280px;
+      max-width: 780px;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 2px solid #facc15;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .search-wrap select {
+      background: #e2e8f0;
+      border: none;
+      border-right: 1px solid #cbd5e1;
+      padding: 12px 14px;
+      color: #0f172a;
+      font-weight: 700;
+      min-width: 140px;
+    }
+    .search-wrap input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 12px 16px;
+      font-size: 15px;
+    }
+    .search-wrap button {
+      border: none;
+      background: var(--orange);
+      padding: 0 18px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+    .search-wrap button:hover { background: var(--orange-2); }
+
+    .header-actions {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .action-btn,
+    .primary-btn,
+    .secondary-btn,
+    .chip-btn,
+    .offer-btn {
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+    .action-btn {
+      background: rgba(255,255,255,0.08);
+      color: white;
+      padding: 9px 12px;
+      border: 1px solid rgba(255,255,255,0.16);
+      font-weight: 700;
+    }
+    .action-btn:hover { background: rgba(255,255,255,0.12); }
+    .cart-pill {
+      position: relative;
+      padding-right: 28px;
+    }
+    .cart-pill .count {
+      position: absolute;
+      right: 6px;
+      top: 6px;
+      background: var(--orange);
+      color: #0f172a;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 900;
+      min-width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
+    }
+
+    .category-strip {
+      background: white;
+      border-bottom: 1px solid var(--line);
+      box-shadow: inset 0 -1px 0 rgba(15,23,42,0.04);
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .category-strip-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+    }
+    .chip-btn {
+      background: #f8fafc;
+      color: #334155;
+      border: 1px solid #dfe7f1;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .chip-btn.active {
+      background: var(--navy);
+      color: white;
+      border-color: var(--navy);
+    }
+    .chip-btn:hover { background: #edf2f7; }
+    .chip-btn.active:hover { background: #1b2535; }
 
     .hero {
-      background: linear-gradient(135deg, #0b111e, #1a2538, #0b111e); color: white; padding: 32px 18px;
+      background: linear-gradient(135deg, #0b111e 0%, #1b2d45 40%, #111827 100%);
+      color: white;
+      padding: 34px 18px 26px;
     }
-    .hero-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-    .hero h1 { font-size: clamp(28px, 4vw, 42px); margin-bottom: 10px; }
-    .hero p { max-width: 680px; color: #cbd5e1; line-height: 1.6; }
-    .hero-box {
-      background: rgba(15, 23, 42, 0.9); border: 1px solid #475569; border-radius: 16px; padding: 18px; min-width: 300px;
+    .hero-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
     }
-    .hero-box h3 { color: #fbbf24; font-size: 12px; margin-bottom: 10px; text-transform: uppercase; }
-    .hero-box-item {
-      background: rgba(30, 41, 59, 0.85); border: 1px solid #334155; border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; display: flex; justify-content: space-between; gap: 10px; align-items: center;
+    .hero-copy {
+      flex: 1;
+      min-width: 280px;
+    }
+    .eyebrow {
+      display: inline-block;
+      background: rgba(251, 191, 36, 0.18);
+      color: #fbbf24;
+      border: 1px solid rgba(251,191,36,0.4);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .hero h1 {
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1.06;
+      letter-spacing: -0.05em;
+      margin: 0 0 12px;
+    }
+    .hero p {
+      margin: 0;
+      color: #cbd5e1;
+      max-width: 700px;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .hero-panel {
+      width: min(360px, 100%);
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(148,163,184,0.35);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .hero-panel h3 {
+      margin: 0 0 14px;
+      color: #fbbf24;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .mini-card {
+      background: rgba(30,41,59,0.8);
+      border: 1px solid rgba(148,163,184,0.28);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+    .mini-card:last-child { margin-bottom: 0; }
+    .mini-card strong { color: white; }
+
+    .main-wrap {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 28px 18px 56px;
+    }
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .toolbar h2 {
+      margin: 0;
+      font-size: clamp(22px, 2vw, 30px);
+      letter-spacing: -0.04em;
+    }
+    .toolbar-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .toolbar .sort {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 9px 12px;
+      color: var(--text);
+      font-weight: 700;
     }
 
-    .wrap { max-width: 1200px; margin: 0 auto; padding: 28px 18px 50px; }
-    .section-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 20px; flex-wrap: wrap; }
-    .section-head h2 { font-size: 22px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-    .card {
-      background: white; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
     }
-    .ribbon {
-      display: flex; justify-content: space-between; gap: 10px; background: linear-gradient(90deg, #e47911, #f3a847); color: white; font-size: 10px; font-weight: 800; padding: 6px 12px; text-transform: uppercase;
+
+    .product-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+      transition: all 0.18s ease;
+      display: flex;
+      flex-direction: column;
     }
-    .photo { height: 210px; background: #f8fafc; display: flex; align-items: center; justify-content: center; }
-    .photo img { max-width: 100%; max-height: 100%; object-fit: contain; }
-    .card-body { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
-    .category-tag { color: #64748b; text-transform: uppercase; font-size: 10px; font-weight: 700; }
-    .title { font-weight: 700; line-height: 1.4; min-height: 42px; }
-    .rating-row { font-size: 12px; color: #64748b; display: flex; align-items: center; gap: 8px; }
-    .rating-pill { background: #047857; color: white; padding: 3px 7px; border-radius: 4px; font-weight: 800; }
-    .price-box { background: #fef3c7; border: 1px solid #fde68a; border-radius: 10px; padding: 12px; }
-    .price-main { display: flex; align-items: baseline; gap: 8px; }
-    .price-num { font-size: 22px; font-weight: 900; }
-    .price-mrp { color: #94a3b8; text-decoration: line-through; font-size: 12px; }
-    .price-off { color: #059669; font-weight: 800; font-size: 12px; }
-    .diff-badge { display: flex; justify-content: space-between; gap: 8px; margin-top: 8px; font-size: 11px; color: #065f46; font-weight: 700; }
-    .diff-store { background: #0f172a; color: white; padding: 2px 7px; border-radius: 4px; }
-    .delivery-line { font-size: 11px; color: #475569; }
-    .card-actions { margin-top: auto; display: flex; flex-direction: column; gap: 8px; }
-    .btn-buy {
-      display: block; background: var(--yellow); color: #0f172a; border: 1px solid #facc15; font-weight: 800; padding: 10px; border-radius: 9px; text-align: center;
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: #f6c35d;
     }
-    .btn-details {
-      background: #f8fafc; border: 1px solid #cbd5e1; color: #1e293b; font-weight: 700; padding: 8px; border-radius: 9px; cursor: pointer;
+    .card-top {
+      position: relative;
+      background: #f8fafc;
+      padding: 10px 10px 0;
     }
-    .modal-overlay { position: fixed; inset: 0; background: rgba(2,6,23,0.8); display: none; align-items: center; justify-content: center; padding: 16px; }
-    .modal-overlay.open { display: flex; }
-    .modal-card { background: white; border-radius: 18px; width: min(760px, 100%); max-height: 90vh; overflow-y: auto; padding: 24px; position: relative; }
-    .close-btn { position: absolute; right: 16px; top: 16px; width: 34px; height: 34px; border-radius: 50%; border: 0; cursor: pointer; background: #e2e8f0; }
-    .offer-row { border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin-top: 10px; display: flex; justify-content: space-between; gap: 12px; align-items: center; flex-wrap: wrap; }
-    .offer-row.lowest { background: #ecfdf5; border-color: #6ee7b7; }
-    footer { background: var(--navy); color: #94a3b8; text-align: center; padding: 30px 18px; }
-    footer strong { color: white; }
+    .card-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: linear-gradient(90deg, #f59e0b, #fbbf24);
+      color: white;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 5px 8px;
+      border-radius: 8px;
+    }
+    .card-image {
+      height: 200px;
+      object-fit: cover;
+      width: 100%;
+      border-radius: 12px 12px 0 0;
+      background: #eef2f7;
+    }
+    .card-body {
+      padding: 14px 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+    .brand-title {
+      font-size: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+    }
+    .product-name {
+      font-size: 15px;
+      line-height: 1.4;
+      font-weight: 700;
+      color: var(--text);
+      min-height: 42px;
+      cursor: pointer;
+    }
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .star-badge {
+      background: #16a34a;
+      color: white;
+      padding: 4px 7px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .price-box {
+      background: #fff7db;
+      border: 1px solid #f4d98d;
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+    .price-line {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .price {
+      font-weight: 900;
+      font-size: 24px;
+      letter-spacing: -0.04em;
+    }
+    .mrp {
+      color: #94a3b8;
+      text-decoration: line-through;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .discount {
+      color: #15803d;
+      font-weight: 900;
+      font-size: 12px;
+    }
+    .lowest-store {
+      font-size: 11px;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(241, 185, 82, 0.6);
+    }
+    .store-tag {
+      background: #0f172a;
+      color: white;
+      border-radius: 6px;
+      padding: 3px 7px;
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .shipping {
+      color: #475569;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+    }
+    .primary-btn,
+    .secondary-btn,
+    .offer-btn {
+      flex: 1;
+      padding: 10px 12px;
+      font-weight: 800;
+      border-radius: 10px;
+    }
+    .primary-btn {
+      background: var(--yellow);
+      color: #0f172a;
+      border: 1px solid #facc15;
+    }
+    .primary-btn:hover { background: var(--yellow-2); }
+    .secondary-btn {
+      background: #f8fafc;
+      color: #0f172a;
+      border: 1px solid var(--line);
+    }
+    .secondary-btn:hover { background: #eef2f7; }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.7);
+      backdrop-filter: blur(3px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 100;
+    }
+    .modal.open { display: flex; }
+    .modal-card {
+      width: min(980px, 100%);
+      max-height: 90vh;
+      overflow: auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.2);
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: #e2e8f0;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 2;
+    }
+    .modal-body {
+      display: grid;
+      grid-template-columns: 1.1fr 1.4fr;
+      gap: 22px;
+      padding: 24px;
+    }
+    .modal-gallery {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      display: grid;
+      place-items: center;
+      min-height: 340px;
+    }
+    .modal-gallery img {
+      max-height: 320px;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+    .modal-info h2 {
+      margin: 0 0 10px;
+      font-size: clamp(22px, 2vw, 34px);
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+    }
+    .modal-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .modal-price {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 18px 0;
+    }
+    .modal-price .price {
+      font-size: 38px;
+    }
+    .specs {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(120px, 1fr));
+      gap: 10px;
+    }
+    .spec {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+    .spec-label {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+      font-weight: 800;
+    }
+    .spec-value {
+      font-weight: 800;
+      font-size: 13px;
+    }
+    .offer-list {
+      margin-top: 20px;
+      display: grid;
+      gap: 12px;
+    }
+    .offer-row {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .offer-row.lowest {
+      background: var(--green-soft);
+      border-color: #86efac;
+    }
+    .store-label {
+      font-weight: 900;
+      font-size: 15px;
+    }
+    .store-meta {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      margin-top: 3px;
+    }
+    .offer-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .offer-price {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+    .offer-btn {
+      background: var(--yellow);
+      border: 1px solid #facc15;
+      color: #0f172a;
+      padding: 10px 16px;
+      font-weight: 900;
+    }
+    .offer-btn:hover { background: var(--yellow-2); }
+
+    @media (max-width: 760px) {
+      .modal-body {
+        grid-template-columns: 1fr;
+      }
+      .hero-panel {
+        width: 100%;
+      }
+      .header-inner {
+        gap: 10px;
+      }
+      .brand {
+        font-size: 24px;
+      }
+      .search-wrap {
+        order: 3;
+        width: 100%;
+        max-width: 100%;
+      }
+      .header-actions {
+        margin-left: 0;
+      }
+      .card-actions {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <a href="#" class="logo" onclick="setCategory('All'); return false;">Smart<span>Deals</span> Pro</a>
-    <div class="search-wrap">
-      <select id="searchCategory" onchange="setCategory(this.value)">
-        <option value="All">அனைத்து பிரிவுகள்</option>
-        <option value="Mobiles">Mobiles</option>
-        <option value="Electronics">Electronics</option>
-        <option value="Audio">Audio</option>
-        <option value="Home">Home</option>
-        <option value="Fashion">Fashion</option>
-        <option value="Beauty">Beauty</option>
-      </select>
-      <input id="searchInput" type="text" placeholder="Search deals..." oninput="handleSearch()" />
-      <button onclick="handleSearch()">🔍</button>
+  <div class="topbar">
+    <div class="live"><span class="pulse"></span> Live price comparison</div>
+    <div class="right">
+      <span class="mini-pill">Amazon + Flipkart</span>
+      <span class="mini-pill">Fast shipping</span>
     </div>
-    <div class="top-actions">
-      <button class="btn-lang" id="langBtn" onclick="toggleLang()">English</button>
+  </div>
+
+  <header>
+    <div class="header-inner">
+      <a href="#" class="brand">Smart<span>Deals</span> Pro</a>
+
+      <div class="search-wrap">
+        <select id="categorySelect">
+          <option value="All">All categories</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Fashion">Fashion</option>
+          <option value="Appliances">Appliances</option>
+          <option value="Beauty">Beauty</option>
+        </select>
+        <input id="searchInput" type="text" placeholder="Search for products, brands, categories..." />
+        <button aria-label="Search" id="searchBtn">⌕</button>
+      </div>
+
+      <div class="header-actions">
+        <button class="action-btn">Login</button>
+        <button class="action-btn cart-pill">Cart <span class="count" id="cartCount">0</span></button>
+      </div>
     </div>
   </header>
 
+  <nav class="category-strip">
+    <div class="category-strip-inner" id="categoryStrip"></div>
+  </nav>
+
   <section class="hero">
     <div class="hero-inner">
-      <div>
-        <h1>Amazon vs Flipkart live price comparison</h1>
-        <p>Compare the best deals, save time, and choose the lowest available offer without needing to visit multiple pages.</p>
+      <div class="hero-copy">
+        <div class="eyebrow">Smart comparison</div>
+        <h1>Compare the best deals before you buy.</h1>
+        <p>Find top-rated products across Amazon, Flipkart, Croma, Nykaa, and more. Get a clear view of price, rating, offers, and product details without hopping between websites.</p>
       </div>
-      <div class="hero-box">
-        <h3>Top savings today</h3>
-        <div class="hero-box-item"><div><strong>MacBook Air M2</strong></div><strong>Save ₹3,000</strong></div>
-        <div class="hero-box-item"><div><strong>Sony WH-1000XM5</strong></div><strong>Save ₹1,000</strong></div>
-        <div class="hero-box-item"><div><strong>OnePlus Nord CE4</strong></div><strong>Save ₹500</strong></div>
+
+      <div class="hero-panel">
+        <h3>Today’s top picks</h3>
+        <div class="mini-card"><strong>Air Fryer 4.5L</strong><span>₹3,499</span></div>
+        <div class="mini-card"><strong>Wireless Headphones</strong><span>₹1,899</span></div>
+        <div class="mini-card"><strong>Smart TV 55"</strong><span>₹39,999</span></div>
       </div>
     </div>
   </section>
 
-  <main class="wrap">
-    <div class="section-head">
-      <h2>Best seller products</h2>
-      <div id="productCountBadge">1 products available</div>
+  <main class="main-wrap">
+    <div class="toolbar">
+      <h2 id="sectionTitle">Best deals for you</h2>
+      <div class="toolbar-meta">
+        <span id="resultCount">0 products</span>
+        <select class="sort" id="sortSelect">
+          <option value="featured">Featured</option>
+          <option value="discount">Highest discount</option>
+          <option value="price-asc">Price: Low to high</option>
+          <option value="price-desc">Price: High to low</option>
+          <option value="rating">Top rated</option>
+        </select>
+      </div>
     </div>
-    <div id="productGrid" class="grid"></div>
+
+    <div class="product-grid" id="productGrid"></div>
   </main>
 
-  <div class="modal-overlay" id="detailModal">
+  <div class="modal" id="productModal">
     <div class="modal-card">
-      <button class="close-btn" onclick="closeModal('detailModal')">×</button>
-      <div id="detailContent"></div>
+      <button class="close-btn" id="closeModal">×</button>
+      <div class="modal-body" id="modalBody"></div>
     </div>
   </div>
 
-  <footer>
-    <strong>Smart Deals Pro</strong><br>
-    Compare thoughtfully. Buy confidently.
-  </footer>
-
+  <script src="product-data.js"></script>
   <script>
-    const EARNKARO_ID = "5736227";
-    const AMAZON_TAG = "dealshub0b6f-21";
-    let currentLang = 'ta';
-    let activeCat = 'All';
+    const state = {
+      category: 'All',
+      query: '',
+      sort: 'featured',
+      cart: 0
+    };
 
-    const products = [
-      {
-        id: 'oneplus-nord-ce4',
-        name: 'OnePlus Nord CE4 (Dark Chrome, 8GB RAM, 128GB Storage)',
-        nameTa: 'ஒன்பிளஸ் நார்டு சிஇ4 (8GB ரேம், 128GB மெமரி)',
-        category: 'Mobiles',
-        rank: '#1 in Smartphones under ₹25,000',
-        rating: 4.4,
-        reviews: 38450,
-        image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80',
-        specs: ['Snapdragon 7 Gen 3', '100W SUPERVOOC Fast Charge', '5500 mAh Battery'],
-        offers: [
-          { store: 'Flipkart', price: 22499, mrp: 24999, lowest: true, url: 'https://www.flipkart.com/oneplus-nord-ce4-dark-chrome-128-gb/p/itm2c909e4be0b32?affExtParam1=' + EARNKARO_ID, del: '2 days delivery' },
-          { store: 'Amazon', price: 22999, mrp: 24999, lowest: false, url: 'https://www.amazon.in/dp/B0CX21M98F?tag=' + AMAZON_TAG, del: 'Next-day delivery' }
-        ]
+    const categoryList = ['All', 'Electronics', 'Fashion', 'Appliances', 'Beauty'];
+    const productGrid = document.getElementById('productGrid');
+    const categorySelect = document.getElementById('categorySelect');
+    const categoryStrip = document.getElementById('categoryStrip');
+    const searchInput = document.getElementById('searchInput');
+    const sortSelect = document.getElementById('sortSelect');
+    const resultCount = document.getElementById('resultCount');
+    const sectionTitle = document.getElementById('sectionTitle');
+    const cartCount = document.getElementById('cartCount');
+    const productModal = document.getElementById('productModal');
+    const modalBody = document.getElementById('modalBody');
+
+    function money(value) {
+      return new Intl.NumberFormat('en-IN', { maximumFractionDigits: 0 }).format(value);
+    }
+
+    function discountPct(product) {
+      return Math.round(((product.mrp - product.price) / product.mrp) * 100);
+    }
+
+    function getLowestOffer(product) {
+      return product.offers.reduce((lowest, offer) => (offer.price < lowest.price ? offer : lowest), product.offers[0]);
+    }
+
+    function renderCategoryChips() {
+      categoryStrip.innerHTML = categoryList.map(cat => `
+        <button class="chip-btn ${state.category === cat ? 'active' : ''}" data-category="${cat}">${cat}</button>
+      `).join('');
+
+      document.querySelectorAll('.chip-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.category = btn.dataset.category;
+          categorySelect.value = state.category;
+          renderAll();
+        });
+      });
+    }
+
+    function getFilteredProducts() {
+      let items = [...window.smartDealsProducts];
+
+      if (state.category !== 'All') {
+        items = items.filter(item => item.category === state.category);
       }
-    ];
+
+      if (state.query.trim()) {
+        const q = state.query.toLowerCase();
+        items = items.filter(item =>
+          item.name.toLowerCase().includes(q) ||
+          item.brand.toLowerCase().includes(q) ||
+          item.category.toLowerCase().includes(q)
+        );
+      }
+
+      switch (state.sort) {
+        case 'discount':
+          items.sort((a, b) => (discountPct(b) - discountPct(a)) || a.price - b.price);
+          break;
+        case 'price-asc':
+          items.sort((a, b) => a.price - b.price);
+          break;
+        case 'price-desc':
+          items.sort((a, b) => b.price - a.price);
+          break;
+        case 'rating':
+          items.sort((a, b) => b.rating - a.rating || b.reviews - a.reviews);
+          break;
+        default:
+          items.sort((a, b) => Number(b.featured) - Number(a.featured) || b.rating - a.rating);
+      }
+
+      return items;
+    }
 
     function renderProducts() {
-      const q = document.getElementById('searchInput').value.toLowerCase();
-      const filtered = products.filter(p => {
-        const matchCat = activeCat === 'All' || p.category === activeCat;
-        const matchQ = !q || p.name.toLowerCase().includes(q) || p.nameTa.toLowerCase().includes(q);
-        return matchCat && matchQ;
-      });
+      const items = getFilteredProducts();
+      resultCount.textContent = `${items.length} products`;
+      sectionTitle.textContent = state.category === 'All' ? 'Best deals for you' : `${state.category} deals`;
 
-      document.getElementById('productCountBadge').textContent = `${filtered.length} products available`;
-      const grid = document.getElementById('productGrid');
-      grid.innerHTML = filtered.map(p => {
-        const lowestOffer = p.offers.find(o => o.lowest) || p.offers[0];
-        const otherOffer = p.offers.find(o => !o.lowest);
-        const savings = otherOffer ? otherOffer.price - lowestOffer.price : 0;
-        const discount = Math.round(((lowestOffer.mrp - lowestOffer.price) / lowestOffer.mrp) * 100);
-
+      productGrid.innerHTML = items.map(product => {
+        const low = getLowestOffer(product);
+        const percentage = discountPct(product);
         return `
-          <div class="card">
-            <div class="ribbon"><span>#1 BEST SELLER</span><span>${p.rank}</span></div>
-            <div class="photo"><img src="${p.image}" alt="${p.name}" loading="lazy" /></div>
+          <article class="product-card">
+            <div class="card-top">
+              <span class="card-badge">${product.badge}</span>
+              <img class="card-image" src="${product.image}" alt="${product.name}" />
+            </div>
             <div class="card-body">
-              <div class="category-tag">${p.category}</div>
-              <div class="title">${currentLang === 'ta' ? p.nameTa : p.name}</div>
-              <div class="rating-row"><span class="rating-pill">${p.rating} ★</span><span>(${p.reviews.toLocaleString('en-IN')} reviews)</span></div>
+              <div class="brand-title">${product.brand}</div>
+              <div class="product-name" data-id="${product.id}">${product.name}</div>
+              <div class="rating-row">
+                <span class="star-badge">★ ${product.rating}</span>
+                <span>(${money(product.reviews)} reviews)</span>
+              </div>
               <div class="price-box">
-                <div class="price-main">
-                  <span class="price-num">₹${lowestOffer.price.toLocaleString('en-IN')}</span>
-                  <span class="price-mrp">₹${lowestOffer.mrp.toLocaleString('en-IN')}</span>
-                  <span class="price-off">${discount}% off</span>
+                <div class="price-line">
+                  <span class="price">₹${money(product.price)}</span>
+                  <span class="mrp">₹${money(product.mrp)}</span>
+                  <span class="discount">${percentage}% off</span>
                 </div>
-                <div class="diff-badge">
-                  <span>Lowest: <strong class="diff-store">${lowestOffer.store}</strong></span>
-                  <span>${savings > 0 ? 'Save ₹' + savings.toLocaleString('en-IN') : ''}</span>
+                <div class="lowest-store">
+                  <span>Lowest: <span class="store-tag">${low.store}</span></span>
+                  <span class="shipping">${low.shipping}</span>
                 </div>
               </div>
-              <div class="delivery-line">🚚 ${lowestOffer.del}</div>
               <div class="card-actions">
-                <a class="btn-buy" href="${lowestOffer.url}" target="_blank" rel="noopener noreferrer">${lowestOffer.store}-ல் வாங்குங்கள் ↗</a>
-                <button class="btn-details" onclick="openDetails('${p.id}')">Compare all stores</button>
+                <button class="primary-btn" data-buy="${product.id}">Buy now</button>
+                <button class="secondary-btn" data-detail="${product.id}">View details</button>
               </div>
             </div>
-          </div>
+          </article>
         `;
       }).join('');
+
+      productGrid.querySelectorAll('[data-detail]').forEach(btn => {
+        btn.addEventListener('click', () => openModal(Number(btn.dataset.detail)));
+      });
+
+      productGrid.querySelectorAll('.product-name').forEach(nameEl => {
+        nameEl.addEventListener('click', () => openModal(Number(nameEl.dataset.id)));
+      });
+
+      productGrid.querySelectorAll('[data-buy]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = Number(btn.dataset.buy);
+          const product = window.smartDealsProducts.find(p => p.id === id);
+          if (!product) return;
+          const low = getLowestOffer(product);
+          state.cart += 1;
+          cartCount.textContent = String(state.cart);
+          window.open(low.url, '_blank', 'noopener,noreferrer');
+        });
+      });
     }
 
-    function openDetails(id) {
-      const p = products.find(x => x.id === id);
-      if (!p) return;
-      document.getElementById('detailContent').innerHTML = `
-        <h3 style="font-size:24px; margin-bottom:12px;">${currentLang === 'ta' ? p.nameTa : p.name}</h3>
-        <div style="text-align:center; margin-bottom:16px;"><img src="${p.image}" style="max-height:220px; max-width:100%; object-fit:contain;" /></div>
-        <h4 style="margin-bottom:8px;">Key features</h4>
-        <ul style="margin:0 0 16px 20px; color:#475569;">
-          ${p.specs.map(s => `<li>${s}</li>`).join('')}
-        </ul>
-        ${p.offers.map(o => `
-          <div class="offer-row ${o.lowest ? 'lowest' : ''}">
-            <div>
-              <strong>${o.store}</strong>
-              ${o.lowest ? '<span style="background:#059669; color:white; font-size:10px; padding:2px 6px; border-radius:4px; margin-left:6px;">LOWEST</span>' : ''}
-              <div style="font-size:11px; color:#475569; margin-top:4px;">${o.del}</div>
-            </div>
-            <div style="text-align:right;">
-              <span style="font-size:20px; font-weight:900;">₹${o.price.toLocaleString('en-IN')}</span><br>
-              <a href="${o.url}" target="_blank" rel="noopener noreferrer" class="btn-buy" style="display:inline-block; margin-top:6px; padding:8px 16px;">Buy now ↗</a>
-            </div>
+    function openModal(productId) {
+      const product = window.smartDealsProducts.find(item => item.id === productId);
+      if (!product) return;
+
+      const lowest = getLowestOffer(product);
+      const modalHtml = `
+        <div class="modal-gallery">
+          <img src="${product.image}" alt="${product.name}" />
+        </div>
+        <div class="modal-info">
+          <div class="brand-title">${product.brand}</div>
+          <h2>${product.name}</h2>
+          <div class="modal-row">
+            <span class="star-badge">★ ${product.rating}</span>
+            <span>${money(product.reviews)} ratings & reviews</span>
           </div>
-        `).join('')}
+          <div class="modal-price">
+            <span class="price">₹${money(product.price)}</span>
+            <span class="mrp">₹${money(product.mrp)}</span>
+            <span class="discount">${discountPct(product)}% off</span>
+          </div>
+
+          <p style="margin:0; color:#475569; line-height:1.7; font-size:14px;">${product.description}</p>
+
+          <div class="specs">
+            ${product.specs.map(spec => `
+              <div class="spec">
+                <span class="spec-label">${spec.label}</span>
+                <span class="spec-value">${spec.value}</span>
+              </div>
+            `).join('')}
+          </div>
+
+          <div class="offer-list">
+            ${product.offers.map((offer, index) => `
+              <div class="offer-row ${offer.price === lowest.price ? 'lowest' : ''}">
+                <div>
+                  <div class="store-label">${offer.store}</div>
+                  <div class="store-meta">${offer.stock} • ${offer.shipping}</div>
+                </div>
+                <div class="offer-right">
+                  <div class="offer-price">₹${money(offer.price)}</div>
+                  <a class="offer-btn" href="${offer.url}" target="_blank" rel="noopener noreferrer">Buy now</a>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
       `;
-      document.getElementById('detailModal').classList.add('open');
+
+      modalBody.innerHTML = modalHtml;
+      productModal.classList.add('open');
     }
 
-    function setCategory(cat) {
-      activeCat = cat;
-      document.getElementById('searchCategory').value = cat;
+    function closeModal() {
+      productModal.classList.remove('open');
+    }
+
+    function renderAll() {
+      renderCategoryChips();
       renderProducts();
     }
 
-    function handleSearch() {
+    categorySelect.addEventListener('change', (e) => {
+      state.category = e.target.value;
+      renderAll();
+    });
+
+    searchInput.addEventListener('input', (e) => {
+      state.query = e.target.value;
       renderProducts();
-    }
+    });
 
-    function toggleLang() {
-      currentLang = currentLang === 'ta' ? 'en' : 'ta';
-      document.getElementById('langBtn').textContent = currentLang === 'ta' ? 'English' : 'தமிழ்';
+    document.getElementById('searchBtn').addEventListener('click', () => {
+      state.query = searchInput.value;
       renderProducts();
-    }
+    });
 
-    function closeModal(id) {
-      document.getElementById(id).classList.remove('open');
-    }
+    sortSelect.addEventListener('change', (e) => {
+      state.sort = e.target.value;
+      renderProducts();
+    });
 
-    renderProducts();
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+    productModal.addEventListener('click', (e) => {
+      if (e.target === productModal) closeModal();
+    });
+
+    categorySelect.value = state.category;
+    sortSelect.value = state.sort;
+    renderAll();
   </script>
 </body>
 </html>
