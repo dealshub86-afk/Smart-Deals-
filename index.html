@@ -753,6 +753,7 @@
   </div>
 
   <script src="product-data.js"></script>
+  <script src="api-client.js"></script>
   <script>
     const state = {
       category: 'All',
@@ -892,7 +893,7 @@
           const low = getLowestOffer(product);
           state.cart += 1;
           cartCount.textContent = String(state.cart);
-          const affiliateUrl = window.smartDealsBuildAffiliateUrl(low.url, low.store);
+          const affiliateUrl = window.smartDealsBuildAffiliateUrl ? window.smartDealsBuildAffiliateUrl(low.url, low.store) : low.url;
           window.open(affiliateUrl, '_blank', 'noopener,noreferrer');
         });
       });
@@ -938,7 +939,13 @@
 
     categorySelect.value = state.category;
     sortSelect.value = state.sort;
-    renderAll();
+
+    window.smartDealsProductApi.fetchProducts().then((products) => {
+      window.smartDealsProducts = products;
+      renderAll();
+    }).catch(() => {
+      renderAll();
+    });
   </script>
 </body>
 </html>

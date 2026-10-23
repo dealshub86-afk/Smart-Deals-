@@ -499,100 +499,107 @@
   </main>
 
   <script src="product-data.js"></script>
+  <script src="api-client.js"></script>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const productId = Number(urlParams.get('id')) || 1;
-    const product = window.smartDealsProducts.find(p => p.id === productId) || window.smartDealsProducts[0];
 
-    const money = value => '₹' + Number(value).toLocaleString('en-IN');
-    const gallery = Array.isArray(product.images) && product.images.length ? product.images : [product.image];
-    const selectedImage = gallery[0] || product.image;
+    async function initProductPage() {
+      const products = await window.smartDealsProductApi.fetchProducts();
+      window.smartDealsProducts = products;
+      const product = products.find(p => p.id === productId) || products[0] || { ... };
+      const money = value => '₹' + Number(value).toLocaleString('en-IN');
+      const gallery = Array.isArray(product.images) && product.images.length ? product.images : [product.image];
+      const selectedImage = gallery[0] || product.image;
 
-    const mainImage = document.getElementById('mainImage');
-    const thumbs = document.getElementById('thumbs');
+      const mainImage = document.getElementById('mainImage');
+      const thumbs = document.getElementById('thumbs');
 
-    function renderThumbs() {
-      thumbs.innerHTML = gallery.map((img, index) => `
-        <button class="thumb ${index === 0 ? 'active' : ''}" data-index="${index}" aria-label="Product image ${index + 1}">
-          <img src="${img}" alt="${product.name} image ${index + 1}" />
-        </button>
+      function renderThumbs() {
+        thumbs.innerHTML = gallery.map((img, index) => `
+          <button class="thumb ${index === 0 ? 'active' : ''}" data-index="${index}" aria-label="Product image ${index + 1}">
+            <img src="${img}" alt="${product.name} image ${index + 1}" />
+          </button>
+        `).join('');
+
+        thumbs.querySelectorAll('.thumb').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const idx = Number(btn.dataset.index);
+            mainImage.src = gallery[idx];
+            thumbs.querySelectorAll('.thumb').forEach(t => t.classList.toggle('active', Number(t.dataset.index) === idx));
+          });
+        });
+      }
+
+      mainImage.src = selectedImage;
+      renderThumbs();
+
+      document.getElementById('productBadge').textContent = product.badge || 'Top rated';
+      document.getElementById('productName').textContent = product.name;
+      document.getElementById('productPrice').textContent = money(product.price);
+      document.getElementById('productMrp').textContent = money(product.mrp);
+      document.getElementById('brandInfo').textContent = product.brand;
+      document.getElementById('categoryInfo').textContent = product.category;
+      document.getElementById('starBox').textContent = `★ ${product.rating.toFixed(1)}`;
+      document.getElementById('ratingInfo').textContent = `${product.rating.toFixed(1)} out of 5`;
+      document.getElementById('reviewLink').textContent = `${product.reviews.toLocaleString('en-IN')} ratings`;
+      document.getElementById('productSaving').textContent = `Save ${Math.round(((product.mrp - product.price) / product.mrp) * 100)}%`;
+      document.getElementById('scoreText').textContent = product.rating.toFixed(1);
+      document.getElementById('breadcrumb').textContent = `Home / ${product.category} / ${product.name}`;
+
+      const specGrid = document.getElementById('specGrid');
+      specGrid.innerHTML = product.specs.map(spec => `
+        <div class="spec-item">
+          <span>${spec.label}</span>
+          <strong>${spec.value}</strong>
+        </div>
       `).join('');
 
-      thumbs.querySelectorAll('.thumb').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const idx = Number(btn.dataset.index);
-          mainImage.src = gallery[idx];
-          thumbs.querySelectorAll('.thumb').forEach(t => t.classList.toggle('active', Number(t.dataset.index) === idx));
-        });
+      function buildReviewBars() {
+        const bars = [
+          { label: '5★', value: 67 },
+          { label: '4★', value: 24 },
+          { label: '3★', value: 6 },
+          { label: '2★', value: 2 },
+          { label: '1★', value: 1 }
+        ];
+        document.getElementById('reviewBars').innerHTML = bars.map(item => `
+          <div class="review-row">
+            <span>${item.label}</span>
+            <div class="bar"><span style="width:${item.value}%"></span></div>
+            <span>${item.value}%</span>
+          </div>
+        `).join('');
+      }
+      buildReviewBars();
+
+      document.getElementById('buyNowBtn').addEventListener('click', () => {
+        const bestOffer = product.offers.reduce((lowest, offer) => (offer.price < lowest.price ? offer : lowest), product.offers[0]);
+        const affiliateUrl = window.smartDealsBuildAffiliateUrl ? window.smartDealsBuildAffiliateUrl(bestOffer.url, bestOffer.store) : bestOffer.url;
+        window.open(affiliateUrl, '_blank', 'noopener,noreferrer');
+      });
+
+      document.getElementById('addToCartBtn').addEventListener('click', () => {
+        const countElement = document.getElementById('cartCount');
+        const current = Number(countElement.textContent || '0');
+        countElement.textContent = String(current + 1);
+        const bestOffer = product.offers.reduce((lowest, offer) => (offer.price < lowest.price ? offer : lowest), product.offers[0]);
+        const affiliateUrl = window.smartDealsBuildAffiliateUrl ? window.smartDealsBuildAffiliateUrl(bestOffer.url, bestOffer.store) : bestOffer.url;
+        window.open(affiliateUrl, '_blank', 'noopener,noreferrer');
+      });
+
+      document.getElementById('backBtn').addEventListener('click', () => {
+        window.location.href = 'index.html';
+      });
+
+      document.getElementById('productSearch').addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          window.location.href = 'index.html';
+        }
       });
     }
 
-    mainImage.src = selectedImage;
-    renderThumbs();
-
-    document.getElementById('productBadge').textContent = product.badge || 'Top rated';
-    document.getElementById('productName').textContent = product.name;
-    document.getElementById('productPrice').textContent = money(product.price);
-    document.getElementById('productMrp').textContent = money(product.mrp);
-    document.getElementById('brandInfo').textContent = product.brand;
-    document.getElementById('categoryInfo').textContent = product.category;
-    document.getElementById('starBox').textContent = `★ ${product.rating.toFixed(1)}`;
-    document.getElementById('ratingInfo').textContent = `${product.rating.toFixed(1)} out of 5`;
-    document.getElementById('reviewLink').textContent = `${product.reviews.toLocaleString('en-IN')} ratings`;
-    document.getElementById('productSaving').textContent = `Save ${Math.round(((product.mrp - product.price) / product.mrp) * 100)}%`;
-    document.getElementById('scoreText').textContent = product.rating.toFixed(1);
-    document.getElementById('breadcrumb').textContent = `Home / ${product.category} / ${product.name}`;
-
-    const specGrid = document.getElementById('specGrid');
-    specGrid.innerHTML = product.specs.map(spec => `
-      <div class="spec-item">
-        <span>${spec.label}</span>
-        <strong>${spec.value}</strong>
-      </div>
-    `).join('');
-
-    function buildReviewBars() {
-      const bars = [
-        { label: '5★', value: 67 },
-        { label: '4★', value: 24 },
-        { label: '3★', value: 6 },
-        { label: '2★', value: 2 },
-        { label: '1★', value: 1 }
-      ];
-      document.getElementById('reviewBars').innerHTML = bars.map(item => `
-        <div class="review-row">
-          <span>${item.label}</span>
-          <div class="bar"><span style="width:${item.value}%"></span></div>
-          <span>${item.value}%</span>
-        </div>
-      `).join('');
-    }
-    buildReviewBars();
-
-    document.getElementById('buyNowBtn').addEventListener('click', () => {
-      const bestOffer = product.offers.reduce((lowest, offer) => (offer.price < lowest.price ? offer : lowest), product.offers[0]);
-      const affiliateUrl = window.smartDealsBuildAffiliateUrl(bestOffer.url, bestOffer.store);
-      window.open(affiliateUrl, '_blank', 'noopener,noreferrer');
-    });
-
-    document.getElementById('addToCartBtn').addEventListener('click', () => {
-      const countElement = document.getElementById('cartCount');
-      const current = Number(countElement.textContent || '0');
-      countElement.textContent = String(current + 1);
-      const bestOffer = product.offers.reduce((lowest, offer) => (offer.price < lowest.price ? offer : lowest), product.offers[0]);
-      const affiliateUrl = window.smartDealsBuildAffiliateUrl(bestOffer.url, bestOffer.store);
-      window.open(affiliateUrl, '_blank', 'noopener,noreferrer');
-    });
-
-    document.getElementById('backBtn').addEventListener('click', () => {
-      window.location.href = 'index.html';
-    });
-
-    document.getElementById('productSearch').addEventListener('keydown', (event) => {
-      if (event.key === 'Enter') {
-        window.location.href = 'index.html';
-      }
-    });
+    initProductPage();
   </script>
 </body>
 </html>
