@@ -685,7 +685,7 @@
 
   <header>
     <div class="header-inner">
-      <a href="#" class="brand">Smart<span>Deals</span> Pro</a>
+      <a href="index.html" class="brand">Smart<span>Deals</span> Pro</a>
 
       <div class="search-wrap">
         <select id="categorySelect">
@@ -722,7 +722,7 @@
         <h3>Today’s top picks</h3>
         <div class="mini-card"><strong>Air Fryer 4.5L</strong><span>₹3,499</span></div>
         <div class="mini-card"><strong>Wireless Headphones</strong><span>₹1,899</span></div>
-        <div class="mini-card"><strong>Smart TV 55"</strong><span>₹39,999</span></div>
+        <div class="mini-card"><strong>Smart TV 55&quot;</strong><span>₹39,999</span></div>
       </div>
     </div>
   </section>
@@ -898,57 +898,7 @@
     }
 
     function openModal(productId) {
-      const product = window.smartDealsProducts.find(item => item.id === productId);
-      if (!product) return;
-
-      const lowest = getLowestOffer(product);
-      const modalHtml = `
-        <div class="modal-gallery">
-          <img src="${product.image}" alt="${product.name}" />
-        </div>
-        <div class="modal-info">
-          <div class="brand-title">${product.brand}</div>
-          <h2>${product.name}</h2>
-          <div class="modal-row">
-            <span class="star-badge">★ ${product.rating}</span>
-            <span>${money(product.reviews)} ratings & reviews</span>
-          </div>
-          <div class="modal-price">
-            <span class="price">₹${money(product.price)}</span>
-            <span class="mrp">₹${money(product.mrp)}</span>
-            <span class="discount">${discountPct(product)}% off</span>
-          </div>
-
-          <p style="margin:0; color:#475569; line-height:1.7; font-size:14px;">${product.description}</p>
-
-          <div class="specs">
-            ${product.specs.map(spec => `
-              <div class="spec">
-                <span class="spec-label">${spec.label}</span>
-                <span class="spec-value">${spec.value}</span>
-              </div>
-            `).join('')}
-          </div>
-
-          <div class="offer-list">
-            ${product.offers.map((offer, index) => `
-              <div class="offer-row ${offer.price === lowest.price ? 'lowest' : ''}">
-                <div>
-                  <div class="store-label">${offer.store}</div>
-                  <div class="store-meta">${offer.stock} • ${offer.shipping}</div>
-                </div>
-                <div class="offer-right">
-                  <div class="offer-price">₹${money(offer.price)}</div>
-                  <a class="offer-btn" href="${offer.url}" target="_blank" rel="noopener noreferrer">Buy now</a>
-                </div>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-
-      modalBody.innerHTML = modalHtml;
-      productModal.classList.add('open');
+      window.location.href = `product.html?id=${productId}`;
     }
 
     function closeModal() {

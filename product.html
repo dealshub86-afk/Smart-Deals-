@@ -10,16 +10,19 @@
     .container{max-width:1200px;margin:0 auto;padding:0 20px}.topbar{background:#0d2623;color:#edfaf0;padding:10px 0;text-align:center;font-size:12px;letter-spacing:.08em}
     header{position:sticky;top:0;background:rgba(255,255,255,.95);border-bottom:1px solid var(--border);backdrop-filter:blur(8px)}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0}.logo{font-size:26px;font-weight:900;letter-spacing:-.06em}.logo span{color:var(--secondary)}
-    .search{flex:1;max-width:620px;display:flex;background:#edf4ed;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin:0 12px}.search input{flex:1;border:0;background:transparent;padding:14px 16px;font:inherit;outline:none}.search button{border:0;background:var(--primary);color:#fff;padding:0 18px;font-weight:800;cursor:pointer}
+    .search{flex:1;max-width:620px;display:flex;background:#edf4ed;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin:0 12px}.search input{flex:1;border:0;background:transparent;padding:12px 18px;font-size:14px;outline:none}.search button{border:0;background:var(--primary);color:white;padding:0 18px;font-weight:700;cursor:pointer}
     .nav-links{display:flex;gap:18px;align-items:center;font-size:13px;font-weight:700} main{padding:28px 0 54px}.breadcrumb{font-size:12px;color:var(--muted);margin-bottom:18px}
-    .product-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:start}.product-card,.price-panel,.spec-panel,.review-panel{background:var(--card);border:1px solid var(--border);border-radius:20px;box-shadow:0 8px 16px rgba(15,28,25,.03)}
-    .product-card{padding:22px}.product-top{display:grid;grid-template-columns:220px 1fr;gap:18px}.product-media{height:220px;background:linear-gradient(135deg,#edf3eb,#f7faf7);display:flex;align-items:center;justify-content:center;border-radius:18px;font-size:85px}
+    .product-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:start}.product-card,.price-panel,.spec-panel,.review-panel{background:var(--card);border:1px solid var(--border);border-radius:18px;box-shadow:0 10px 22px rgba(17,24,39,.03)}
+    .product-card{padding:22px}.product-top{display:grid;grid-template-columns:240px 1fr;gap:18px}.product-media{height:220px;background:linear-gradient(135deg,#edf3eb,#f7faf7);border-radius:18px;overflow:hidden;border:1px solid var(--border);display:flex;align-items:center;justify-content:center}
+    .product-media img{width:100%;height:100%;object-fit:cover}
     .eyebrow{display:inline-block;background:#f5e7ba;color:#4c4011;border-radius:999px;padding:7px 10px;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.12em}
-    h1{font-size:clamp(2rem,3vw,3rem);letter-spacing:-.07em;margin:16px 0 10px}.rating-line{display:flex;align-items:center;flex-wrap:wrap;gap:10px;color:#d29b24;font-weight:800}.rating-line small{color:var(--muted);font-weight:600}
-    .price-box{display:flex;align-items:end;gap:10px;margin-top:18px}.big-price{font-size:2.4rem;font-weight:900;letter-spacing:-.06em}.old-price{text-decoration:line-through;color:var(--muted);font-size:1rem}.savings{margin-top:10px;color:var(--success);font-size:12px;font-weight:800}.cta-row{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}.btn{border:0;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer}.btn.primary{background:var(--primary);color:#fff}.btn.secondary{background:#edf3ec;color:var(--text)}
-    .spec-panel{margin-top:18px;padding:22px}.spec-grid{display:grid;grid-template-columns:repeat(2, minmax(0,1fr));gap:14px 20px;margin-top:16px}.spec-item{padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:#fbfcfb}.spec-item strong{display:block;margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
-    .price-panel{padding:22px}.store-list{display:grid;gap:12px;margin-top:16px}.store-item{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--border);border-radius:12px;padding:12px 14px;background:#fbfcfb}.store-name{font-weight:800}.store-pricing{font-weight:900}.store-item a{display:inline-block;padding:8px 10px;border-radius:10px;background:var(--primary);color:#fff;font-size:12px}
-    .review-panel{margin-top:18px;padding:22px}.review-score{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.8rem;letter-spacing:-.06em}.stars{color:#d29b24}.review-bars{display:grid;gap:8px;margin-top:18px}.review-row{display:grid;grid-template-columns:55px 1fr 35px;align-items:center;gap:10px;color:var(--muted);font-size:12px;font-weight:700}.bar{height:8px;background:#edf3ec;border-radius:999px;overflow:hidden}.bar span{display:block;height:100%;background:linear-gradient(90deg,#f1be42,#e9b85b);border-radius:inherit}@media (max-width:900px){.product-layout{grid-template-columns:1fr}.product-top{grid-template-columns:1fr}.search{max-width:none}} @media (max-width:600px){.nav{flex-wrap:wrap}.search{width:100%;order:3;margin:0}.spec-grid{grid-template-columns:1fr}}
+    h1{font-size:clamp(2rem,3vw,3rem);letter-spacing:-.07em;margin:16px 0 10px}.rating-line{display:flex;align-items:center;flex-wrap:wrap;gap:10px;color:#d29b24;font-weight:800}.rating-line small{color:var(--muted);font-weight:700}
+    .price-box{display:flex;align-items:end;gap:10px;margin-top:18px}.big-price{font-size:2.4rem;font-weight:900;letter-spacing:-.06em}.old-price{text-decoration:line-through;color:var(--muted);font-size:1.1rem;font-weight:700}.savings{margin-top:12px;font-size:14px;color:var(--success);font-weight:800}
+    .cta-row{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}.btn{border:none;border-radius:12px;font-weight:800;padding:12px 16px;cursor:pointer}.btn.primary{background:var(--secondary);color:#1d1d1d}.btn.secondary{background:#edf3ee;color:var(--text);border:1px solid var(--border)}
+    .spec-panel{margin-top:18px;padding:22px}.spec-grid{display:grid;grid-template-columns:repeat(2, minmax(0,1fr));gap:14px 20px;margin-top:16px}.spec-item{padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:#fafcf9;display:flex;flex-direction:column;gap:4px}.spec-item strong{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.spec-item span{font-weight:800;font-size:14px}
+    .price-panel{padding:22px}.store-list{display:grid;gap:12px;margin-top:16px}.store-item{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--border);border-radius:14px;padding:12px 14px;background:#fbfcfa}.store-name{font-weight:800}.store-pricing{font-weight:900}.store-item a{border-radius:10px;padding:8px 12px;background:var(--secondary);font-weight:800}
+    .review-panel{margin-top:18px;padding:22px}.review-score{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.8rem;letter-spacing:-.06em}.stars{color:#d29b24}.review-bars{display:grid;gap:12px;margin-top:18px}.review-row{display:grid;grid-template-columns:40px 1fr 38px;align-items:center;gap:12px;font-size:13px;font-weight:700}.bar{height:10px;background:#edf2ea;border-radius:999px;overflow:hidden}.bar span{display:block;height:100%;background:linear-gradient(90deg,#ffb84d,#f7d46d);border-radius:999px}
+    @media(max-width:760px){.product-layout{grid-template-columns:1fr}.product-top{grid-template-columns:1fr}.nav{flex-wrap:wrap}.search{margin:0;width:100%;max-width:none}.spec-grid{grid-template-columns:1fr}.cta-row{flex-direction:column}} 
   </style>
 </head>
 <body>
@@ -27,18 +30,18 @@
   <header>
     <div class="container nav">
       <div class="logo">smart<span>deals</span></div>
-      <div class="search"><input type="text" placeholder="Search products"><button>Search</button></div>
+      <div class="search"><input id="productSearch" type="text" placeholder="Search products"><button>Search</button></div>
       <div class="nav-links"><a href="index.html">Home</a><a href="#">Categories</a><a href="#">Affiliate</a></div>
     </div>
   </header>
 
   <main class="container">
-    <div class="breadcrumb">Home / Electronics / Wireless Bluetooth Headphones</div>
+    <div class="breadcrumb" id="breadcrumb">Home / Electronics / Wireless Bluetooth Headphones</div>
     <div class="product-layout">
       <section>
         <div class="product-card">
           <div class="product-top">
-            <div class="product-media" id="productImage">🎧</div>
+            <div class="product-media"><img id="productImage" src="" alt="Product image"></div>
             <div>
               <div class="eyebrow" id="productBadge">Top rated</div>
               <h1 id="productName">Wireless Bluetooth Headphones</h1>
@@ -54,7 +57,7 @@
               <div class="savings" id="productSaving">Save 37% • Best offer today</div>
               <div class="cta-row">
                 <button class="btn primary" id="bestOfferBtn">View best offer</button>
-                <button class="btn secondary">Add to wishlist</button>
+                <button class="btn secondary" id="goBackBtn">Back to deals</button>
               </div>
             </div>
           </div>
@@ -68,13 +71,7 @@
         <div class="review-panel">
           <strong style="font-size:18px">Customer reviews</strong>
           <div class="review-score"><span id="scoreText">4.4</span><span class="stars">★★★★★</span></div>
-          <div class="review-bars">
-            <div class="review-row"><span>5★</span><div class="bar"><span style="width:67%"></span></div><span>67%</span></div>
-            <div class="review-row"><span>4★</span><div class="bar"><span style="width:24%"></span></div><span>24%</span></div>
-            <div class="review-row"><span>3★</span><div class="bar"><span style="width:6%"></span></div><span>6%</span></div>
-            <div class="review-row"><span>2★</span><div class="bar"><span style="width:2%"></span></div><span>2%</span></div>
-            <div class="review-row"><span>1★</span><div class="bar"><span style="width:1%"></span></div><span>1%</span></div>
-          </div>
+          <div class="review-bars" id="reviewBars"></div>
         </div>
       </section>
 
@@ -89,48 +86,74 @@
 
   <script src="product-data.js"></script>
   <script>
-    const productId = 1;
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = Number(urlParams.get('id')) || 1;
     const product = window.smartDealsProducts.find(p => p.id === productId) || window.smartDealsProducts[0];
     const money = n => '₹' + Number(n).toLocaleString('en-IN');
 
-    document.getElementById('productImage').textContent = product.image;
-    document.getElementById('productBadge').textContent = product.best_seller ? 'Best seller' : 'Top rated';
+    function getStarBreakdown(rating) {
+      const base = [
+        { label: '5★', value: Math.max(10, Math.round(rating * 16)) },
+        { label: '4★', value: Math.max(8, Math.round(rating * 8)) },
+        { label: '3★', value: 6 },
+        { label: '2★', value: 2 },
+        { label: '1★', value: 1 }
+      ];
+      const total = base.reduce((sum, item) => sum + item.value, 0);
+      return base.map(item => ({ ...item, percent: total ? (item.value / total) * 100 : 0 }));
+    }
+
+    document.getElementById('productImage').src = product.image;
+    document.getElementById('productBadge').textContent = product.badge || 'Top rated';
     document.getElementById('productName').textContent = product.name;
     document.getElementById('productRating').textContent = `★ ${product.rating.toFixed(1)}`;
-    document.getElementById('reviewMeta').textContent = `(${product.review_count.toLocaleString('en-IN')} reviews)`;
+    document.getElementById('reviewMeta').textContent = `(${product.reviews.toLocaleString('en-IN')} reviews)`;
     document.getElementById('productBrand').textContent = product.brand;
     document.getElementById('productPrice').textContent = money(product.price);
     document.getElementById('productMrp').textContent = money(product.mrp);
     const savings = Math.round(((product.mrp - product.price) / product.mrp) * 100);
     document.getElementById('productSaving').textContent = `Save ${savings}% • Best offer today`;
     document.getElementById('scoreText').textContent = product.rating.toFixed(1);
+    document.getElementById('breadcrumb').textContent = `Home / ${product.category} / ${product.name}`;
 
     const specGrid = document.getElementById('specGrid');
-    Object.entries(product.specs).forEach(([key, value]) => {
-      const item = document.createElement('div');
-      item.className = 'spec-item';
-      item.innerHTML = `<strong>${key}</strong>${value}`;
-      specGrid.appendChild(item);
-    });
+    specGrid.innerHTML = product.specs.map(spec => `
+      <div class="spec-item">
+        <strong>${spec.label}</strong>
+        <span>${spec.value}</span>
+      </div>
+    `).join('');
+
+    const reviewBars = document.getElementById('reviewBars');
+    const starBreakdown = getStarBreakdown(product.rating);
+    reviewBars.innerHTML = starBreakdown.map(row => `
+      <div class="review-row">
+        <span>${row.label}</span>
+        <div class="bar"><span style="width:${row.percent}%"></span></div>
+        <span>${Math.round(row.percent)}%</span>
+      </div>
+    `).join('');
 
     const storeList = document.getElementById('storeList');
-    product.offers.forEach(offer => {
-      const box = document.createElement('div');
-      box.className = 'store-item';
-      box.innerHTML = `
+    const lowestOffer = product.offers.reduce((lowest, offer) => (offer.price < lowest.price ? offer : lowest), product.offers[0]);
+    storeList.innerHTML = product.offers.map(offer => `
+      <div class="store-item">
         <div>
           <div class="store-name">${offer.store}</div>
-          <div style="color:var(--muted);font-size:12px">${offer.shipping} shipping</div>
+          <div style="color:var(--muted);font-size:12px">${offer.stock} • ${offer.shipping}</div>
         </div>
         <div class="store-pricing">${money(offer.price)}</div>
-        <a href="${offer.affiliate_url}" target="_blank" rel="noreferrer">Open</a>
-      `;
-      storeList.appendChild(box);
-    });
+        <a href="${offer.url}" target="_blank" rel="noreferrer">Open</a>
+      </div>
+    `).join('');
 
     document.getElementById('bestOfferBtn').addEventListener('click', () => {
-      const best = product.offers[0];
-      window.open(best.affiliate_url, '_blank', 'noopener,noreferrer');
+      const best = lowestOffer;
+      window.open(best.url, '_blank', 'noopener,noreferrer');
+    });
+
+    document.getElementById('goBackBtn').addEventListener('click', () => {
+      window.location.href = 'index.html';
     });
   </script>
 </body>
