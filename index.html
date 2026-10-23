@@ -892,7 +892,8 @@
           const low = getLowestOffer(product);
           state.cart += 1;
           cartCount.textContent = String(state.cart);
-          window.open(low.url, '_blank', 'noopener,noreferrer');
+          const affiliateUrl = window.smartDealsBuildAffiliateUrl(low.url, low.store);
+          window.open(affiliateUrl, '_blank', 'noopener,noreferrer');
         });
       });
     }

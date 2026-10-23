@@ -250,3 +250,14 @@ window.smartDealsProducts = [
     ]
   }
 ];
+
+window.smartDealsAffiliateTag = 'dealshub0b6f-21';
+window.smartDealsBuildAffiliateUrl = function(url, storeName) {
+  if (!url || !window.smartDealsAffiliateTag) return url;
+  const normalizedStore = String(storeName || '').toLowerCase();
+  const isAmazon = normalizedStore === 'amazon' || /amazon\./i.test(url);
+  if (!isAmazon) return url;
+  if (/tag=/.test(url)) return url;
+  const separator = url.includes('?') ? '&' : '?';
+  return `${url}${separator}tag=${window.smartDealsAffiliateTag}`;
+};

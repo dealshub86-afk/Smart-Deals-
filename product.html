@@ -571,7 +571,8 @@
 
     document.getElementById('buyNowBtn').addEventListener('click', () => {
       const bestOffer = product.offers.reduce((lowest, offer) => (offer.price < lowest.price ? offer : lowest), product.offers[0]);
-      window.open(bestOffer.url, '_blank', 'noopener,noreferrer');
+      const affiliateUrl = window.smartDealsBuildAffiliateUrl(bestOffer.url, bestOffer.store);
+      window.open(affiliateUrl, '_blank', 'noopener,noreferrer');
     });
 
     document.getElementById('addToCartBtn').addEventListener('click', () => {
@@ -579,7 +580,8 @@
       const current = Number(countElement.textContent || '0');
       countElement.textContent = String(current + 1);
       const bestOffer = product.offers.reduce((lowest, offer) => (offer.price < lowest.price ? offer : lowest), product.offers[0]);
-      window.open(bestOffer.url, '_blank', 'noopener,noreferrer');
+      const affiliateUrl = window.smartDealsBuildAffiliateUrl(bestOffer.url, bestOffer.store);
+      window.open(affiliateUrl, '_blank', 'noopener,noreferrer');
     });
 
     document.getElementById('backBtn').addEventListener('click', () => {
